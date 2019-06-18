@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: vitam
+  username: 'lindaweng'
+  pool: 5
+  host: 'localhost'
+  password: "password"
+  template: template0
+  
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: vitam_test
+  username: 'lindaweng'
+  pool: 5
+  host: 'localhost'
+  password: "password"
+  template: template0

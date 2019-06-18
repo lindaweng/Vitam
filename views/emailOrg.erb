@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--class="gr__webgazer_cs_brown_edu"-->
+
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.swal-icon--error{border-color:#f27474;-webkit-animation:animateErrorIcon .5s;animation:animateErrorIcon .5s}.swal-icon--error__x-mark{position:relative;display:block;-webkit-animation:animateXMark .5s;animation:animateXMark .5s}.swal-icon--error__line{position:absolute;height:5px;width:47px;background-color:#f27474;display:block;top:37px;border-radius:2px}.swal-icon--error__line--left{-webkit-transform:rotate(45deg);transform:rotate(45deg);left:17px}.swal-icon--error__line--right{-webkit-transform:rotate(-45deg);transform:rotate(-45deg);right:16px}@-webkit-keyframes animateErrorIcon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}@keyframes animateErrorIcon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}@-webkit-keyframes animateXMark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}@keyframes animateXMark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}.swal-icon--warning{border-color:#f8bb86;-webkit-animation:pulseWarning .75s infinite alternate;animation:pulseWarning .75s infinite alternate}.swal-icon--warning__body{width:5px;height:47px;top:10px;border-radius:2px;margin-left:-2px}.swal-icon--warning__body,.swal-icon--warning__dot{position:absolute;left:50%;background-color:#f8bb86}.swal-icon--warning__dot{width:7px;height:7px;border-radius:50%;margin-left:-4px;bottom:-11px}@-webkit-keyframes pulseWarning{0%{border-color:#f8d486}to{border-color:#f8bb86}}@keyframes pulseWarning{0%{border-color:#f8d486}to{border-color:#f8bb86}}.swal-icon--success{border-color:#a5dc86}.swal-icon--success:after,.swal-icon--success:before{content:"";border-radius:50%;position:absolute;width:60px;height:120px;background:#fff;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal-icon--success:before{border-radius:120px 0 0 120px;top:-7px;left:-33px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:60px 60px;transform-origin:60px 60px}.swal-icon--success:after{border-radius:0 120px 120px 0;top:-11px;left:30px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 60px;transform-origin:0 60px;-webkit-animation:rotatePlaceholder 4.25s ease-in;animation:rotatePlaceholder 4.25s ease-in}.swal-icon--success__ring{width:80px;height:80px;border:4px solid hsla(98,55%,69%,.2);border-radius:50%;box-sizing:content-box;position:absolute;left:-4px;top:-4px;z-index:2}.swal-icon--success__hide-corners{width:5px;height:90px;background-color:#fff;padding:1px;position:absolute;left:28px;top:8px;z-index:1;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal-icon--success__line{height:5px;background-color:#a5dc86;display:block;border-radius:2px;position:absolute;z-index:2}.swal-icon--success__line--tip{width:25px;left:14px;top:46px;-webkit-transform:rotate(45deg);transform:rotate(45deg);-webkit-animation:animateSuccessTip .75s;animation:animateSuccessTip .75s}.swal-icon--success__line--long{width:47px;right:8px;top:38px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-animation:animateSuccessLong .75s;animation:animateSuccessLong .75s}@-webkit-keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes animateSuccessTip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@keyframes animateSuccessTip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@-webkit-keyframes animateSuccessLong{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}@keyframes animateSuccessLong{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}.swal-icon--info{border-color:#c9dae1}.swal-icon--info:before{width:5px;height:29px;bottom:17px;border-radius:2px;margin-left:-2px}.swal-icon--info:after,.swal-icon--info:before{content:"";position:absolute;left:50%;background-color:#c9dae1}.swal-icon--info:after{width:7px;height:7px;border-radius:50%;margin-left:-3px;top:19px}.swal-icon{width:80px;height:80px;border-width:4px;border-style:solid;border-radius:50%;padding:0;position:relative;box-sizing:content-box;margin:20px auto}.swal-icon:first-child{margin-top:32px}.swal-icon--custom{width:auto;height:auto;max-width:100%;border:none;border-radius:0}.swal-icon img{max-width:100%;max-height:100%}.swal-title{color:rgba(0,0,0,.65);font-weight:600;text-transform:none;position:relative;display:block;padding:13px 16px;font-size:27px;line-height:normal;text-align:center;margin-bottom:0}.swal-title:first-child{margin-top:26px}.swal-title:not(:first-child){padding-bottom:0}.swal-title:not(:last-child){margin-bottom:13px}.swal-text{font-size:16px;position:relative;float:none;line-height:normal;vertical-align:top;text-align:left;display:inline-block;margin:0;padding:0 10px;font-weight:400;color:rgba(0,0,0,.64);max-width:calc(100% - 20px);overflow-wrap:break-word;box-sizing:border-box}.swal-text:first-child{margin-top:45px}.swal-text:last-child{margin-bottom:45px}.swal-footer{text-align:right;padding-top:13px;margin-top:13px;padding:13px 16px;border-radius:inherit;border-top-left-radius:0;border-top-right-radius:0}.swal-button-container{margin:5px;display:inline-block;position:relative}.swal-button{background-color:#7cd1f9;color:#fff;border:none;box-shadow:none;border-radius:5px;font-weight:600;font-size:14px;padding:10px 24px;margin:0;cursor:pointer}.swal-button[not:disabled]:hover{background-color:#78cbf2}.swal-button:active{background-color:#70bce0}.swal-button:focus{outline:none;box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(43,114,165,.29)}.swal-button[disabled]{opacity:.5;cursor:default}.swal-button::-moz-focus-inner{border:0}.swal-button--cancel{color:#555;background-color:#efefef}.swal-button--cancel[not:disabled]:hover{background-color:#e8e8e8}.swal-button--cancel:active{background-color:#d7d7d7}.swal-button--cancel:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(116,136,150,.29)}.swal-button--danger{background-color:#e64942}.swal-button--danger[not:disabled]:hover{background-color:#df4740}.swal-button--danger:active{background-color:#cf423b}.swal-button--danger:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(165,43,43,.29)}.swal-content{padding:0 20px;margin-top:20px;font-size:medium}.swal-content:last-child{margin-bottom:20px}.swal-content__input,.swal-content__textarea{-webkit-appearance:none;background-color:#fff;border:none;font-size:14px;display:block;box-sizing:border-box;width:100%;border:1px solid rgba(0,0,0,.14);padding:10px 13px;border-radius:2px;transition:border-color .2s}.swal-content__input:focus,.swal-content__textarea:focus{outline:none;border-color:#6db8ff}.swal-content__textarea{resize:vertical}.swal-button--loading{color:transparent}.swal-button--loading~.swal-button__loader{opacity:1}.swal-button__loader{position:absolute;height:auto;width:43px;z-index:2;left:50%;top:50%;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);text-align:center;pointer-events:none;opacity:0}.swal-button__loader div{display:inline-block;float:none;vertical-align:baseline;width:9px;height:9px;padding:0;border:none;margin:2px;opacity:.4;border-radius:7px;background-color:hsla(0,0%,100%,.9);transition:background .2s;-webkit-animation:swal-loading-anim 1s infinite;animation:swal-loading-anim 1s infinite}.swal-button__loader div:nth-child(3n+2){-webkit-animation-delay:.15s;animation-delay:.15s}.swal-button__loader div:nth-child(3n+3){-webkit-animation-delay:.3s;animation-delay:.3s}@-webkit-keyframes swal-loading-anim{0%{opacity:.4}20%{opacity:.4}50%{opacity:1}to{opacity:.4}}@keyframes swal-loading-anim{0%{opacity:.4}20%{opacity:.4}50%{opacity:1}to{opacity:.4}}.swal-overlay{position:fixed;top:0;bottom:0;left:0;right:0;text-align:center;font-size:0;overflow-y:auto;background-color:rgba(0,0,0,.4);z-index:10000;pointer-events:none;opacity:0;transition:opacity .3s}.swal-overlay:before{content:" ";display:inline-block;vertical-align:middle;height:100%}.swal-overlay--show-modal{opacity:1;pointer-events:auto}.swal-overlay--show-modal .swal-modal{opacity:1;pointer-events:auto;box-sizing:border-box;-webkit-animation:showSweetAlert .3s;animation:showSweetAlert .3s;will-change:transform}.swal-modal{width:478px;opacity:0;pointer-events:none;background-color:#fff;text-align:center;border-radius:5px;position:static;margin:20px auto;display:inline-block;vertical-align:middle;-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:50% 50%;transform-origin:50% 50%;z-index:10001;transition:opacity .2s,-webkit-transform .3s;transition:transform .3s,opacity .2s;transition:transform .3s,opacity .2s,-webkit-transform .3s}@media (max-width:500px){.swal-modal{width:calc(100% - 20px)}}@-webkit-keyframes showSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1)}1%{-webkit-transform:scale(.5);transform:scale(.5)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes showSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1)}1%{-webkit-transform:scale(.5);transform:scale(.5)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}</style>
+        
+        <title>Email Template</title>
+        <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+        <link rel="shortcut icon" href="../img/orange-logo.ico">
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+
+        <!--<link rel="stylesheet" type="text/css" href="../WebGazer_Demo_files/style.css">-->
+        <!--<link rel="stylesheet" href="../WebGazer_Demo_files/bootstrap.min.css">-->
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130132342-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-130132342-2');
+        </script>
+
+        
+        <!--<link rel="stylesheet" href="css/style1.css">-->
+    <style>
+    .gotham-myfont {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 100;
+    }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!--<link rel="stylesheet" href="css/grayscale.min.css">-->
+    <link rel="stylesheet" href="../css/style7.3.css">
+    <!--<script async="" type="text/javascript" src="WebGazer_Demo_files/webgazer.js"></script>-->
+
+
+</head>
+  
+  <body>
+    <!--lang="en-US" link="#0000ff" dir="LTR" data-gr-c-s-loaded="true" class =""-->
+    <script>
+      // var body = document.body,
+      // html = document.documentElement;
+      // var height = Math.max( body.scrollHeight, body.offsetHeight, 
+      //                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+      
+      
+      // /* this is a Topcoat navigation bar and I get its height via offsetHeight of the surrounding <div> */
+      // var hTopBar = document.getElementById("pgTopBar").offsetHeight; 
+      
+      // var sH = Math.floor((height - hTopBar) / 2);
+      
+      
+      // document.getElementById("row").height = sH;
+      // document.getElementById("td2").height = sH;
+      // document.getElementById("td3").height = sH;
+      // document.getElementById("td4").height = sH;
+      // document.getElementById("td5").height = sH;
+      // document.getElementById("td6").height = sH;
+      
+      // var message = "Message:";
+      //     // document.getElementById("message1").setAttribute('parameter', message);
+      //     document.getElementById("message1").setAttribute('value', message);
+      //     document.getElementById("message2").innerHTML=message;
+      
+      function playAudio(audioID) {
+        var audio1 = document.getElementById(audioID);
+        audio1.play();
+      }
+    </script>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background: #FF9603">
+      <div class="container">
+      <!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Vitamin See</a>-->
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/" style="padding: 0rem 1.5rem !important">Log Out</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/account/<%=@id%>" style="padding: 0rem 1.5rem !important">My Account</a>
+          </li>
+          <!--<li class="nav-item">-->
+          <!--  <a class="nav-link" href="#join_waddle">Join a Waddle</a>-->
+          <!--</li>-->
+        </ul>
+      </div>
+    </nav>
+
+      <!--<div id ="shit" hidden="false">-->
+        <br style="line-height:4rem">
+        <!--<div style="max-height:250px; font-size:3rem">-->
+        <table style="width:100%" id="greetings" class="show">
+            <tr id="row" style="max-height:250px; font-size:3rem">
+              <td>
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('greetings', 'names', 'Hi');"><p>Hi</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('greetings', 'names', 'Hello');"><p>Hello</p>
+                
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('greetings', 'names', 'Hey');"><p>Hey</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('greetings', 'names', 'Dear');"><p>Dear</p>
+                
+              </td>
+              <td onclick="noshow('greetings', 'names', 'Good Morning');"><p>Good Morning</p>
+                
+              </td>
+              <td  onclick="noshow('greetings', 'names', 'Hey');"><p>Good Afternoon</p>
+                
+              </td>
+              <td  onclick="noshow('greetings', '', '');"><p></p>
+                
+              </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%" id="names" class="noshow">
+            <tr id="row">
+              <td >
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('names', 'questions', 'Sam,<br>');"><p>Sam</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('names', 'questions', 'Keli,<br>');"><p>Keli</p>
+                
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('names', 'questions', 'Nick,<br>');"><p>Nick</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('names', 'questions', 'Ashley,<br>');"><p>Ashley</p>
+                
+              </td>
+              <td onclick="noshow('names', 'questions', 'Kate,<br>');"><p>Kate</p>
+                
+              </td>
+              <td  onclick="noshow('names', 'questions', 'Sarah,<br>');"<p>Sarah</p>
+                
+              </td>
+              <td  onclick="noshow('names', 'greetings', '');"><p>Back</p>
+                
+              </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%" id="questions" class="noshow">
+            <tr id="row">
+              <td >
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('questions', 'time', 'Thank you for your email.');"><p>Thank you for your email.</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('questions', 'time', 'It was nice to hear from you.');"><p>It was nice to hear from you.</p>
+                
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('questions', 'time', 'How are you doing?');"><p>How are you doing?</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('questions', 'time', 'I’m doing well.');"><p>I’m doing well.</p>
+                
+              </td>
+              <td onclick="noshow('questions', 'time', 'Not much is new.');"><p>Not much is new.</p>
+                
+              </td>
+              <td  onclick="noshow('questions', 'questions2', '');"><p>More</p>
+                
+              </td>
+              <td  onclick="noshow('questions', 'names', '');"><p>Back</p>
+                
+              </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%" id="questions2" class="noshow">
+            <tr id="row">
+              <td >
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('questions2', 'time', 'How are you?');"><p>How are you?</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('questions2', 'time', 'How have you been?');"><p>How have you been?</p>
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('questions2', 'time', 'What’s new with you?');"><p>What’s new with you?</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('questions2', 'time', 'How are things going at work?');"><p>How are things going at work?</p>
+                
+              </td>
+              <td onclick="noshow('questions2', 'time', 'How is your family?');"><p>How is your family?</p>
+                
+              </td>
+              <td  onclick="noshow('questions2', 'time', 'I’ve been very busy lately.');"><p>I’ve been very busy lately.</p>
+                
+              </td>
+              <td  onclick="noshow('questions2', 'questions', '');"><p>Back</p>
+                
+              </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%" id="time" class="noshow">
+            <tr id="row">
+              <td >
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('time', 'actions', 'Yesterday, I');"><p>Yesterday</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('time', 'actions', 'Last night, I');"><p>Last night</p>
+                
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('time', 'actions', 'Last week, I');"><p>Last week</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('time', 'actions', 'Today, I’m going to');"><p>Today</p>
+                
+              </td>
+              <td onclick="noshow('time', 'actions', 'Tonight, I’m going to');"><p>Tonight</p>
+                
+              </td>
+              <td  onclick="noshow('time', 'actions', 'Tomorrow, I’m going to');"><p>Tomorrow</p>
+                
+              </td>
+              <td  onclick="noshow('time', 'questions2', '');"><p>Back</p>
+                
+              </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%" id="actions" class="noshow">
+            <tr id="row">
+              <td >
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('actions', 'closing', 'Sam');"><p>Action Needed</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('actions', 'closing', 'Sam');"><p>Keli</p>
+                
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('actions', 'closing', 'Sam');"><p>Nick</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('actions', 'closing', 'Sam');"><p>Ashley</p>
+                
+              </td>
+              <td onclick="noshow('actions', 'closing', 'Sam');"><p>Kate</p>
+                
+              </td>
+              <td  onclick="noshow('actions', 'closing', 'Sam');"><p>Sarah</p>
+                
+              </td>
+              <td  onclick="noshow('actions', 'time', '');"><p>Back</p>
+                
+              </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%" id="closing" class="noshow">
+            <tr id="row">
+              <td >
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('closing', 'signature', 'Can’t wait to see you!');"><p>Can’t wait to see you!</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('closing', 'signature', 'Looking forward to seeing you soon!');"><p>Looking forward to seeing you soon!</p>
+                
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('closing', 'signature', 'Hope to see you soon!');"><p>Hope to see you soon!</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('closing', 'signature', 'Talk to you soon.');"><p>Talk to you soon.</p>
+                
+              </td>
+              <td onclick="noshow('closing', 'signature', 'Take care.');"><p>Take care.</p>
+                
+              </td>
+              <td  onclick="noshow('closing', 'signature', 'I miss you.');"><p>I miss you.</p>
+                
+              </td>
+              <td  onclick="noshow('closing', 'actions', '');"><p>Back</p>
+                
+              </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%" id="signature" class="noshow">
+            <tr id="row">
+              <td>
+                <p>Edit</p>
+              </td>
+              <td onclick="noshow('signature', 'sendForm', '<br>From,<br><%=@name%>');"><p>From</p>
+                
+              </td>
+              <td onmouseover="playAudio('chest')" onclick="noshow('signature', 'sendForm', '<br>Sincerely,<br><%=@name%>');"><p>Sincerely</p>
+                
+              </td>
+              <td onmouseover="playAudio('back')" onclick="noshow('signature', 'sendForm', '<br>Best,<br><%=@name%>');"><p>Best</p>
+                </td>
+            </tr>
+            <tr id="row">
+              <td onmouseover="playAudio('arm')" onclick="noshow('signature', 'sendForm', '<br>Thanks,<br><%=@name%>');"><p>Thanks</p>
+                
+              </td>
+              <td onclick="noshow('signature', 'sendForm', '<br>Love,<br><%=@name%>');"><p>Love</p>
+                
+              </td>
+              <td  onclick="noshow('signature', 'sendForm', '<br>Cheers,<br><%=@name%>');"><p>Cheers</p>
+                
+              </td>
+              <td  onclick="noshow('signature', 'closing', '');"><p>Back</p>
+                
+              </td>
+            </tr>
+        </table>
+        </div>
+        
+        <h4 id="message2"></h4>
+        
+        <div id ="sendForm" class="noshow">
+          <form method="POST" action="/send">
+            <h3>Choose which contact you want to send the message to:</h3>
+            <%@contacts.each_with_index do |contact, i|%>
+              <input type="radio" name="toEmail" value="<%=@contacts[i][1]%>"><%=@contacts[i][0]%>: <%=@contacts[i][1]%>
+              <br>
+            <%end%>
+            <input type="hidden" name="id" value="<%=@id%>">
+            <input type="hidden" id="message" name="message" value="<%=@message%>">
+            <input type="submit" class = "btn btn-default">
+          </form>
+        </div>
+
+        <script src="../WebGazer_Demo_files/jquery.min.js"></script>
+
+
+          <script>
+              var message = "<%=@message%>";
+                // document.getElementById("mess").setAttribute('parameter', message);
+                document.getElementById("message1").setAttribute('value', message);
+                document.getElementById("message2").innerHTML=message;
+
+              function noshow(table1, table2, word) {
+                  var addMessage = word;
+                  var table =table1
+                  
+                  var id1 = document.getElementById(table1);
+                  var id2 = document.getElementById(table2);
+                  if (addMessage != '') {
+                      message = message + " " + addMessage;
+                  }
+
+                  $(id1).addClass('noshow');
+                  $(id1).removeClass('show')
+                  $(id2).removeClass('noshow');
+                  $(id2).addClass('show');
+                  // document.getElementById("message1").setAttribute('value', message);
+                  document.getElementById("message2").innerHTML=message;
+                  document.getElementById("message").value=message;
+                  document.getElementById("message3").setAttribute('value', message);
+                  document.getElementById("message5").setAttribute('value', message);
+                  document.getElementById("message7").setAttribute('value', message);
+              }
+
+              
+              
+              function del() {
+                console.log(message)
+                var pos = message.lastIndexOf(" ");
+                if (pos != -1) {
+                  message = message.substring(0, pos);
+                }
+                document.getElementById("message1").setAttribute('value', message);
+                document.getElementById("message2").innerHTML=message;
+                document.getElementById("message3").setAttribute('value', message);
+                document.getElementById("message5").setAttribute('value', message);
+                document.getElementById("message7").setAttribute('value', message);
+              }
+          </script>
+<!--</div>-->
+
+      <div id="click">
+        <!--<script src="WebGazer_Demo_files/jquery.min.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/sweetalert.min.js"></script>-->
+
+        <!--<script src="WebGazer_Demo_files/main.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/calibrationMoo.js"></script>-->
+        <!--<script src="js/calibration.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/precision_calculation.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/precision_store_points.js"></script>-->
+        <!--<script src="js/precision_store_points.js"></script>-->
+        
+        <script>
+        
+          function average_point(pointArr) {
+            var pointTot = 0;
+            for (x = 0; x < 50; x++) {
+              pointTot += pointArr[x];
+            }
+            var pointAvg = pointTot / 50;
+            // console.log(pointTot);
+            return pointAvg;
+          }
+          window.setInterval(get_pos, 5000)
+          store_points_variable();
+          // var time = 0;
+          function get_pos() {
+            stop_storing_points_variable();
+            var past50Array = get_points();
+            var x50 = past50Array[0];
+            var y50 = past50Array[1];
+            // console.log(x50);
+            var x = average_point(x50);
+            var y = average_point(y50);
+            console.log(x + "," + y);
+            store_points_variable();
+            // click();
+          }
+          
+          function click() {
+              document.getElementById("body").click();
+          }
+        </script>
+        
+      </div>
+
+
+<!--    <div id = "yeet">-->
+<!--      <canvas id="plotting_canvas" width="1440" height="772" style="cursor: crosshair; position: fixed;"></canvas>-->
+
+<!--        <script src="WebGazer_Demo_files/jquery.min.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/sweetalert.min.js"></script>-->
+
+        <!--<script src="WebGazer_Demo_files/main.js"></script>-->
+<!--        <script src="js/main.js"></script>-->
+        <!--<script src="js/webgazer.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/calibrationMoo.js"></script>-->
+<!--        <script src="js/calibration.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/precision_calculation.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/precision_store_points.js"></script>-->
+
+<!--        <nav id="webgazerNavbar" class="navbar navbar-default navbar-fixed-top">-->
+<!--          <div class="container-fluid">-->
+<!--            <div class="navbar-header">-->
+              <!-- The hamburger menu button -->
+<!--              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="collapse navbar-collapse" id="myNavbar">-->
+<!--              <ul class="nav navbar-nav" style="display: inline-block">-->
+                <!-- Accuracy -->
+<!--                <li id="Accuracy"><a>Not yet Calibrated</a></li>-->
+<!--                <li onclick="Restart()"><a>Recalibrate</a></li>-->
+<!--              </ul>-->
+<!--              <ul class="nav navbar-nav navbar-right">-->
+<!--                <li><button class="helpBtn" data-toggle="modal" data-target="#helpModal"><a data-toggle="modal"><span class="glyphicon glyphicon-cog"></span> Help</a></button></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </nav>-->
+        <!-- Calibration points -->
+<!--        <div class="calibrationDiv">-->
+<!--            <input type="button" class="Calibration" id="Pt1" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt2" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt3" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt4" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt5" style="background-color: red; opacity: 0.2; display: none;">-->
+<!--            <input type="button" class="Calibration" id="Pt6" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt7" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt8" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt9" style="background-color: red; opacity: 0.2;">-->
+<!--        </div>-->
+
+<!--         Modal -->
+<!--        <div id="helpModal" class="modal fade" role="dialog" style="display: none;">-->
+<!--          <div class="modal-dialog">-->
+
+<!--             Modal content-->
+<!--            <div class="modal-content" style="margin-top: 50%">-->
+<!--              <div class="modal-body">-->
+<!--                <img src="./WebGazer_Demo_files/calibration.png" width="100%" height="100%" alt="webgazer demo instructions" >-->
+<!--              </div>-->
+<!--              <div class="modal-footer">-->
+                <!--<button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Restart()">Calibrate</button>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+
+        <!-- Latest compiled JavaScript -->
+<!--        <script src="WebGazer_Demo_files/resize_canvas.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/bootstrap.min.js"></script>-->
+
+
+<!--<canvas width="11px" height="781px" id="renderCanvas" style="display:none;"></canvas>-->
+<!--<canvas width="11px" height="781px" id="renderCanvas" style="display:none;"></canvas>-->
+<!--<video id="webgazerVideoFeed" autoplay="" style="display: block; position: fixed; top: 0px; left: 0px; width: 320px; height: 240px;"></video>-->
+<!--<canvas id="webgazerVideoCanvas" width="640" height="480" style="display: none;"></canvas>-->
+<!--<canvas id="webgazerFaceOverlay" width="640" height="480" style="display: block; position: fixed; top: 0px; left: 0px; width: 320px; height: 240px;"></canvas>-->
+<!--<canvas id="webgazerFaceFeedbackBox" style="display: block; position: fixed; border: solid red; top: 40.8px; left: 80.8px; width: 158.4px; height: 158.4px;"></canvas>-->
+<!--<div class="swal-overlay" tabindex="-1"><div class="swal-modal" role="dialog" aria-modal="true"><div class="swal-title" style="">Calibration</div>-->
+<!--<div class="swal-text" style="">Please click on each of the 9 points on the screen. You must click on each point 5 times till it goes yellow. This will calibrate your eye movements.</div>-->
+
+<!--</div>-->
+
+    <!-- Footer -->
+        <footer class="bg-black small text-center text-white-50">
+          <div class="container" style="color:white">
+            Copyright &copy; VITAMIN SEE 2018
+          </div>
+          </footer>
+
+        
+   
+    <!-- Bootstrap core JavaScript -->
+    <!--<script src="vendor/jquery/jquery.min.js"></script>-->
+    <script type="text/script" src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../js/grayscale.js"></script>
+
+
+  </body>
+</html>
