@@ -36,7 +36,7 @@
     <meta name="description" content="Listen to the ones that need to be heard.">
     <meta name="author" content="">
 
-    <title>VITAM</title>
+    <title>Vitam</title>
     <link rel="shortcut icon" href="img/orange-logo.ico">
 
     <!-- Bootstrap core CSS -->
@@ -102,7 +102,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">VITAM</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Vitam</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -121,14 +121,14 @@
     </nav>
 
     <!-- Header -->
-    <header style="background-image: linear-gradient(#FF9603, #FCEF00); height: 100vh">
-      <div class="container d-flex h-100 align-items-center" style="padding:0">
-        <div class="mx-auto text-center masthead" style="display: inline-block">
-          <h1 class="mx-auto my-0 text-uppercase">VITAM</h1>
-          <img src="img/vitaminSeeLogo1.png" class="img-fluid" alt="Orange logo" style="max-width: 70%">
-        </div>
+    <header style="background-image: linear-gradient(#88D6F2, #72F274); height: 100vh">
+      <div class="container d-flex h-100 align-items-center" style="padding:0; flex-wrap:wrap">
+        <%# <div class="mx-auto text-center masthead" style="display: inline-block; padding-top: 3rem"> %>
+          <%# <h1 class="mx-auto my-0 text-uppercase">VITAM</h1> %>
+          <img src="img/Logo.png" class="img-fluid" alt="Logo" style="padding: 18%">
+        <%# </div> %>
         
-        <div class="form-inline home-login" style="display: inline">
+        <div class="form-inline home-login img-fluid" style="display: inline">
           <h2><%=@output%></h2>
           <form method="POST" action="/login">
             <h4>Email:</h4>
