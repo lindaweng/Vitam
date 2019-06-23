@@ -257,11 +257,11 @@ body {
   letter-spacing: 0.0625em;
 }
 a {
-  color: #64a19d;
+  color: #b7911d;
 }
 a:focus, a:hover {
   text-decoration: none;
-  color: #3c6360;
+  color: #846508;
 }
 .bg-black {
   background-color: #161616 !important;
@@ -377,7 +377,7 @@ td {
 }
 
 #sent {
-  background-image: linear-gradient(#FF9603, #FCEF00);
+  background-image: linear-gradient(#88D6F2, #72F274);
   padding: 2rem;
   height: 89vh;
 }
