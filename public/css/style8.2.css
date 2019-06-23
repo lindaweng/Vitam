@@ -190,8 +190,8 @@
 }
 .signup-section {
   padding: 5rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#FF9603), to(#FCEF00));
-  background: linear-gradient(to bottom, #FF9603 0%, #FCEF00 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#88D6F2), to(#72F274));
+  background: linear-gradient(to bottom, #88D6F2 0%, #72F274 100%);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
