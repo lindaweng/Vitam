@@ -82,26 +82,26 @@
         <br style="line-height:4rem">
         <table style="width:100%" id="greetings" class="show email">
             <tr id="row" style="max-height:250px; font-size:3rem">
-              <td ondblclick="edit('greetings', '0')">
+              <td onclick="edit('greetings', '0')">
                 <p>Edit</p>
               </td>
-              <td ondblclick="noshow('greetings', 'names0', '<%=@emailWords[0][0]%>');"><p><%=@emailWords[0][0]%></p>
+              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][0]%>');"><p><%=@emailWords[0][0]%></p>
                 
               </td>
-              <td ondblclick="noshow('greetings', 'names0', '<%=@emailWords[0][1]%>');"><p><%=@emailWords[0][1]%></p>
+              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][1]%>');"><p><%=@emailWords[0][1]%></p>
                 
               </td>
-              <td ondblclick="noshow('greetings', 'names0', '<%=@emailWords[0][2]%>');"><p><%=@emailWords[0][2]%></p>
+              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][2]%>');"><p><%=@emailWords[0][2]%></p>
                 </td>
             </tr>
             <tr id="row">
-              <td ondblclick="noshow('greetings', 'names0', '<%=@emailWords[0][3]%>');"><p><%=@emailWords[0][3]%></p>
+              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][3]%>');"><p><%=@emailWords[0][3]%></p>
                 
               </td>
-              <td ondblclick="noshow('greetings', 'names0', '<%=@emailWords[0][4]%>');"><p><%=@emailWords[0][4]%></p>
+              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][4]%>');"><p><%=@emailWords[0][4]%></p>
                 
               </td>
-              <td ondblclick="noshow('greetings', 'names0', '<%=@emailWords[0][5]%>');"><p><%=@emailWords[0][5]%></p>
+              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][5]%>');"><p><%=@emailWords[0][5]%></p>
                 
               </td>
               <td><p></p>
@@ -131,25 +131,25 @@
               <td>
                 <table class="double-row">
                   <tr>
-                    <td class="top" ondblclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
+                    <td class="top" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
                       <p>Back</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="bottom" ondblclick="del()">
+                    <td class="bottom" onclick="del()">
                       <p>Delete</p>
                     </td>
                   </tr>
                 </table>
               </td>
-              <td ondblclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td ondblclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
@@ -158,24 +158,24 @@
               <%end%>
             </tr>
             <tr id="row">
-              <td ondblclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td ondblclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td ondblclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
-              <td  ondblclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
+              <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
               </td>
             </tr>
         </table>
@@ -193,43 +193,43 @@
         <%@idName = @idName + i.to_s%>
         <table style="width:100%" id="<%=@idName%>" class="noshow email">
             <tr id="row">
-              <td ondblclick="edit('<%=@idName%>', '<%=@emailNum%>')">
+              <td onclick="edit('<%=@idName%>', '<%=@emailNum%>')">
                 <p>Edit</p>
               </td>
               <td>
                 <table class="double-row">
                   <tr>
-                    <td class="top" ondblclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
+                    <td class="top" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
                       <p>Back</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="bottom" ondblclick="del()">
+                    <td class="bottom" onclick="del()">
                       <p>Delete</p>
                     </td>
                   </tr>
                 </table>
               </td>
-              <td ondblclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][0]%>');"><p><%=@emailWords[@emailNum][0]%></p>
+              <td onclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][0]%>');"><p><%=@emailWords[@emailNum][0]%></p>
                 
               </td>
-              <td ondblclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][1]%>');"><p><%=@emailWords[@emailNum][1]%></p>
+              <td onclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][1]%>');"><p><%=@emailWords[@emailNum][1]%></p>
                 
               </td>
             </tr>
             <tr id="row">
-              <td ondblclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][2]%>');"><p><%=@emailWords[@emailNum][2]%></p>
+              <td onclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][2]%>');"><p><%=@emailWords[@emailNum][2]%></p>
               </td>
-              <td ondblclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][3]%>');"><p><%=@emailWords[@emailNum][3]%></p>
+              <td onclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][3]%>');"><p><%=@emailWords[@emailNum][3]%></p>
                 
               </td>
-              <td ondblclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][4]%>');"><p><%=@emailWords[@emailNum][4]%></p>
+              <td onclick="noshow('<%=@idName%>', 'closing', '<%=@emailWords[@emailNum][4]%>');"><p><%=@emailWords[@emailNum][4]%></p>
                 
               </td>
               <%if @emailNum == @tableNum%>
                 <%next%>
               <%end%>
-              <td  ondblclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
+              <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
                 
               </td>
             </tr>
@@ -240,39 +240,39 @@
         
         <!--<table style="width:100%" id="questions2" class="noshow email">-->
         <!--    <tr id="row">-->
-        <!--      <td ondblclick="edit('questions2', '2')">-->
+        <!--      <td onclick="edit('questions2', '2')">-->
         <!--        <p>Edit</p>-->
         <!--      </td>-->
         <!--      <td>-->
         <!--        <table class="double-row">-->
         <!--          <tr>-->
-        <!--            <td class="top" ondblclick="noshow('questions2', 'questions', '');">-->
+        <!--            <td class="top" onclick="noshow('questions2', 'questions', '');">-->
         <!--              <p>Back</p>-->
         <!--            </td>-->
         <!--          </tr>-->
         <!--          <tr>-->
-        <!--            <td class="bottom" ondblclick="del()">-->
+        <!--            <td class="bottom" onclick="del()">-->
         <!--              <p>Delete</p>-->
         <!--            </td>-->
         <!--          </tr>-->
         <!--        </table>-->
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('questions2', 'closing', '<%=@emailWords[2][0]%>');"><p><%=@emailWords[2][0]%></p>-->
+        <!--      <td onclick="noshow('questions2', 'closing', '<%=@emailWords[2][0]%>');"><p><%=@emailWords[2][0]%></p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('questions2', 'closing', '<%=@emailWords[2][1]%>');"><p><%=@emailWords[2][1]%></p>-->
+        <!--      <td onclick="noshow('questions2', 'closing', '<%=@emailWords[2][1]%>');"><p><%=@emailWords[2][1]%></p>-->
         <!--      </td>-->
         <!--    </tr>-->
         <!--    <tr id="row">-->
-        <!--      <td ondblclick="noshow('questions2', 'closing', '<%=@emailWords[2][2]%>');"><p><%=@emailWords[2][2]%></p>-->
+        <!--      <td onclick="noshow('questions2', 'closing', '<%=@emailWords[2][2]%>');"><p><%=@emailWords[2][2]%></p>-->
         <!--        </td>-->
-        <!--      <td ondblclick="noshow('questions2', 'closing', '<%=@emailWords[2][3]%>');"><p><%=@emailWords[2][3]%></p>-->
+        <!--      <td onclick="noshow('questions2', 'closing', '<%=@emailWords[2][3]%>');"><p><%=@emailWords[2][3]%></p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('questions2', 'closing', '<%=@emailWords[2][4]%>');"><p><%=@emailWords[2][4]%></p>-->
+        <!--      <td onclick="noshow('questions2', 'closing', '<%=@emailWords[2][4]%>');"><p><%=@emailWords[2][4]%></p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('questions2', 'closing', '<%=@emailWords[2][5]%>');"><p><%=@emailWords[2][5]%></p>-->
+        <!--      <td onclick="noshow('questions2', 'closing', '<%=@emailWords[2][5]%>');"><p><%=@emailWords[2][5]%></p>-->
                 
         <!--      </td>-->
         <!--    </tr>-->
@@ -283,26 +283,26 @@
         <!--      <td >-->
         <!--        <p>Edit</p>-->
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('time', 'actions', 'Yesterday, I');"><p>Yesterday</p>-->
+        <!--      <td onclick="noshow('time', 'actions', 'Yesterday, I');"><p>Yesterday</p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('time', 'actions', 'Last night, I');"><p>Last night</p>-->
+        <!--      <td onclick="noshow('time', 'actions', 'Last night, I');"><p>Last night</p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('time', 'actions', 'Last week, I');"><p>Last week</p>-->
+        <!--      <td onclick="noshow('time', 'actions', 'Last week, I');"><p>Last week</p>-->
         <!--        </td>-->
         <!--    </tr>-->
         <!--    <tr id="row">-->
-        <!--      <td ondblclick="noshow('time', 'actions', 'Today, I’m going to');"><p>Today</p>-->
+        <!--      <td onclick="noshow('time', 'actions', 'Today, I’m going to');"><p>Today</p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('time', 'actions', 'Tonight, I’m going to');"><p>Tonight</p>-->
+        <!--      <td onclick="noshow('time', 'actions', 'Tonight, I’m going to');"><p>Tonight</p>-->
                 
         <!--      </td>-->
-        <!--      <td  ondblclick="noshow('time', 'actions', 'Tomorrow, I’m going to');"><p>Tomorrow</p>-->
+        <!--      <td  onclick="noshow('time', 'actions', 'Tomorrow, I’m going to');"><p>Tomorrow</p>-->
                 
         <!--      </td>-->
-        <!--      <td  ondblclick="noshow('time', 'questions2', '');"><p>Back</p>-->
+        <!--      <td  onclick="noshow('time', 'questions2', '');"><p>Back</p>-->
                 
         <!--      </td>-->
         <!--    </tr>-->
@@ -313,26 +313,26 @@
         <!--      <td >-->
         <!--        <p>Edit</p>-->
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('actions', 'closing', 'Sam');"><p>Action Needed</p>-->
+        <!--      <td onclick="noshow('actions', 'closing', 'Sam');"><p>Action Needed</p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('actions', 'closing', 'Sam');"><p>Keli</p>-->
+        <!--      <td onclick="noshow('actions', 'closing', 'Sam');"><p>Keli</p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('actions', 'closing', 'Sam');"><p>Nick</p>-->
+        <!--      <td onclick="noshow('actions', 'closing', 'Sam');"><p>Nick</p>-->
         <!--        </td>-->
         <!--    </tr>-->
         <!--    <tr id="row">-->
-        <!--      <td ondblclick="noshow('actions', 'closing', 'Sam');"><p>Ashley</p>-->
+        <!--      <td onclick="noshow('actions', 'closing', 'Sam');"><p>Ashley</p>-->
                 
         <!--      </td>-->
-        <!--      <td ondblclick="noshow('actions', 'closing', 'Sam');"><p>Kate</p>-->
+        <!--      <td onclick="noshow('actions', 'closing', 'Sam');"><p>Kate</p>-->
                 
         <!--      </td>-->
-        <!--      <td  ondblclick="noshow('actions', 'closing', 'Sam');"><p>Sarah</p>-->
+        <!--      <td  onclick="noshow('actions', 'closing', 'Sam');"><p>Sarah</p>-->
                 
         <!--      </td>-->
-        <!--      <td  ondblclick="noshow('actions', 'time', '');"><p>Back</p>-->
+        <!--      <td  onclick="noshow('actions', 'time', '');"><p>Back</p>-->
                 
         <!--      </td>-->
         <!--    </tr>-->
@@ -342,40 +342,40 @@
         <%@emailNum = @emailTableNum - 2%>
         <table style="width:100%" id="closing" class="noshow email">
             <tr id="row">
-              <td ondblclick="edit('closing', '<%=@emailNum%>')">
+              <td onclick="edit('closing', '<%=@emailNum%>')">
                 <p>Edit</p>
               </td>
               <td>
                 <table class="double-row">
                   <tr>
-                    <td class="top" ondblclick="noshow('closing', '<%=@pastId%>', '');">
+                    <td class="top" onclick="noshow('closing', '<%=@pastId%>', '');">
                       <p>Back</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="bottom" ondblclick="del()">
+                    <td class="bottom" onclick="del()">
                       <p>Delete</p>
                     </td>
                   </tr>
                 </table>
               </td>
-              <td ondblclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][0]%>');"><p><%=@emailWords[@emailNum][0]%></p>
+              <td onclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][0]%>');"><p><%=@emailWords[@emailNum][0]%></p>
                 
               </td>
-              <td ondblclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][1]%>');"><p><%=@emailWords[@emailNum][1]%></p>
+              <td onclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][1]%>');"><p><%=@emailWords[@emailNum][1]%></p>
                 
               </td>
             </tr>
             <tr id="row">
-              <td ondblclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][2]%>');"><p><%=@emailWords[@emailNum][2]%></p>
+              <td onclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][2]%>');"><p><%=@emailWords[@emailNum][2]%></p>
                 </td>
-              <td ondblclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][3]%>');"><p><%=@emailWords[@emailNum][3]%></p>
+              <td onclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][3]%>');"><p><%=@emailWords[@emailNum][3]%></p>
                 
               </td>
-              <td ondblclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][4]%>');"><p><%=@emailWords[@emailNum][4]%></p>
+              <td onclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][4]%>');"><p><%=@emailWords[@emailNum][4]%></p>
                 
               </td>
-              <td ondblclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][5]%>');"><p><%=@emailWords[@emailNum][5]%></p>
+              <td onclick="noshow('closing', 'signature', '<%=@emailWords[@emailNum][5]%>');"><p><%=@emailWords[@emailNum][5]%></p>
                 
               </td>
             </tr>
@@ -384,40 +384,40 @@
         <%@emailNum = @emailTableNum - 1%>
         <table style="width:100%" id="signature" class="noshow email">
             <tr id="row">
-              <td ondblclick="edit('signature', '<%=@emailNum%>')">
+              <td onclick="edit('signature', '<%=@emailNum%>')">
                 <p>Edit</p>
               </td>
               <td>
                 <table class="double-row">
                   <tr>
-                    <td class="top" ondblclick="noshow('signature', 'closing', '');">
+                    <td class="top" onclick="noshow('signature', 'closing', '');">
                       <p>Back</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="bottom" ondblclick="del()">
+                    <td class="bottom" onclick="del()">
                       <p>Delete</p>
                     </td>
                   </tr>
                 </table>
               </td>
-              <td ondblclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][0]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][0]%></p>
+              <td onclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][0]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][0]%></p>
                 
               </td>
-              <td ondblclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][1]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][1]%></p>
+              <td onclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][1]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][1]%></p>
                 
               </td>
             </tr>
             <tr id="row">
-              <td ondblclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][2]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][2]%></p>
+              <td onclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][2]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][2]%></p>
                 </td>
-              <td ondblclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][3]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][3]%></p>
+              <td onclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][3]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][3]%></p>
                 
               </td>
-              <td ondblclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][4]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][4]%></p>
+              <td onclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][4]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][4]%></p>
                 
               </td>
-              <td ondblclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][5]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][5]%></p>
+              <td onclick="noshow('signature', 'sendForm', '<br><%=@emailWords[@emailNum][5]%>,<br><%=@name%>');"><p><%=@emailWords[@emailNum][5]%></p>
                 
               </td>
             </tr>
@@ -632,7 +632,7 @@
 <!--              <ul class="nav navbar-nav" style="display: inline-block">-->
                 <!-- Accuracy -->
 <!--                <li id="Accuracy"><a>Not yet Calibrated</a></li>-->
-<!--                <li ondblclick="Restart()"><a>Recalibrate</a></li>-->
+<!--                <li onclick="Restart()"><a>Recalibrate</a></li>-->
 <!--              </ul>-->
 <!--              <ul class="nav navbar-nav navbar-right">-->
 <!--                <li><button class="helpBtn" data-toggle="modal" data-target="#helpModal"><a data-toggle="modal"><span class="glyphicon glyphicon-cog"></span> Help</a></button></li>-->
@@ -664,7 +664,7 @@
 <!--              </div>-->
 <!--              <div class="modal-footer">-->
                 <!--<button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-<!--                <button type="button" class="btn btn-primary" data-dismiss="modal" ondblclick="Restart()">Calibrate</button>-->
+<!--                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Restart()">Calibrate</button>-->
 <!--              </div>-->
 <!--            </div>-->
 
