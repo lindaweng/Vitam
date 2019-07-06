@@ -563,20 +563,34 @@
 
               function copyMess() {
                 var message = document.getElementById("message2").innerHTML;
-                <%# var prevIndex = 0;
-                var index = 0;
-                var newMess = "";
-                while (message.indexOf("<br>") != -1) {
-                  index = message.indexOf("<br>");
-                  newMess = newMess.concat(message.substring(prevIndex, index));
-                  message = message.
-                  prevIndex = index;
-                } %>
                 message = message.replace(/<br>/g, " ")
                 document.getElementById("messageCopy").value=message;
                 message = document.getElementById("messageCopy")
-                message.select();
-                document.execCommand("copy");
+                
+                var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+	              if (isiOSDevice) {
+                  var oldContentEditable = message.contentEditable,
+                      oldReadOnly = message.readOnly,
+                      range = document.createRange();
+
+                  message.contentEditable = true;
+                  message.readOnly = false;
+                  range.selectNodeContents(message);
+
+                  var s = window.getSelection();
+                  s.removeAllRanges();
+                  s.addRange(range);
+
+                  message.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
+
+                  message.contentEditable = oldContentEditable;
+                  message.readOnly = oldReadOnly;
+                }
+                else{
+                  message.select();
+                }
+                document.execCommand('copy');
+
                 console.log(document.getElementById("messageCopy").value);
                 var copied = document.getElementById("copied")
                 $(copied).removeClass('noshow');
