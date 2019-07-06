@@ -577,7 +577,7 @@
                 message = document.getElementById("messageCopy")
                 message.select();
                 document.execCommand("copy");
-                console.log(message);
+                console.log(document.getElementById("messageCopy").value);
                 var copied = document.getElementById("copied")
                 $(copied).removeClass('noshow');
                 $(copied).addClass('show');
