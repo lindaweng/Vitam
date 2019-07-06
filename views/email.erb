@@ -428,6 +428,11 @@
           
           <div id ="sendForm" class="noshow">
             <br>
+            <button onclick="copyMess()">Copy Message</button>
+            <br>
+            <p id="copied" class="noshow">Copied to Clipboard</p>
+            <br>
+            <input type="text" id="messageCopy" style="opacity: 0">
             <form method="POST" action="/send">
               <h3>Choose which contact you want to send the message to:</h3>
               <br>
@@ -554,6 +559,28 @@
                 }
                 document.getElementById("table").value=editTable;
                 document.getElementById("tableNum").value=tableNum;
+              }
+
+              function copyMess() {
+                var message = document.getElementById("message2").innerHTML;
+                <%# var prevIndex = 0;
+                var index = 0;
+                var newMess = "";
+                while (message.indexOf("<br>") != -1) {
+                  index = message.indexOf("<br>");
+                  newMess = newMess.concat(message.substring(prevIndex, index));
+                  message = message.
+                  prevIndex = index;
+                } %>
+                message = message.replace(/<br>/g, " ")
+                document.getElementById("messageCopy").value=message;
+                message = document.getElementById("messageCopy")
+                message.select();
+                document.execCommand("copy");
+                console.log(message);
+                var copied = document.getElementById("copied")
+                $(copied).removeClass('noshow');
+                $(copied).addClass('show');
               }
           </script>
 <!--</div>-->
