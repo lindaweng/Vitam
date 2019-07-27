@@ -376,6 +376,14 @@ td {
   visibility: visible;
 }
 
+#checkmark {
+  box-shadow: none !important;
+  font-size: 100%;
+  width: auto;
+  display: inline;
+  margin-right: 2rem;
+}
+
 #sent {
   background-image: linear-gradient(#88D6F2, #72F274);
   padding: 2rem;

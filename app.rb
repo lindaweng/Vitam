@@ -48,34 +48,6 @@
 #  2 | Maxwell Weng      | 2488855075   | maxwelllweng@gmail.com  | Chemistry17 | 4     | {{Hi,Hello,Hey,Dear,"Good Morning","Good Afternoon"},{"Thank you for your email.","It was nice to hear from you.","How are you doing?","I’m doing well.","Not much is new.",""},{"I am proud of you.","I love you.","I am excited for March Madness!","Go Blue!","Have you made your bracket?",NULL},{"How are you?","How have you been?","What’s new with you?","How are things going at work?","How is your family?","I’ve been very busy lately."},{"Can’t wait to see you!","Looking forward to seeing you soon!","Hope to see you soon!","Talk to you soon.","Take care.","I miss you."},{From,Sincerely,Best,Thanks,Love,Cheers}}                                                                         | {{"Maxwell Weng",maxwelllweng@gmail.com,2488855075}}                                                                                  | {}            | {}         | {}      | 2019-02-21 13:54:46.139668 | 2019-03-08 18:02:33.370251
 #  8 | Min Weng          | 123-456-7890 | minweng@yahoo.com       | vitaminsee  | 4     | {{Hi,Hello,Hey,Dear,"Good Morning","Good Afternoon"},{"Thank you for your email.","It was nice to hear from you.","How are you doing?","I’m doing well.","Not much is new.",""},{"How are you?","How have you been?","What’s new with you?","How are things going at work?","How is your family?",""},{"Can’t wait to see you!","Looking forward to seeing you soon!","Hope to see you soon!","Talk to you soon.","Take care.","I miss you."},{From,Sincerely,Best,Thanks,Love,Cheers}}                                                                                                                                                                                                                         | {{"Linda Weng",lindaweng4@gmail.com,123-456-7890}}                                                                                    | {}            | {}         | {}      | 2019-04-02 12:39:08.093608 | 2019-04-02 12:39:28.451493
 
-# class CreateAccounts < ActiveRecord::Migration[5.2]
-#     def change
-#       create_table :accounts do |t|
-#           t.string :name
-#           t.string :phoneNumber
-#           t.string :email
-#           t.string :password
-#           t.string :level
-#           t.string :emailWords, array: true, default: []
-#           t.string :contacts, array: true, default: []
-#           t.string :personalWords, array: true, default: []
-#           t.string :creditCard, array: true, default: []
-#           t.string :address, array: true, default: []
-#           t.timestamps null: false
-#         end
-#     end
-#   end
-
-# class CreateFeedbacks < ActiveRecord::Migration[5.2]
-#     def change
-#       create_table :feedbacks do |t|
-#           t.string :name
-#           t.string :email
-#           t.string :feedback
-#           t.timestamps null: false
-#       end
-#     end
-#   end
 
 require 'rubygems'
 require 'bundler'
@@ -146,10 +118,21 @@ class MyApp < Sinatra::Base
         @userAccount = Account.find(@id)
         @name = @userAccount.name
         @contacts = @userAccount.contacts
-        @userAccount.update(level: "4")
-        @emailWords = @userAccount.emailWords
-        @message = ""
-        erb :email
+        if @contacts = []
+            @output = "Please add at least one contact before using the email template."
+            @name = @userAccount.name
+            @password = @userAccount.password
+            @email = @userAccount.email
+            @level = @userAccount.level
+            @contacts = @userAccount.contacts
+            @words = @userAccount.personalWords
+            erb :account
+        else
+            @userAccount.update(level: "4")
+            @emailWords = @userAccount.emailWords
+            @message = ""
+            erb :email
+        end
     end
     
     get '/account/:id' do
@@ -293,6 +276,32 @@ class MyApp < Sinatra::Base
         @userAccount.update(contacts: @contacts.push(@contact))
         @name = @userAccount.name
         @email = @userAccount.email
+        @level = @userAccount.level
+        @password = @userAccount.password
+        @id = @userAccount.id
+        @contacts = @userAccount.contacts
+        @words = @userAccount.personalWords
+        erb :account
+    end
+
+    post '/delete-contact' do
+        @id = params[:id]
+        @userAccount = Account.find(@id)
+        @contacts = @userAccount.contacts
+        @delContacts = []
+        @contacts.each_with_index do |contact, i|
+            name = "contactId" + i.to_s
+            if params[name.to_sym] != nil
+                @contacts.delete(contact)
+                @userAccount.update(contacts: @contacts)
+            end
+        end
+        @contactId = params[:contactId]
+        print @contacts
+        
+        @name = @userAccount.name
+        @email = @userAccount.email
+        @number = @userAccount.phoneNumber.split("-").join("")
         @level = @userAccount.level
         @password = @userAccount.password
         @id = @userAccount.id
