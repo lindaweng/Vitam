@@ -124,7 +124,7 @@
                     
                   </div>
                     <button onclick="editContact()" id="delButton" style="display: inline; float: right">Delete Contacts</button>
-                    <button onclick="done()" id="done" class="noshow" style="display: inline; float: right">Done</button>
+                    <%# <button onclick="done()" id="done" class="noshow" style="display: inline; float: right">Done</button> %>
                     <div class = "col-lg-6 form-inline" style="display: inline">
                       
                       <form id="addContact"  method="POST" action="/add-contact">
@@ -150,6 +150,7 @@
                     <h4>This cannot be undone.</h4>
                     <%if @contacts == []%>
                       <h3>No contacts listed</h3>
+                      <%# Need this as a pop up so that it is impossible to actually delete contact %>
                     <%else%>
                       <%@contacts.each_with_index do |contact, i|%>
                         <%@contactId = i%>
@@ -240,7 +241,7 @@
         $(id4).addClass('noshow');
       }
 
-      function done() {
+      <%# function done() {
         var id2 = document.getElementById("editContact");
         var id = document.getElementById("addContact");
         $(id).removeClass('noshow');
@@ -249,7 +250,7 @@
         var id3 = document.getElementById("delButton");
         $(id3).removeClass('noshow');
         $(id4).addClass('noshow');
-      }
+      } %>
     </script>
 
     <!--<section id="contacts" style="background-image: white">-->
