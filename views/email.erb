@@ -769,7 +769,9 @@
             var text = message;
             var msg = new SpeechSynthesisUtterance();
             var voices = window.speechSynthesis.getVoices();
-            msg.voice = voices[48];
+            console.log(voices);
+            msg.voice = voices[0];
+            <%# 48 %>
             msg.text = text;
             
       
