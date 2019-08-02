@@ -118,7 +118,7 @@ class MyApp < Sinatra::Base
         @userAccount = Account.find(@id)
         @name = @userAccount.name
         @contacts = @userAccount.contacts
-        if @contacts = []
+        if @contacts == []
             @output = "Please add at least one contact before using the email template."
             @name = @userAccount.name
             @password = @userAccount.password
