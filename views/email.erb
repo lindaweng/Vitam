@@ -96,7 +96,6 @@
             </tr>
             <tr id="row">
               <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][3]%>');"><p><%=@emailWords[0][3]%></p>
-                
               </td>
               <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][4]%>');"><p><%=@emailWords[0][4]%></p>
                 
@@ -128,7 +127,7 @@
               <td>
                 <p>Edit</p>
               </td>
-              <td>
+              <td class="back">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
@@ -197,7 +196,7 @@
               <td onclick="edit('<%=@idName%>', '<%=@emailNum%>')">
                 <p>Edit</p>
               </td>
-              <td>
+              <td class="back">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
@@ -346,7 +345,7 @@
               <td onclick="edit('closing', '<%=@emailNum%>')">
                 <p>Edit</p>
               </td>
-              <td>
+              <td class="back">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('closing', '<%=@pastId%>', '');">
@@ -388,7 +387,7 @@
               <td onclick="edit('signature', '<%=@emailNum%>')">
                 <p>Edit</p>
               </td>
-              <td>
+              <td class="back">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('signature', 'closing', '');">
@@ -787,7 +786,11 @@
       $("td").click(function() { 
           // console.log($.trim(jQuery(this).text()))
           // $(this).data('id')
-          speak(jQuery(this).text())
+          console.log($(this).attr("class") != "top")
+          if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back") {
+            speak(jQuery(this).text());
+          }
+          
           // $(this).css('background-color', 'yellow');
       });
       // $("td").dblclick(function() {
