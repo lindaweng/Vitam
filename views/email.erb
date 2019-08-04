@@ -142,14 +142,15 @@
                   </tr>
                 </table>
               </td>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
+              <%# add ',<br>' after @contacts %>
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
@@ -158,21 +159,21 @@
               <%end%>
             </tr>
             <tr id="row">
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
