@@ -85,25 +85,27 @@
               <td onclick="edit('greetings', '0')">
                 <p>Edit</p>
               </td>
+              <td class="back" onclick="del()">
+                <p>Delete</p>
+              </td>
               <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][0]%>');"><p><%=@emailWords[0][0]%></p>
                 
               </td>
               <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][1]%>');"><p><%=@emailWords[0][1]%></p>
                 
               </td>
-              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][2]%>');"><p><%=@emailWords[0][2]%></p>
-                </td>
+              
             </tr>
             <tr id="row">
+              <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][2]%>');"><p><%=@emailWords[0][2]%></p>
+              </td>
+
               <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][3]%>');"><p><%=@emailWords[0][3]%></p>
               </td>
               <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][4]%>');"><p><%=@emailWords[0][4]%></p>
                 
               </td>
               <td onclick="noshow('greetings', 'names0', '<%=@emailWords[0][5]%>');"><p><%=@emailWords[0][5]%></p>
-                
-              </td>
-              <td><p></p>
                 
               </td>
             </tr>
@@ -141,7 +143,7 @@
                   </tr>
                 </table>
               </td>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
               <%# add ',<br>' after @contacts %>
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
@@ -149,7 +151,7 @@
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
@@ -158,21 +160,21 @@
               <%end%>
             </tr>
             <tr id="row">
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <%@contactNum += 1%>
               <%if @contactNum == @contacts.length%>
                 <%next%>
               <%end%>
-              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>');">
+              <td onclick="noshow('<%=@idName%>', 'questions0', '<%=@contacts[@contactNum][0]%>,<br>');">
                 <p><%=@contacts[@contactNum][0]%></p>
               </td>
               <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
@@ -490,7 +492,7 @@
         </div>
         
         
-        <script src="../WebGazer_Demo_files/jquery.min.js"></script>
+        <%# <script src="../WebGazer_Demo_files/jquery.min.js"></script> %>
 
           <script>
               var message = "<%=@message%>";
@@ -763,9 +765,6 @@
     <script>
       function speak(message){
         if ('speechSynthesis' in window) {
-          // var message = message
-          // console.log(message)
-          // function speak(){
             var text = message;
             var msg = new SpeechSynthesisUtterance();
             var voices = window.speechSynthesis.getVoices();
@@ -777,33 +776,17 @@
             
       
             speechSynthesis.speak(msg);
-          // }
         } else {
           $('#modal1').openModal();
         }
       };
     
       $("td").click(function() { 
-          // console.log($.trim(jQuery(this).text()))
-          // $(this).data('id')
           console.log($(this).attr("class") != "top")
           if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back") {
             speak(jQuery(this).text());
           }
-          
-          // $(this).css('background-color', 'yellow');
       });
-      // $("td").dblclick(function() {
-      //     speak("")
-      // });
-      
-      // $("#greetings:has(td)").mouseover(function(e) {
-      // $(this).css("cursor", "pointer");
-      // });
-      // $("#greetings:has(td)").click(function(e) {
-      // var clickedCell= $(e.target).closest("td");
-      // speak(clickedCell.text())
-      // });
     </script>
 
 

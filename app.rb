@@ -6,6 +6,7 @@
 
 # Account.words is [[email words], [personalized words]]
 # email words = [[greetings], [questions], [questions2], [closing], [signature]]
+# personal words are for the messaging template
 # heroku connect database
 # heroku config:set DATABASE_URL=   --app
 # COLORS:
@@ -110,7 +111,11 @@ class MyApp < Sinatra::Base
         @userAccount.update(level: "3")
         @words = @userAccount.personalWords
         @message = ""
-        erb :personalWords
+        @userAccount.update(level: "4")
+            @emailWords = @userAccount.emailWords
+            @message = ""
+            @contacts = @userAccount.contacts
+        erb :messageTemp
     end
     
     get '/email/:id' do
