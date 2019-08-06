@@ -115,7 +115,7 @@ class MyApp < Sinatra::Base
             @emailWords = @userAccount.emailWords
             @message = ""
             @contacts = @userAccount.contacts
-        erb :messageTemp
+        erb :personalWords
     end
     
     get '/email/:id' do
