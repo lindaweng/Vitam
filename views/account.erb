@@ -75,13 +75,19 @@
                     <h3>Name: <%=@name%></h3>
                     <h3>Email: <%=@email%></h3>
                     <h3>Password: <%=@password%></h3>
-                    <%if @level != nil%>
-                      <h3>Your last level used was Level <%=@level%></h3>
+                    <%if @level.to_i == 1%>
+                      <h3>Your last template used was the Yes/No</h3>
+                    <%elsif @level.to_i == 2%>
+                      <h3>Your last template used was the Picture Board</h3>
+                    <%elsif @level.to_i == 3%>
+                      <h3>Your last template used was the Message Template</h3>
+                    <%elsif @level.to_i == 4%>
+                      <h3>Your last template used was the Email Template</h3>
                     <%end%>
-                    <h3>Level 1: <a href="/yesNo/<%=@id%>">Yes/No</a></h3>
-                    <h3>Level 2: <a href="/picBoard/<%=@id%>">Picture Board</a></h3>
-                    <h3>Level 3: <a href="/personalWords/<%=@id%>">Personalized Words</a></h3>
-                    <h3>Level 4: <a href="/email/<%=@id%>">Email Template</a></h3>
+                    <h3><button><a href="/yesNo/<%=@id%>">Yes/No</a></button></h3>
+                    <h3><button><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
+                    <h3><button><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
+                    <h3><button><a href="/email/<%=@id%>">Email Template</a></button></h3>
                     <h2><%=@output%></h2>
                     <br>
                   </div>
@@ -186,6 +192,7 @@
         <div class="section-heading text-center" style="padding-top: 10rem">
           <h1>Personalized Words</h1>
           <hr>
+          <h3>These words are used in the Message Template.</h3>
         </div>
 
           <div class="col-lg-12 my-auto">

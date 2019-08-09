@@ -4,7 +4,6 @@
 # http://www.postgresqltutorial.com/postgresql-update/
 # Profile pic how to https://www.w3schools.com/css/tryit.asp?filename=trycss_css_image_overlay_opacity
 
-# Account.words is [[email words], [personalized words]]
 # email words = [[greetings], [questions], [questions2], [closing], [signature]]
 # personal words are for the messaging template
 # heroku connect database
@@ -111,11 +110,10 @@ class MyApp < Sinatra::Base
         @userAccount.update(level: "3")
         @words = @userAccount.personalWords
         @message = ""
-        @userAccount.update(level: "4")
             @emailWords = @userAccount.emailWords
             @message = ""
             @contacts = @userAccount.contacts
-        erb :personalWords
+        erb :messageTemplate
     end
     
     get '/email/:id' do
@@ -197,6 +195,50 @@ class MyApp < Sinatra::Base
         @emailWords = @userAccount.emailWords
         @message = params[:message]
         erb :email
+    end
+
+    post '/editTableWords' do
+        @id = params[:id]
+        @tableNum = params[:tableNum].to_i
+        @box0 = params[:box0]
+        @box1 = params[:box1]
+        @box2 = params[:box2]
+        @box3 = params[:box3]
+        @box4 = params[:box4]
+        puts params[:replace]
+        puts params[:add]
+        @newWords = [@box0, @box1, @box2, @box3, @box4]
+        @userAccount = Account.find(@id)
+        @words = @userAccount.personalWords
+        @badWords = @words[@tableNum * 5, 5]
+        puts @badWords
+        if params[:add] == nil
+            @newWords.each_with_index do |box, i|
+                if box != "" and box != nil
+                    # if box.include?
+                        @badWords[i] = box
+                    # end
+                end
+            end
+            @words.slice!(@tableNum * 5, 5)
+            @badWords.each_with_index do |word, i|
+                @words.insert(@tableNum * 5 + i, word)
+            end
+            @userAccount.update(personalWords: @words)
+        else
+            @newWords.each_with_index do |word, i|
+                if word != "" and word != nil
+                    @words.insert(@tableNum * 5 + i, word)
+                end
+            end
+            @userAccount.update(personalWords: @words)
+        end
+        @name = @userAccount.name
+        @contacts = @userAccount.contacts
+        @emailWords = @userAccount.emailWords
+        @message = params[:message]
+        @words = @userAccount.personalWords
+        erb :messageTemplate
     end
     
     post '/login' do #executes at /login
