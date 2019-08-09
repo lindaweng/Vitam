@@ -292,24 +292,25 @@ class MyApp < Sinatra::Base
         if count != 0
             @output = "That email already has an account. Please use a different email."
             erb :sign_up
+        else
+            @name = params[:name].split(" ").collect{|x| x.capitalize}.join(" ")
+            @greetings = ["Hi", "Hello", "Hey", "Dear", "Good Morning", "Good Afternoon"]
+            @questions = ["Thank you for your email.", "It was nice to hear from you.", "How are you doing?", "I’m doing well.", "Not much is new.", ""]
+            @questions2 = ["How are you?", "How have you been?", "What’s new with you?", "How are things going at work?", "How is your family?", ""]
+            @closing = ["Can’t wait to see you!", "Looking forward to seeing you soon!", "Hope to see you soon!", "Talk to you soon.", "Take care.", "I miss you."]
+            @signature = ["From", "Sincerely", "Best", "Thanks", "Love", "Cheers"]
+            @emailWords = @greetings, @questions, @questions2, @closing, @signature
+            @userAccount = Account.create(name: @name, phoneNumber: params[:phone], email: params[:email], password: params[:password], emailWords: @emailWords)
+            @id = @userAccount.id
+            @number = params[:phone].split("-").join("")
+            @name = params[:name]
+            @email = params[:email]
+            @password = params[:password]
+            @level = @userAccount.level
+            @contacts = @userAccount.contacts
+            @words = @userAccount.personalWords
+            erb :account
         end
-        @name = params[:name].split(" ").collect{|x| x.capitalize}.join(" ")
-        @greetings = ["Hi", "Hello", "Hey", "Dear", "Good Morning", "Good Afternoon"]
-        @questions = ["Thank you for your email.", "It was nice to hear from you.", "How are you doing?", "I’m doing well.", "Not much is new.", ""]
-        @questions2 = ["How are you?", "How have you been?", "What’s new with you?", "How are things going at work?", "How is your family?", ""]
-        @closing = ["Can’t wait to see you!", "Looking forward to seeing you soon!", "Hope to see you soon!", "Talk to you soon.", "Take care.", "I miss you."]
-        @signature = ["From", "Sincerely", "Best", "Thanks", "Love", "Cheers"]
-        @emailWords = @greetings, @questions, @questions2, @closing, @signature
-        @userAccount = Account.create(name: @name, phoneNumber: params[:phone], email: params[:email], password: params[:password], emailWords: @emailWords)
-        @id = @userAccount.id
-        @number = params[:phone].split("-").join("")
-        @name = params[:name]
-        @email = params[:email]
-        @password = params[:password]
-        @level = @userAccount.level
-        @contacts = @userAccount.contacts
-        @words = @userAccount.personalWords
-        erb :account
     end 
     
     post '/add-contact' do
