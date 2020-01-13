@@ -372,7 +372,7 @@ td {
   font-size: 4rem;
 }
 .noshow {
-    display:none;
+    display:none !important;
     visibility: hidden;
 }
 

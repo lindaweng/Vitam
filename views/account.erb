@@ -22,17 +22,22 @@
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style8.2.css">
+    <link rel="stylesheet" href="../css/style8.3.css">
   </head>
   <body id = "page-top">
         <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" >
       <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Vitam</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
+      -->
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -74,7 +79,11 @@
                   <div class="feature-item">
                     <h3>Name: <%=@name%></h3>
                     <h3>Email: <%=@email%></h3>
-                    <h3>Password: <%=@password%></h3>
+                    <h3 style="display: inline-block">Password: </h3>
+                    <h3 id="secret" style="display: inline-block"><%="*" * @password.length%></h3>
+                    <h3 id="open" class="noshow" style="display: inline-block"><%=@password%></h3>
+                    <h3 style="display: inline-block; float: right"><button onclick="viewPass()" class="btn my-btn" id="viewPass">View Password</button></h3>
+                    <h3 style="display: inline-block; float: right"><button onclick="hidePass()" class="btn my-btn noshow" id="hidePass">Hide Password</button></h3>
                     <%if @level.to_i == 1%>
                       <h3>Your last template used was the Yes/No</h3>
                     <%elsif @level.to_i == 2%>
@@ -247,6 +256,28 @@
         var id4 = document.getElementById("delButton");
         $(id3).removeClass('noshow');
         $(id4).addClass('noshow');
+      }
+
+      function viewPass() {
+        var id = document.getElementById("open");
+        var id2 = document.getElementById("secret");
+        $(id).removeClass('noshow');
+        $(id2).addClass('noshow');
+        var id3 = document.getElementById("hidePass");
+        var id4 = document.getElementById("viewPass");
+        $(id3).removeClass('noshow');
+        $(id4).addClass('noshow');
+      }
+
+      function hidePass() {
+        var id = document.getElementById("open");
+        var id2 = document.getElementById("secret");
+        $(id2).removeClass('noshow');
+        $(id).addClass('noshow');
+        var id3 = document.getElementById("hidePass");
+        var id4 = document.getElementById("viewPass");
+        $(id4).removeClass('noshow');
+        $(id3).addClass('noshow');
       }
 
       <%# function done() {
