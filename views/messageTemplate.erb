@@ -127,6 +127,9 @@
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
               </td>
+              <td onclick="noshow('', '', 'and');" style="width:5%">
+                <p>&</p>
+              </td>
               <%@wordNum += 1%>
               <%if @wordNum == @words.length%>
                 <%break%>
@@ -150,7 +153,22 @@
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
               </td>
-              <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
+              <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');">
+                <p>More</p>
+              </td>
+              <td style="width:5%">
+                <table class="double-row">
+                  <tr>
+                    <td class="top" onclick="noshow('', '', ',');">
+                      <p>,</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bottom" onclick="noshow('', '', '.');">
+                      <p>.</p>
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
             

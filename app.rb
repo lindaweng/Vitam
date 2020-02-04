@@ -69,7 +69,7 @@ class MyApp < Sinatra::Base
           :sender => "Excited User <mailgun@sandbox8fce2e7f6a154651b419cb7375733423.mailgun.org>",
           :from => from,
           :to => to,
-          :subject => "Message From Vitamin See",
+          :subject => "Message From Vitam",
           :text => body
           # :html => "<b>HTML</b> version of the body!"
     end
@@ -78,6 +78,10 @@ class MyApp < Sinatra::Base
         erb :index1
     end
     
+    get '/about' do
+        erb :about
+    end
+
     get '/landing' do
         @message = "Message: "
         erb :landing

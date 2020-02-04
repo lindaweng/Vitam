@@ -59,49 +59,6 @@
 
 
   <body id = "page-top">
-    
-<!--<script>-->
-<!--  var ui = new firebaseui.auth.AuthUI(firebase.auth());-->
-
-<!--  ui.start('#firebaseui-auth-container', {-->
-<!--  signInOptions: [-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-
-<!--  ],-->
-  <!--// Other config options...-->
-<!--  });-->
-  
-<!--  var uiConfig = {-->
-<!--  callbacks: {-->
-<!--    signInSuccessWithAuthResult: function(authResult, redirectUrl) {-->
-      <!--// User successfully signed in.-->
-      <!--// Return type determines whether we continue the redirect automatically-->
-      <!--// or whether we leave that to developer to handle.-->
-<!--      return true;-->
-<!--    },-->
-<!--    uiShown: function() {-->
-      <!--// The widget is rendered.-->
-      <!--// Hide the loader.-->
-<!--      document.getElementById('loader').style.display = 'none';-->
-<!--    }-->
-<!--  },-->
-  <!--// Will use popup for IDP Providers sign-in flow instead of the default, redirect.-->
-<!--  signInFlow: 'redirect',-->
-<!--  signInSuccessUrl: '/landing',-->
-<!--  signInOptions: [-->
-    <!--// Leave the lines as is for the providers you want to offer your users.-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-<!--  ],-->
-  <!--// Terms of service url.-->
-<!--  tosUrl: '<your-tos-url>',-->
-  <!--// Privacy policy url.-->
-<!--  privacyPolicyUrl: '<your-privacy-policy-url>'-->
-<!--};-->
-<!--// The start method will wait until the DOM is loaded.-->
-<!--ui.start('#firebaseui-auth-container', uiConfig);-->
-
-<!--</script>-->
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
@@ -113,10 +70,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#signup">Sign Up</a>
+              <a class="nav-link" href="/signup">Sign Up</a>
             </li>
           </ul>
         </div>
@@ -126,56 +83,29 @@
     <!-- Header -->
     <header style="background-image: linear-gradient(#88D6F2, #72F274)">
       <div class="container d-flex h-100 align-items-center" style="padding:0; flex-wrap:wrap; padding-bottom:12%; padding-top:12%; justify-content:space-around">
-        <%# <div class="mx-auto text-center masthead" style="display: inline-block; padding-top: 3rem"> %>
-          <%# <h1 class="mx-auto my-0 text-uppercase">VITAM</h1> %>
-          <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="">
-        <%# </div> %>
+          <%# <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="width: 25%"> %>
         
-        <div class="form-inline home-login img-fluid" style="display: inline">
-          <h2><%=@output%></h2>
-          <form method="POST" action="/login">
-            <h4>Email:</h4>
-            <input style="width:auto" type="text" name="email" required>
-            <h4>Password:</h4>
-            <input style="width:auto" type="password" name="password" required>
-            <h4></h4>
-            <input class="btn btn-default hov-special" type="submit">
-          </form>
-        </div>
-          <!--<div id="firebaseui-auth-container"style="display: inline-block; font-size: auto !important; line-height: auto !important; letter-spacing: auto !important"></div>-->
-          <!--<div id="loader">Loading...</div>-->
+          <h1 style="width:100%; text-align:center; font-size:4rem">About Us</h1>
       </div>
     </header>
     
     
-    <!-- About -->
-    <section id="about" class="projects-section bg-light">
+    <!-- Co-Founders -->
+    <section class="projects-section bg-light">
       <div class="container">
-        <h2 class="mx-auto text-center" style="color: black; padding-bottom:5%; font-size: 2.3em">Listen to the Ones that Need to be Heard</h2>
-        <!-- Featured Project Row -->
-        <!--<div class="row align-items-center no-gutters mb-4 mb-lg-5">-->
-          <!--<div class="col-xl-8 col-lg-7">-->
-          <!--  <img class="img-fluid mb-3 mb-lg-0" src="img/bg-masthead.jpg" alt="">-->
-          <!--</div>-->
-        <!--  <div class="col-xl-4 col-lg-5">-->
-        <!--    <div class="featured-text text-center text-lg-left">-->
-        <!--      <h4>Shoreline</h4>-->
-        <!--      <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>-->
-        <!--    </div>-->
-        <!--  </div>-->
-        <!--</div>-->
+        <h2 class="mx-auto text-center" style="color: black; padding-bottom:5%; font-size: 2.3em">Co-Founders</h2>
 
         <!-- Project One Row -->
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
           <div class="col-lg-6">
-            <img class="img-fluid" src="img/action-adult-affection-339620.jpg" alt="">
+            <img class="profile-pic" src="img/linda.jpg" alt="Linda Profile Picture">
           </div>
           <div class="col-lg-6">
             <div class="text-center h-100 project" style="background: #FF9603">
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                  <h4 class="text-white">Building Understanding and Trust</h4>
-                  <p class="mb-0 text-white-50">Give the patient a voice in his or her own care. Vitam empowers patients who have a hard time speaking to communicate with their caregivers.</p>
+                  <h4 class="text-white">Linda Weng</h4>
+                  <p class="mb-0 text-white-50">Linda is a Senior at Novi High School.</p>
                   <hr class="d-none d-lg-block mb-0 ml-0">
                 </div>
               </div>
@@ -190,58 +120,40 @@
             <div class="text-center h-100 project" style="background: #FF9603">
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                  <h4 class="text-white">High Quality Communication = High Quality Care</h4>
-                  <p class="mb-0 text-white-50">As a caregiver, you now that quality care is not just the right medications at the right time. We here at Vitam believe that quality care is also social, emotional, and spiritual healing as well.</p>
+                  <h4 class="text-white">Maxwell Weng</h4>
+                  <p class="mb-0 text-white-50">Maxwell is a Sophomore at the University of Michigan studying Pre-Health.</p>
                   <hr class="d-none d-lg-block mb-0 mr-0">
                 </div>
               </div>
             </div>
           </div>
           <div class="col-lg-6">
-            <img class="img-fluid" src="img/business-care-clinic-1282308.jpg" alt="">
+            <img class="profile-pic" src="img/maxwell.jpg" alt="Maxwell Profile Picture">
           </div>
         </div>
 
       </div>
     </section>
-    
-    <section class="features signup-section" id="signup">
+
+<!-- Our Story -->
+    <section class="features story">
       <div class="container">
         <div class="section-heading text-center">
-          <h2>Please enter your information:</h2>
-          <p class="text-muted">Sign up for an account to use Vitam!</p>
-          <hr>
+          <h2>Our Story</h2>
+        </div>
+        <div class="text-center">
+          <p>Vitam started as a very personal project and continues to be to this day. Our grandma had from two strokes and suffered from aphasia as a result of them. Aphasia is the loss of ability to express or understand language. Due to this loss of language, she could no longer communicate with us.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features signup-section" id="development">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h2>Still Under Development</h2>
         </div>
         <div class = "text-center" >
-          
-            <div class = "row">
-              <!--<div class = "col-4">-->
-                
-              <!--</div>-->
-              <div class = "col-lg-6 form-inline" style="display: inline">
-                <form method="POST" action="/create_account">
-                  <h4>Name:</h4>
-                  <input type="text" name="name" required>
-                  <br>
-                  <h4>Phone Number:</h4>
-                  <input type="text" name="phone" required>
-                  <br>
-                  <h4>Email:</h4>
-                  <input type="text" name="email" required>
-                  <br>
-                  <h4>Password:</h4>
-                  <input type="password" name="password" required>
-                  <br>
-                  <h4></h4>
-                  <input type="submit" class = "btn btn-default">
-                </form>
-                <!--<h5>Already have an account?</h5>-->
-                <!--<a href = "/login" class = "btn btn-xl btn-outline" style = "color:black !important">Login</a>-->
-              </div>
-              <div class = "col-lg-6">
-                <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="padding-top:20%">
-              </div>
-           </div>
+          <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="padding-top:20%">
         </div>
       </div>
     </section>

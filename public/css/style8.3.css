@@ -416,3 +416,17 @@ footer {
 /* start of phone styles */
 
 }
+
+.story {
+  background: #75FB78;
+  padding: 5rem 0;
+}
+
+#development {
+  background: grey;
+}
+
+.profile-pic {
+  max-width: 100%;
+  height: auto;
+}
