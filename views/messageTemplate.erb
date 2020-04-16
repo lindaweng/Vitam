@@ -50,6 +50,30 @@
     <link rel="stylesheet" href="../css/style8.3.css">
     <!--<script async="" type="text/javascript" src="WebGazer_Demo_files/webgazer.js"></script>-->
 
+    <!-- Google Custom Search -->
+    <script async src="https://cse.google.com/cse.js?cx=017667718484856733925:y3adtepvf0n"></script>
+
+    <!--
+      <PageMap>
+        <DataObject type="action">
+          <Attribute name="label" value="Download"/>
+          <Attribute name="url" value="http://www.scribd.com/document_downloads/20258723?extension=pdf"/>
+          <Attribute name="class" value="download"/>
+        </DataObject>
+
+        <DataObject type="action">
+          <Attribute name="label" value="Fullscreen View"/>
+          <Attribute name="url" value="http://d1.scribdassets.com/ScribdViewer.swf?document_id=20258723&access_key=key-27lwdyi9z21ithon73g3&version=1&viewMode=fullscreen"/>
+          <Attribute name="class" value="fullscreen"/>
+        </DataObject>
+
+        <DataObject type="action">
+          <Attribute name="label" value="Download"/>
+          <Attribute name="url" value="http://www.scribd.com/document_downloads/20258723?extension=pdf"/>
+          <Attribute name="class" value="download"/>
+        </DataObject>
+      </PageMap>
+    -->
 
 </head>
   
@@ -184,15 +208,13 @@
         
         <div style="margin: 1rem" id="message">
           <h4 id="message2" style="font-size:3rem"></h4>
-          
-          <div id ="sendForm" class="noshow">
+
+          <div id ="sendForm">
             <br>
             <button onclick="copyMess()">Copy Message</button>
-            <br>
             <p id="copied" class="noshow">Copied to Clipboard</p>
-            <br>
             <input type="text" id="messageCopy" style="opacity: 0">
-            <form method="POST" action="/send">
+            <form method="POST" action="/send" class="noshow">
               <h3>Choose which contact you want to send the message to:</h3>
               <br>
               <%@contacts.each_with_index do |contact, i|%>
@@ -205,6 +227,15 @@
               <input type="submit" class = "btn btn-default" style="border:groove">
             </form>
           </div>
+
+          <%# <!-- Upload Photos -->
+          <form>
+            <h3>Select a photo: </h3>
+            <input type="file" name="photo">
+          </form>
+
+          <!-- Google Custom Search -->
+          <div class="gcse-search" data-defaultToImageSearch="true" data-disableWebSearch="true"></div> %>
         </div>
         
         <div id="form" class="noshow email">
@@ -281,8 +312,6 @@
                   // document.getElementById("message7").setAttribute('value', message);
               }
 
-              
-              
               function del() {
                 console.log(message)
                 var pos = message.lastIndexOf(" ");
@@ -322,6 +351,42 @@
                 var id = document.getElementById('words0');
                 $(id).addClass('show');
                 $(id).removeClass('noshow');
+              }
+
+              function copyMess() {
+                var message = document.getElementById("message2").innerHTML;
+                message = message.replace(/<br>/g, " ")
+                document.getElementById("messageCopy").value=message;
+                message = document.getElementById("messageCopy")
+                
+                var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+	              if (isiOSDevice) {
+                  var oldContentEditable = message.contentEditable,
+                      oldReadOnly = message.readOnly,
+                      range = document.createRange();
+
+                  message.contentEditable = true;
+                  message.readOnly = false;
+                  range.selectNodeContents(message);
+
+                  var s = window.getSelection();
+                  s.removeAllRanges();
+                  s.addRange(range);
+
+                  message.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
+
+                  message.contentEditable = oldContentEditable;
+                  message.readOnly = oldReadOnly;
+                }
+                else{
+                  message.select();
+                }
+                document.execCommand('copy');
+
+                console.log(document.getElementById("messageCopy").value);
+                var copied = document.getElementById("copied")
+                $(copied).removeClass('noshow');
+                $(copied).addClass('show');
               }
           </script>
 <!--</div>-->

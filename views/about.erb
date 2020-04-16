@@ -73,7 +73,10 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/signup">Sign Up</a>
+              <a class="nav-link" href="/#signup">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -89,190 +92,97 @@
       </div>
     </header>
     
-    
-    <!-- Co-Founders -->
-    <section class="projects-section bg-light">
-      <div class="container">
-        <h2 class="mx-auto text-center" style="color: black; padding-bottom:5%; font-size: 2.3em">Co-Founders</h2>
-
-        <!-- Project One Row -->
-        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-          <div class="col-lg-6">
-            <img class="profile-pic" src="img/linda.jpg" alt="Linda Profile Picture">
-          </div>
-          <div class="col-lg-6">
-            <div class="text-center h-100 project" style="background: #FF9603">
-              <div class="d-flex h-100">
-                <div class="project-text w-100 my-auto text-center text-lg-left">
-                  <h4 class="text-white">Linda Weng</h4>
-                  <p class="mb-0 text-white-50">Linda is a Senior at Novi High School.</p>
-                  <hr class="d-none d-lg-block mb-0 ml-0">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Two Row -->
-        <div class="row justify-content-center no-gutters">
-          
-          <div class="col-lg-6 order-lg-first">
-            <div class="text-center h-100 project" style="background: #FF9603">
-              <div class="d-flex h-100">
-                <div class="project-text w-100 my-auto text-center text-lg-right">
-                  <h4 class="text-white">Maxwell Weng</h4>
-                  <p class="mb-0 text-white-50">Maxwell is a Sophomore at the University of Michigan studying Pre-Health.</p>
-                  <hr class="d-none d-lg-block mb-0 mr-0">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <img class="profile-pic" src="img/maxwell.jpg" alt="Maxwell Profile Picture">
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-<!-- Our Story -->
+    <!-- Our Story -->
     <section class="features story">
       <div class="container">
         <div class="section-heading text-center">
           <h2>Our Story</h2>
         </div>
-        <div class="text-center">
-          <p>Vitam started as a very personal project and continues to be to this day. Our grandma had from two strokes and suffered from aphasia as a result of them. Aphasia is the loss of ability to express or understand language. Due to this loss of language, she could no longer communicate with us.</p>
+        <div class="text-left">
+          <p>Vitam started as a very personal project for us and continues to be very personal to this day. Seven years ago, our grandma had two strokes and suffered from aphasia as a result of them. Aphasia is the loss of ability to express or understand language. Due to this loss of language, she could no longer communicate with us.</p>
+          <p>We created Vitam to help not only our grandma and our family, but to help patients with aphasia everywhere.</p>
+          <p class="sign-off">~ Linda and Maxwell Weng</p>
+          <p class="sign-off" style="padding-left: 2rem">Co-Founders of Vitam</p>
         </div>
       </div>
     </section>
 
-    <section class="features signup-section" id="development">
+    <hr style="margin: 0; border: 0.5rem dashed #75FB78">
+
+    <!-- Co-Founders -->
+    <section class="projects-section bg-light" style="padding-top: 5rem">
       <div class="container">
-        <div class="section-heading text-center">
-          <h2>Still Under Development</h2>
+        <h2 class="mx-auto text-center" style="color: black; padding-bottom:5%; font-size: 2.3em">Co-Founders</h2>
+
+        <!-- Project One Column -->
+        <div style="display: inline-block; max-width: 50%; padding-right: 1rem">
+        <div class="justify-content-center no-gutters mb-5 mb-lg-0">
+          <div>
+            <img class="profile-pic" src="img/linda.jpg" alt="Linda Profile Picture">
+          </div>
+          <div>
+            <div class="text-center h-100 project" style="background: #FF9603">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center">
+                  <h4 class="text-white">Linda Weng</h4>
+                  <p class="mb-0">Linda is a Senior at Novi High School. She will pursue Computer Science in college this fall.</p>
+                  <hr class="d-none d-lg-block mb-0">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class = "text-center" >
-          <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="padding-top:20%">
+
+        <!-- Project Two Column -->
+        </div><div style="display: inline-block; max-width: 50%; padding-left: 1rem">
+        <div class="justify-content-center no-gutters">
+          <div>
+            <img class="profile-pic" src="img/maxwell.jpg" alt="Maxwell Profile Picture">
+          </div>
+          <div class="order-lg-first">
+            <div class="text-center h-100 project" style="background: #FF9603">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center">
+                  <h4 class="text-white">Maxwell Weng</h4>
+                  <p class="mb-0">Maxwell is a Sophomore at the University of Michigan studying Pre-Health.</p>
+                  <hr class="d-none d-lg-block mb-0">
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>
-    
-    <!--<form>-->
-    <!--  <input type="file" accept="audio/*;capture=microphone">-->
-    <!--  <input type="file" accept="image/*;capture=camera">-->
-    <!--</form>-->
-
-<!--  <script>-->
-<!--  var ui = new firebaseui.auth.AuthUI(firebase.auth());-->
-  
-<!--  ui.start('#firebaseui-auth-container', {-->
-<!--  signInOptions: [-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-<!--    firebase.auth.GoogleAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.FacebookAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.TwitterAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.GithubAuthProvider.PROVIDER_ID-->
-<!--    requireDisplayName: false-->
-<!--  ],-->
-  <!--// Other config options...-->
-<!--  });-->
-  
-<!--  var uiConfig = {-->
-<!--  callbacks: {-->
-<!--    signInSuccessWithAuthResult: function(authResult, redirectUrl) {-->
-      <!--// User successfully signed in.-->
-      <!--// Return type determines whether we continue the redirect automatically-->
-      <!--// or whether we leave that to developer to handle.-->
-<!--      return true;-->
-<!--    },-->
-<!--    uiShown: function() {-->
-      <!--// The widget is rendered.-->
-      <!--// Hide the loader.-->
-<!--      document.getElementById('loader').style.display = 'none';-->
-<!--    }-->
-<!--  },-->
-  <!--// Will use popup for IDP Providers sign-in flow instead of the default, redirect.-->
-<!--  signInFlow: 'popup',-->
-<!--  signInSuccessUrl: '<url-to-redirect-to-on-success>',-->
-<!--  signInOptions: [-->
-    <!--// Leave the lines as is for the providers you want to offer your users.-->
-<!--    firebase.auth.GoogleAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.FacebookAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.TwitterAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.GithubAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-<!--  ],-->
-  <!--// Terms of service url.-->
-<!--  tosUrl: '<your-tos-url>',-->
-  <!--// Privacy policy url.-->
-<!--  privacyPolicyUrl: '<your-privacy-policy-url>'-->
-<!--};-->
-<!--// The start method will wait until the DOM is loaded.-->
-<!--ui.start('#firebaseui-auth-container', uiConfig);-->
-<!--</script>-->
-
-    <!-- Signup Section -->
-    <!--<section id="signup" class="signup-section">-->
-
-    <!--</section>-->
 
     <!-- Contact Section -->
-    <!--<section class="contact-section bg-black">-->
-    <!--  <div class="container">-->
+    <section id="contact" class="contact-section bg-white" style="background: white !important">
 
-    <!--    <div class="row">-->
+     <div class="container">
+      <div class="section-heading text-center">
+        <h3>Contact Us</h3>
+        <p>For questions, feedback, and more!</p>
+        <i class="fas fa-envelope text-primary mb-2" style="display: inline"></i>
+        <h4 class="m-0" style="display: inline">Email us at:</h4>
+        <div class="text-black-50" style="display: inline">
+          <a href="mailto:vitam.llc@gmail.com">vitam.llc@gmail.com</a>
+        </div>
+      </div>   
 
-    <!--      <div class="col-md-4 mb-3 mb-md-0">-->
-    <!--        <div class="card py-4 h-100">-->
-    <!--          <div class="card-body text-center">-->
-    <!--            <i class="fas fa-map-marked-alt text-primary mb-2"></i>-->
-    <!--            <h4 class="text-uppercase m-0">Address</h4>-->
-    <!--            <hr class="my-4">-->
-    <!--            <div class="small text-black-50">4923 Market Street, Orlando FL</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
+       <%# <div class="social d-flex justify-content-center">
+         <a href="#" class="mx-2">
+           <i class="fab fa-twitter"></i>
+         </a>
+         <a href="#" class="mx-2">
+           <i class="fab fa-facebook-f"></i>
+          </a>
+         <a href="#" class="mx-2">
+           <i class="fab fa-github"></i>
+         </a>
+       </div> %>
 
-    <!--      <div class="col-md-4 mb-3 mb-md-0">-->
-    <!--        <div class="card py-4 h-100">-->
-    <!--          <div class="card-body text-center">-->
-    <!--            <i class="fas fa-envelope text-primary mb-2"></i>-->
-    <!--            <h4 class="text-uppercase m-0">Email</h4>-->
-    <!--            <hr class="my-4">-->
-    <!--            <div class="small text-black-50">-->
-    <!--              <a href="#">hello@yourdomain.com</a>-->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="col-md-4 mb-3 mb-md-0">-->
-    <!--        <div class="card py-4 h-100">-->
-    <!--          <div class="card-body text-center">-->
-    <!--            <i class="fas fa-mobile-alt text-primary mb-2"></i>-->
-    <!--            <h4 class="text-uppercase m-0">Phone</h4>-->
-    <!--            <hr class="my-4">-->
-    <!--            <div class="small text-black-50">+1 (555) 902-8832</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-
-    <!--    <div class="social d-flex justify-content-center">-->
-    <!--      <a href="#" class="mx-2">-->
-    <!--        <i class="fab fa-twitter"></i>-->
-    <!--      </a>-->
-    <!--      <a href="#" class="mx-2">-->
-    <!--        <i class="fab fa-facebook-f"></i>-->
-          <!--</a>-->
-    <!--      <a href="#" class="mx-2">-->
-    <!--        <i class="fab fa-github"></i>-->
-    <!--      </a>-->
-    <!--    </div>-->
-
-    <!--  </div>-->
-    <!--</section>-->
+     </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">

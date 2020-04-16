@@ -226,7 +226,7 @@
   background: white;
 }
 .contact-section {
-  padding: 5rem 0 0;
+  padding: 2.5rem 0;
 }
 .contact-section .card {
   border: 0;
@@ -322,11 +322,11 @@ table, td {
     border-collapse: collapse;
 }
 
-td {
+/* td {
     width: 20%;
     font-size: 4rem;
     height: 300px;
-}
+} */
 
 .email td {
     width: 20%;
@@ -362,10 +362,6 @@ td {
 .picBoard td {
   height: 100% !important;
 }
-
-/*td p {*/
-/*  font-size: 4rem;*/
-/*}*/
 
 #bins img {
     height: auto;
@@ -418,8 +414,17 @@ footer {
 }
 
 .story {
-  background: #75FB78;
+  background: #f8f9fa!important;
   padding: 5rem 0;
+}
+
+.story p {
+  font-size: 1.2rem;
+}
+
+.sign-off {
+  padding-left: 1rem;
+  margin-bottom: 0;
 }
 
 #development {

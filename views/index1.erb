@@ -12,25 +12,6 @@
       gtag('config', 'UA-130132342-2');
     </script>
 
-    <!--<script src='js/config.js'></script>-->
-    <!--<script type='text/javascript' src='js/script.js'></script>-->
-    <!--<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>-->
-    <!--<script>-->
-    <!--// var mykey = config.MY_KEY;-->
-    <!--  // Initialize Firebase-->
-    <!--  var config = {-->
-    <!--    apiKey: mykey,-->
-    <!--    authDomain: "vitamin-see.firebaseapp.com",-->
-    <!--    databaseURL: "https://vitamin-see.firebaseio.com",-->
-    <!--    projectId: "vitamin-see",-->
-    <!--    storageBucket: "vitamin-see.appspot.com",-->
-    <!--    messagingSenderId: "747362065854"-->
-    <!--  };-->
-    <!--  firebase.initializeApp(config);-->
-    <!--</script>-->
-    <!--<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>-->
-    <!--<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />-->
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Listen to the ones that need to be heard.">
@@ -59,48 +40,6 @@
 
 
   <body id = "page-top">
-    
-<!--<script>-->
-<!--  var ui = new firebaseui.auth.AuthUI(firebase.auth());-->
-
-<!--  ui.start('#firebaseui-auth-container', {-->
-<!--  signInOptions: [-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-
-<!--  ],-->
-  <!--// Other config options...-->
-<!--  });-->
-  
-<!--  var uiConfig = {-->
-<!--  callbacks: {-->
-<!--    signInSuccessWithAuthResult: function(authResult, redirectUrl) {-->
-      <!--// User successfully signed in.-->
-      <!--// Return type determines whether we continue the redirect automatically-->
-      <!--// or whether we leave that to developer to handle.-->
-<!--      return true;-->
-<!--    },-->
-<!--    uiShown: function() {-->
-      <!--// The widget is rendered.-->
-      <!--// Hide the loader.-->
-<!--      document.getElementById('loader').style.display = 'none';-->
-<!--    }-->
-<!--  },-->
-  <!--// Will use popup for IDP Providers sign-in flow instead of the default, redirect.-->
-<!--  signInFlow: 'redirect',-->
-<!--  signInSuccessUrl: '/landing',-->
-<!--  signInOptions: [-->
-    <!--// Leave the lines as is for the providers you want to offer your users.-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-<!--  ],-->
-  <!--// Terms of service url.-->
-<!--  tosUrl: '<your-tos-url>',-->
-  <!--// Privacy policy url.-->
-<!--  privacyPolicyUrl: '<your-privacy-policy-url>'-->
-<!--};-->
-<!--// The start method will wait until the DOM is loaded.-->
-<!--ui.start('#firebaseui-auth-container', uiConfig);-->
-
-<!--</script>-->
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -113,10 +52,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="/about">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#signup">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -142,8 +84,6 @@
             <input class="btn btn-default hov-special" type="submit">
           </form>
         </div>
-          <!--<div id="firebaseui-auth-container"style="display: inline-block; font-size: auto !important; line-height: auto !important; letter-spacing: auto !important"></div>-->
-          <!--<div id="loader">Loading...</div>-->
       </div>
     </header>
     
@@ -235,8 +175,8 @@
                   <h4></h4>
                   <input type="submit" class = "btn btn-default">
                 </form>
-                <!--<h5>Already have an account?</h5>-->
-                <!--<a href = "/login" class = "btn btn-xl btn-outline" style = "color:black !important">Login</a>-->
+                <h5>Already have an account?</h5>
+                <a href = "#" class = "btn btn-outline" style = "color:black !important">Login</a>
               </div>
               <div class = "col-lg-6">
                 <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="padding-top:20%">
@@ -251,116 +191,35 @@
     <!--  <input type="file" accept="image/*;capture=camera">-->
     <!--</form>-->
 
-<!--  <script>-->
-<!--  var ui = new firebaseui.auth.AuthUI(firebase.auth());-->
-  
-<!--  ui.start('#firebaseui-auth-container', {-->
-<!--  signInOptions: [-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-<!--    firebase.auth.GoogleAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.FacebookAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.TwitterAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.GithubAuthProvider.PROVIDER_ID-->
-<!--    requireDisplayName: false-->
-<!--  ],-->
-  <!--// Other config options...-->
-<!--  });-->
-  
-<!--  var uiConfig = {-->
-<!--  callbacks: {-->
-<!--    signInSuccessWithAuthResult: function(authResult, redirectUrl) {-->
-      <!--// User successfully signed in.-->
-      <!--// Return type determines whether we continue the redirect automatically-->
-      <!--// or whether we leave that to developer to handle.-->
-<!--      return true;-->
-<!--    },-->
-<!--    uiShown: function() {-->
-      <!--// The widget is rendered.-->
-      <!--// Hide the loader.-->
-<!--      document.getElementById('loader').style.display = 'none';-->
-<!--    }-->
-<!--  },-->
-  <!--// Will use popup for IDP Providers sign-in flow instead of the default, redirect.-->
-<!--  signInFlow: 'popup',-->
-<!--  signInSuccessUrl: '<url-to-redirect-to-on-success>',-->
-<!--  signInOptions: [-->
-    <!--// Leave the lines as is for the providers you want to offer your users.-->
-<!--    firebase.auth.GoogleAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.FacebookAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.TwitterAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.GithubAuthProvider.PROVIDER_ID,-->
-<!--    firebase.auth.EmailAuthProvider.PROVIDER_ID-->
-<!--  ],-->
-  <!--// Terms of service url.-->
-<!--  tosUrl: '<your-tos-url>',-->
-  <!--// Privacy policy url.-->
-<!--  privacyPolicyUrl: '<your-privacy-policy-url>'-->
-<!--};-->
-<!--// The start method will wait until the DOM is loaded.-->
-<!--ui.start('#firebaseui-auth-container', uiConfig);-->
-<!--</script>-->
-
-    <!-- Signup Section -->
-    <!--<section id="signup" class="signup-section">-->
-
-    <!--</section>-->
 
     <!-- Contact Section -->
-    <!--<section class="contact-section bg-black">-->
-    <!--  <div class="container">-->
+    <section id="contact" class="contact-section bg-white" style="background: white !important">
 
-    <!--    <div class="row">-->
+     <div class="container">
+      <div class="section-heading text-center">
+        <h3>Contact Us</h3>
+        <p>For questions, feedback, and more!</p>
+        <i class="fas fa-envelope text-primary mb-2" style="display: inline"></i>
+        <h4 class="m-0" style="display: inline">Email us at:</h4>
+        <div class="text-black-50" style="display: inline">
+          <a href="mailto:vitam.llc@gmail.com">vitam.llc@gmail.com</a>
+        </div>
+      </div>
 
-    <!--      <div class="col-md-4 mb-3 mb-md-0">-->
-    <!--        <div class="card py-4 h-100">-->
-    <!--          <div class="card-body text-center">-->
-    <!--            <i class="fas fa-map-marked-alt text-primary mb-2"></i>-->
-    <!--            <h4 class="text-uppercase m-0">Address</h4>-->
-    <!--            <hr class="my-4">-->
-    <!--            <div class="small text-black-50">4923 Market Street, Orlando FL</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
+       <%# <div class="social d-flex justify-content-center">
+         <a href="#" class="mx-2">
+           <i class="fab fa-twitter"></i>
+         </a>
+         <a href="#" class="mx-2">
+           <i class="fab fa-facebook-f"></i>
+          </a>
+         <a href="#" class="mx-2">
+           <i class="fab fa-github"></i>
+         </a>
+       </div> %>
 
-    <!--      <div class="col-md-4 mb-3 mb-md-0">-->
-    <!--        <div class="card py-4 h-100">-->
-    <!--          <div class="card-body text-center">-->
-    <!--            <i class="fas fa-envelope text-primary mb-2"></i>-->
-    <!--            <h4 class="text-uppercase m-0">Email</h4>-->
-    <!--            <hr class="my-4">-->
-    <!--            <div class="small text-black-50">-->
-    <!--              <a href="#">hello@yourdomain.com</a>-->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--      <div class="col-md-4 mb-3 mb-md-0">-->
-    <!--        <div class="card py-4 h-100">-->
-    <!--          <div class="card-body text-center">-->
-    <!--            <i class="fas fa-mobile-alt text-primary mb-2"></i>-->
-    <!--            <h4 class="text-uppercase m-0">Phone</h4>-->
-    <!--            <hr class="my-4">-->
-    <!--            <div class="small text-black-50">+1 (555) 902-8832</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-
-    <!--    <div class="social d-flex justify-content-center">-->
-    <!--      <a href="#" class="mx-2">-->
-    <!--        <i class="fab fa-twitter"></i>-->
-    <!--      </a>-->
-    <!--      <a href="#" class="mx-2">-->
-    <!--        <i class="fab fa-facebook-f"></i>-->
-          <!--</a>-->
-    <!--      <a href="#" class="mx-2">-->
-    <!--        <i class="fab fa-github"></i>-->
-    <!--      </a>-->
-    <!--    </div>-->
-
-    <!--  </div>-->
-    <!--</section>-->
+     </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
