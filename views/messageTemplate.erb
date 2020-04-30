@@ -211,6 +211,7 @@
 
           <div id ="sendForm">
             <br>
+            <button onclick="speakMess()">Say Message</button>
             <button onclick="copyMess()">Copy Message</button>
             <p id="copied" class="noshow">Copied to Clipboard</p>
             <input type="text" id="messageCopy" style="opacity: 0">
@@ -570,7 +571,12 @@
           $('#modal1').openModal();
         }
       };
-    
+
+      function speakMess() {
+        var message = document.getElementById("message2").innerHTML;
+        speak(message);
+      }
+
       $("td").click(function() { 
           console.log($(this).attr("class") != "top")
           if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back") {
