@@ -5,7 +5,7 @@
 # Profile pic how to https://www.w3schools.com/css/tryit.asp?filename=trycss_css_image_overlay_opacity
 
 # email words = [[greetings], [questions], [questions2], [closing], [signature]]
-# personal words are for the messaging template
+# personal words are for the messaging template: [box1 word, box1 pic, box2 word, box2 pic]
 # heroku connect database
 # heroku config:set DATABASE_URL=   --app
 # COLORS:
@@ -57,8 +57,6 @@ require "./models.rb"
 require "./modelsFeedback.rb"
 # require "./send.rb"
 # require "./production.rb"
-# require 'twilio-ruby'
-# require 'rubygems'
 
 class MyApp < Sinatra::Base
     
@@ -209,9 +207,14 @@ class MyApp < Sinatra::Base
         @box2 = params[:box2]
         @box3 = params[:box3]
         @box4 = params[:box4]
+        @img0 = params[:img0]
+        @img1 = params[:img1]
+        @img2 = params[:img2]
+        @img3 = params[:img3]
+        @img4 = params[:img4]
         puts params[:replace]
         puts params[:add]
-        @newWords = [@box0, @box1, @box2, @box3, @box4]
+        @newWords = [@box0, @img0, @box1, @img1, @box2, @img2, @box3, @img3, @box4, @img4]
         @userAccount = Account.find(@id)
         @words = @userAccount.personalWords
         @badWords = @words[@tableNum * 5, 5]
@@ -244,6 +247,25 @@ class MyApp < Sinatra::Base
         @words = @userAccount.personalWords
         erb :messageTemplate
     end
+
+    post '/add-pic' do
+        @img_src = params[:img_src]
+        @id = params[:id]
+        @userAccount = Account.find(@id)
+        @pics = @userPicture.pictures
+        @add_img = @img_src.split(",")
+        @add_img.each do |img|
+            @pics.push(img)
+        end
+        @userPicture.update(pictures: @pics)
+        @image = @userPicture.pictures
+        @name = @userAccount.name
+        @contacts = @userAccount.contacts
+        @emailWords = @userAccount.emailWords
+        @message = params[:message]
+        @words = @userAccount.personalWords
+        erb :messageTemplate
+    end
     
     post '/login' do #executes at /login
         @email = params[:email]
@@ -263,14 +285,16 @@ class MyApp < Sinatra::Base
         else
             @userAccount = Account.find(@id)
             
-            # @greetings = ["Hi", "Hello", "Hey", "Dear", "Good Morning", "Good Afternoon"]
-            # @questions = ["Thank you for your email.", "It was nice to hear from you.", "How are you doing?", "I’m doing well.", "Not much is new.", ""]
-            # @questions2 = ["How are you?", "How have you been?", "What’s new with you?", "How are things going at work?", "How is your family?", ""]
-            # @closing = ["Can’t wait to see you!", "Looking forward to seeing you soon!", "Hope to see you soon!", "Talk to you soon.", "Take care.", "I miss you."]
-            # @signature = ["From", "Sincerely", "Best", "Thanks", "Love", "Cheers"]
-            # @emailWords = @greetings, @questions, @questions2, @closing, @signature
-            # @userAccount.update(emailWords: @emailWords)
-            
+            # updates personalWords so that there is a space after each word to put the picture
+            # need to login to each account to update this
+            @words = @userAccount.personalWords
+            @newWords = []
+            @words.each do |word|
+                @newWords.push(word)
+                @newWords.push("")
+            end
+            @userAccount.update(personalWords: @newWords)
+
             @name = @userAccount.name
             @email = @userAccount.email
             @number = @userAccount.phoneNumber.split("-").join("")

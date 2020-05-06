@@ -243,20 +243,18 @@
   border-width: 0.25rem;
   width: 3rem;
 }
-.contact-section .social {
-  margin-top: 5rem;
-}
 .contact-section .social a {
   text-align: center;
-  height: 3rem;
-  width: 3rem;
-  background: rgba(255, 255, 255, 0.1);
+  height: 5rem;
+  width: 5rem;
+  background: #3b5998;
   border-radius: 100%;
-  line-height: 3rem;
-  color: rgba(255, 255, 255, 0.3);
+  line-height: 5rem;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 1);
 }
 .contact-section .social a:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
 }
 .contact-section .social a:active {
   color: #fff;
@@ -328,10 +326,19 @@ table, td {
     height: 300px;
 } */
 
+table.email {
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 3.5rem;
+}
+
 .email td {
     width: 20%;
-    font-size: 2.5rem;
     height: 250px;
+}
+
+.email td p {
+  font-size: 2.5rem;
 }
 
 .double-row {
@@ -354,9 +361,24 @@ table, td {
 }
 
 .email input {
-  height: 100%;
+  height: auto;
   width: 100%;
   text-align: center;
+}
+
+.email img {
+  height: auto;
+  max-width: 100%;
+  max-height: 80%;
+}
+
+.email input[type=file] {
+  font-size: 1.2rem;
+}
+
+textarea {
+  width: 100%;
+  font-size: 2rem;
 }
 
 .picBoard td {
@@ -364,8 +386,8 @@ table, td {
 }
 
 #bins img {
-    height: auto;
-    width: 90%;
+  height: auto;
+  width: 90%;
 }
 
 #message2, #message4, #message6, #message8 {
@@ -395,7 +417,7 @@ table, td {
   height: 89vh;
 }
 footer {
-  padding: 3rem 0;
+  padding: 1.5rem 0;
 }
 
 @media screen and (max-width: 992px) {

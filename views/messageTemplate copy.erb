@@ -8,8 +8,10 @@
         <title>Messaging Template</title>
         <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
         <link rel="shortcut icon" href="../img/sprout.ico">
-        <%# <link rel="stylesheet" type="text/css" href="../WebGazer_Demo_files/style.css"> %>
-        <%# <link rel="stylesheet" href="../WebGazer_Demo_files/bootstrap.min.css"> %>
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+
+        <!--<link rel="stylesheet" type="text/css" href="../WebGazer_Demo_files/style.css">-->
+        <!--<link rel="stylesheet" href="../WebGazer_Demo_files/bootstrap.min.css">-->
         
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130132342-2"></script>
@@ -40,19 +42,43 @@
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Tinos" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!--<link rel="stylesheet" href="css/grayscale.min.css">-->
     <link rel="stylesheet" href="../css/style8.3.css">
-    <%# <script async="" type="text/javascript" src="../WebGazer_Demo_files/webgazer.js"></script> %>
+    <!--<script async="" type="text/javascript" src="WebGazer_Demo_files/webgazer.js"></script>-->
 
+    <!-- Google Custom Search -->
+    <script async src="https://cse.google.com/cse.js?cx=017667718484856733925:y3adtepvf0n"></script>
+
+    <!--
+      <PageMap>
+        <DataObject type="action">
+          <Attribute name="label" value="Download"/>
+          <Attribute name="url" value="http://www.scribd.com/document_downloads/20258723?extension=pdf"/>
+          <Attribute name="class" value="download"/>
+        </DataObject>
+
+        <DataObject type="action">
+          <Attribute name="label" value="Fullscreen View"/>
+          <Attribute name="url" value="http://d1.scribdassets.com/ScribdViewer.swf?document_id=20258723&access_key=key-27lwdyi9z21ithon73g3&version=1&viewMode=fullscreen"/>
+          <Attribute name="class" value="fullscreen"/>
+        </DataObject>
+
+        <DataObject type="action">
+          <Attribute name="label" value="Download"/>
+          <Attribute name="url" value="http://www.scribd.com/document_downloads/20258723?extension=pdf"/>
+          <Attribute name="class" value="download"/>
+        </DataObject>
+      </PageMap>
+    -->
 
 </head>
   
-  <body lang="en-US" link="#0000ff" dir="LTR" data-gr-c-s-loaded="true" class ="">
-
+  <body style="font-family: 'Tinos'" onload="openWords()">
+    <!--lang="en-US" link="#0000ff" dir="LTR" data-gr-c-s-loaded="true" class =""-->
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background: #FF9603">
       <div class="container">
@@ -73,8 +99,8 @@
       </div>
     </nav>
 
+      <!--<div id ="shit" hidden="false">-->
         <br style="line-height:4rem">
-
         <%@tableNum = @words.length / 6.0%>
         <%if @tableNum.to_i.to_f == @tableNum%>
           <%@tableNum = @tableNum.to_i%>
@@ -84,13 +110,15 @@
         <%@idName = "words"%>
         <%@wordNum = 0%>
         <%@pastId = "words0"%>
-        <%for i in (0...@tableNum)%>
+        <%for i in (0..@tableNum)%>
+        <%@idName = "words"%>
+        <%@wordNum = i * 5%>
         <%@nextId = @idName + (i+1).to_s%>
         <%@idName = @idName + i.to_s%>
 
-        <table style="width:100%" id="<%=@idName%>" class="email">
+        <table style="width:100%" id="<%=@idName%>" class="noshow email">
             <tr id="row">
-              <td>
+              <td onclick="edit('<%=@idName%>', '<%=i%>')">
                 <p>Edit</p>
               </td>
               <td class="back">
@@ -112,14 +140,17 @@
               </td>
               <%@wordNum += 1%>
               <%if @wordNum == @words.length%>
-                <%next%>
+                <%break%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
               </td>
+              <td onclick="noshow('', '', 'and');" style="width:5%">
+                <p>&</p>
+              </td>
               <%@wordNum += 1%>
               <%if @wordNum == @words.length%>
-                <%next%>
+                <%break%>
               <%end%>
             </tr>
             <tr id="row">
@@ -128,33 +159,105 @@
               </td>
               <%@wordNum += 1%>
               <%if @wordNum == @words.length%>
-                <%next%>
+                <%break%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
               </td>
               <%@wordNum += 1%>
               <%if @wordNum == @words.length%>
-                <%next%>
+                <%break%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
               </td>
-              <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');"><p>More</p>
+              <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');">
+                <p>More</p>
+              </td>
+              <td style="width:5%">
+                <table class="double-row">
+                  <tr>
+                    <td class="top" onclick="noshow('', '', ',');">
+                      <p>,</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bottom" onclick="noshow('', '', '.');">
+                      <p>.</p>
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
             
         </table>
         <%@pastId = @idName%>
         <%end%>
+        </tr>
+        </table>
       </div>
-
+      
+        
+        
+        
         <div style="margin: 1rem" id="message">
           <h4 id="message2" style="font-size:3rem"></h4>
-        </div>
 
+          <div id ="sendForm">
+            <br>
+            <button onclick="speakMess()">Say Message</button>
+            <button onclick="copyMess()">Copy Message</button>
+            <p id="copied" class="noshow">Copied to Clipboard</p>
+            <input type="text" id="messageCopy" style="opacity: 0">
+            <form method="POST" action="/send" class="noshow">
+              <h3>Choose which contact you want to send the message to:</h3>
+              <br>
+              <%@contacts.each_with_index do |contact, i|%>
+                <input type="radio" name="toEmail" value="<%=@contacts[i][1]%>"><%=@contacts[i][0]%>: <%=@contacts[i][1]%>
+                <br><br>
+              <%end%>
+              <br>
+              <input type="hidden" name="id" value="<%=@id%>">
+              <input type="hidden" id="messageSend" name="message">
+              <input type="submit" class = "btn btn-default" style="border:groove">
+            </form>
+          </div>
+
+          <!-- Upload Photos -->
+          <img src="<%=@img_src%>">
+          <div class="uploaded"></div>
+          <form method="POST" action="/add-pic" enctype="multipart/form-data">
+              <h3>Select a photo to upload:</h3>
+              <input type="file" accept=".png, .jpg, .jpeg" name="photo" id="photo">
+              <input type="text" name="img_src" id="img_src">
+              <input type="hidden" name="id" value="<%=@id%>">
+              <input type="hidden" id="messageSend" name="message">
+              <input type="submit">
+          </form>
+          <img class="preview">
+
+          <script>
+              const input = document.querySelector('#photo');
+              const preview = document.querySelector('.preview');
+
+              input.addEventListener('change', updateImageDisplay);
+              function updateImageDisplay() {
+                  const curFiles = input.files;
+                  for(const file of curFiles) {
+                      preview.src = URL.createObjectURL(file);
+                      var real_src = preview.src
+                      document.getElementById("img_src").value = real_src
+                      console.log(document.getElementById("photo").value)
+                  }
+              }
+          </script>
+
+          <!-- Google Custom Search -->
+          <!-- <div class="gcse-search" data-defaultToImageSearch="true" data-disableWebSearch="true"></div>
+        </div> -->
+        
         <div id="form" class="noshow email">
-          <form  method="POST" action="/editTableWords">
+          <form method="POST" action="/editTableWords">
             <table style="table-layout: fixed; width: 100%">
               <tr>
                 <td>
@@ -187,23 +290,27 @@
             </table>
             <input type="hidden" name="id" value="<%=@id%>">
             <input type="hidden" id="messageEdit" name="message1">
-            <input type="hidden" name="tableName" id="table">
-            <input type="hidden" name="tableNum" id="tableNum">
+            <input type="hidden" name="tableNum" id="table">
             <input type="submit" class = "btn btn-default" style="border:groove" name="replace" value="Replace">
             <input type="submit" id="add" class = "btn btn-default" style="border:groove" name="add" value="Add">
           </form>
         </div>
+        
+        
+        <%# <script src="../WebGazer_Demo_files/jquery.min.js"></script> %>
 
           <script>
               var message = "<%=@message%>";
+                // document.getElementById("mess").setAttribute('parameter', message);
+                // document.getElementById("message1").setAttribute('value', message);
                 document.getElementById("message2").innerHTML=message;
-                <%# document.getElementById("messageSend").value=message; %>
+                document.getElementById("messageSend").value=message;
                 document.getElementById("messageEdit").value=message;
 
               function noshow(table1, table2, word) {
                   var addMessage = word;
-                  var table =table1
-                  
+                  // var table =table1
+                  console.log(table2);
                   var id1 = document.getElementById(table1);
                   var id2 = document.getElementById(table2);
                   if (addMessage != '') {
@@ -214,28 +321,34 @@
                   $(id1).removeClass('show')
                   $(id2).removeClass('noshow');
                   $(id2).addClass('show');
+                  // document.getElementById("message1").setAttribute('value', message);
                   document.getElementById("message2").innerHTML=message;
-                  <%# document.getElementById("messageSend").value=message; %>
+                  document.getElementById("messageSend").value=message;
                   document.getElementById("messageEdit").value=message;
+                  // document.getElementById("message3").setAttribute('value', message);
+                  // document.getElementById("message5").setAttribute('value', message);
+                  // document.getElementById("message7").setAttribute('value', message);
               }
 
-              
-              
               function del() {
                 console.log(message)
                 var pos = message.lastIndexOf(" ");
                 if (pos != -1) {
                   message = message.substring(0, pos);
                 }
+                // document.getElementById("message1").setAttribute('value', message);
                 document.getElementById("message2").innerHTML=message;
-                <%# document.getElementById("messageSend").value=message; %>
+                document.getElementById("messageSend").value=message;
                 document.getElementById("messageEdit").value=message;
+                // document.getElementById("message3").setAttribute('value', message);
+                // document.getElementById("message5").setAttribute('value', message);
+                // document.getElementById("message7").setAttribute('value', message);
               }
               
               
-              function edit(table, tableNumber) {
+              function edit(table, tableNum) {
                 var editTable = table
-                var tableNum = tableNumber
+                var tableNum = tableNum
                 console.log(editTable)
                 var id1 = document.getElementById(editTable);
                 var messageId = document.getElementById('message');
@@ -245,10 +358,185 @@
                 $(messageId).addClass('noshow');
                 $(formId).removeClass('noshow');
                 $(formId).addClass('show');
-                document.getElementById("table").value=editTable;
-                document.getElementById("tableNum").value=tableNum;
+                if (editTable.includes('questions')) {
+                  $(add).addClass('show')
+                  $(add).removeClass('noshow')
+                }
+                document.getElementById("table").value=tableNum;
+              }
+
+              function openWords() {
+                var id = document.getElementById('words0');
+                $(id).addClass('show');
+                $(id).removeClass('noshow');
+              }
+
+              function copyMess() {
+                var message = document.getElementById("message2").innerHTML;
+                message = message.replace(/<br>/g, " ")
+                document.getElementById("messageCopy").value=message;
+                message = document.getElementById("messageCopy")
+                
+                var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+	              if (isiOSDevice) {
+                  var oldContentEditable = message.contentEditable,
+                      oldReadOnly = message.readOnly,
+                      range = document.createRange();
+
+                  message.contentEditable = true;
+                  message.readOnly = false;
+                  range.selectNodeContents(message);
+
+                  var s = window.getSelection();
+                  s.removeAllRanges();
+                  s.addRange(range);
+
+                  message.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
+
+                  message.contentEditable = oldContentEditable;
+                  message.readOnly = oldReadOnly;
+                }
+                else{
+                  message.select();
+                }
+                document.execCommand('copy');
+
+                console.log(document.getElementById("messageCopy").value);
+                var copied = document.getElementById("copied")
+                $(copied).removeClass('noshow');
+                $(copied).addClass('show');
               }
           </script>
+<!--</div>-->
+
+      <!--<div id="click">-->
+        <!--<script src="WebGazer_Demo_files/jquery.min.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/sweetalert.min.js"></script>-->
+
+        <!--<script src="WebGazer_Demo_files/main.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/calibrationMoo.js"></script>-->
+        <!--<script src="js/calibration.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/precision_calculation.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/precision_store_points.js"></script>-->
+        <!--<script src="js/precision_store_points.js"></script>-->
+        
+      <!--  <script>-->
+        
+      <!--    function average_point(pointArr) {-->
+      <!--      var pointTot = 0;-->
+      <!--      for (x = 0; x < 50; x++) {-->
+      <!--        pointTot += pointArr[x];-->
+      <!--      }-->
+      <!--      var pointAvg = pointTot / 50;-->
+            <!--// console.log(pointTot);-->
+      <!--      return pointAvg;-->
+      <!--    }-->
+      <!--    window.setInterval(get_pos, 5000)-->
+      <!--    store_points_variable();-->
+          <!--// var time = 0;-->
+      <!--    function get_pos() {-->
+      <!--      stop_storing_points_variable();-->
+      <!--      var past50Array = get_points();-->
+      <!--      var x50 = past50Array[0];-->
+      <!--      var y50 = past50Array[1];-->
+            <!--// console.log(x50);-->
+      <!--      var x = average_point(x50);-->
+      <!--      var y = average_point(y50);-->
+      <!--      console.log(x + "," + y);-->
+      <!--      store_points_variable();-->
+            <!--// click();-->
+      <!--    }-->
+          
+      <!--    function click() {-->
+      <!--        document.getElementById("body").click();-->
+      <!--    }-->
+      <!--  </script>-->
+        
+      <!--</div>-->
+
+
+<!--    <div id = "yeet">-->
+<!--      <canvas id="plotting_canvas" width="1440" height="772" style="cursor: crosshair; position: fixed;"></canvas>-->
+
+<!--        <script src="WebGazer_Demo_files/jquery.min.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/sweetalert.min.js"></script>-->
+
+        <!--<script src="WebGazer_Demo_files/main.js"></script>-->
+<!--        <script src="js/main.js"></script>-->
+        <!--<script src="js/webgazer.js"></script>-->
+        <!--<script src="WebGazer_Demo_files/calibrationMoo.js"></script>-->
+<!--        <script src="js/calibration.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/precision_calculation.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/precision_store_points.js"></script>-->
+
+<!--        <nav id="webgazerNavbar" class="navbar navbar-default navbar-fixed-top">-->
+<!--          <div class="container-fluid">-->
+<!--            <div class="navbar-header">-->
+              <!-- The hamburger menu button -->
+<!--              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="collapse navbar-collapse" id="myNavbar">-->
+<!--              <ul class="nav navbar-nav" style="display: inline-block">-->
+                <!-- Accuracy -->
+<!--                <li id="Accuracy"><a>Not yet Calibrated</a></li>-->
+<!--                <li onclick="Restart()"><a>Recalibrate</a></li>-->
+<!--              </ul>-->
+<!--              <ul class="nav navbar-nav navbar-right">-->
+<!--                <li><button class="helpBtn" data-toggle="modal" data-target="#helpModal"><a data-toggle="modal"><span class="glyphicon glyphicon-cog"></span> Help</a></button></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </nav>-->
+        <!-- Calibration points -->
+<!--        <div class="calibrationDiv">-->
+<!--            <input type="button" class="Calibration" id="Pt1" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt2" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt3" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt4" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt5" style="background-color: red; opacity: 0.2; display: none;">-->
+<!--            <input type="button" class="Calibration" id="Pt6" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt7" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt8" style="background-color: red; opacity: 0.2;">-->
+<!--            <input type="button" class="Calibration" id="Pt9" style="background-color: red; opacity: 0.2;">-->
+<!--        </div>-->
+
+<!--         Modal -->
+<!--        <div id="helpModal" class="modal fade" role="dialog" style="display: none;">-->
+<!--          <div class="modal-dialog">-->
+
+<!--             Modal content-->
+<!--            <div class="modal-content" style="margin-top: 50%">-->
+<!--              <div class="modal-body">-->
+<!--                <img src="./WebGazer_Demo_files/calibration.png" width="100%" height="100%" alt="webgazer demo instructions" >-->
+<!--              </div>-->
+<!--              <div class="modal-footer">-->
+                <!--<button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Restart()">Calibrate</button>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+
+        <!-- Latest compiled JavaScript -->
+<!--        <script src="WebGazer_Demo_files/resize_canvas.js"></script>-->
+<!--        <script src="WebGazer_Demo_files/bootstrap.min.js"></script>-->
+
+
+<!--<canvas width="11px" height="781px" id="renderCanvas" style="display:none;"></canvas>-->
+<!--<canvas width="11px" height="781px" id="renderCanvas" style="display:none;"></canvas>-->
+<!--<video id="webgazerVideoFeed" autoplay="" style="display: block; position: fixed; top: 0px; left: 0px; width: 320px; height: 240px;"></video>-->
+<!--<canvas id="webgazerVideoCanvas" width="640" height="480" style="display: none;"></canvas>-->
+<!--<canvas id="webgazerFaceOverlay" width="640" height="480" style="display: block; position: fixed; top: 0px; left: 0px; width: 320px; height: 240px;"></canvas>-->
+<!--<canvas id="webgazerFaceFeedbackBox" style="display: block; position: fixed; border: solid red; top: 40.8px; left: 80.8px; width: 158.4px; height: 158.4px;"></canvas>-->
+<!--<div class="swal-overlay" tabindex="-1"><div class="swal-modal" role="dialog" aria-modal="true"><div class="swal-title" style="">Calibration</div>-->
+<!--<div class="swal-text" style="">Please click on each of the 9 points on the screen. You must click on each point 5 times till it goes yellow. This will calibrate your eye movements.</div>-->
+
+<!--</div>-->
 
     <div id="modal1" class="modal">
       <h4>Speech Synthesis not supported</h4>
@@ -261,7 +549,7 @@
     <!-- Footer -->
         <footer class="bg-black small text-center text-white-50">
           <div class="container" style="color:white">
-            Copyright &copy; VITAMIN SEE 2018
+            Copyright &copy; VITAM 2019
           </div>
           </footer>
 
@@ -281,13 +569,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/js/materialize.min.js"></script>
     <script src="../js/speech.js"></script>
-
+    
     <script>
       function speak(message){
         if ('speechSynthesis' in window) {
-          // var message = message
-          // console.log(message)
-          // function speak(){
             var text = message;
             var msg = new SpeechSynthesisUtterance();
             var voices = window.speechSynthesis.getVoices();
@@ -299,18 +584,24 @@
             
       
             speechSynthesis.speak(msg);
-          // }
         } else {
           $('#modal1').openModal();
         }
       };
-    
+
+      function speakMess() {
+        var message = document.getElementById("message2").innerHTML;
+        speak(message);
+      }
+
       $("td").click(function() { 
+          console.log($(this).attr("class") != "top")
           if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back") {
             speak(jQuery(this).text());
           }
       });
     </script>
+
 
   </body>
 </html>
