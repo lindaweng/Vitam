@@ -284,16 +284,6 @@ class MyApp < Sinatra::Base
                 erb :index1
         else
             @userAccount = Account.find(@id)
-            
-            # updates personalWords so that there is a space after each word to put the picture
-            # need to login to each account to update this
-            @words = @userAccount.personalWords
-            @newWords = []
-            @words.each do |word|
-                @newWords.push(word)
-                @newWords.push("")
-            end
-            @userAccount.update(personalWords: @newWords)
 
             @name = @userAccount.name
             @email = @userAccount.email
