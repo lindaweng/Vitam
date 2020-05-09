@@ -217,7 +217,8 @@ class MyApp < Sinatra::Base
         @newWords = [@box0, @img0, @box1, @img1, @box2, @img2, @box3, @img3, @box4, @img4]
         @userAccount = Account.find(@id)
         @words = @userAccount.personalWords
-        @badWords = @words[@tableNum * 5, 5]
+        @badWords = @words[@tableNum * 10, 10]
+        puts @badWords
         puts @badWords
         if params[:add] == nil
             @newWords.each_with_index do |box, i|
@@ -227,15 +228,15 @@ class MyApp < Sinatra::Base
                     # end
                 end
             end
-            @words.slice!(@tableNum * 5, 5)
+            @words.slice!(@tableNum * 10, 10)
             @badWords.each_with_index do |word, i|
-                @words.insert(@tableNum * 5 + i, word)
+                @words.insert(@tableNum * 10 + i, word)
             end
             @userAccount.update(personalWords: @words)
         else
             @newWords.each_with_index do |word, i|
                 if word != "" and word != nil
-                    @words.insert(@tableNum * 5 + i, word)
+                    @words.insert(@tableNum * 10 + i, word)
                 end
             end
             @userAccount.update(personalWords: @words)
