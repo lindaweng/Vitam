@@ -219,8 +219,10 @@ class MyApp < Sinatra::Base
         @words = @userAccount.personalWords
         @badWords = @words[@tableNum * 10, 10]
         puts @badWords
-        puts @badWords
         if params[:add] == nil
+            # Replace function
+            # replaces as many boxes that are filled
+            # one box filled => one box replaced
             @newWords.each_with_index do |box, i|
                 if box != "" and box != nil
                     # if box.include?
@@ -234,10 +236,10 @@ class MyApp < Sinatra::Base
             end
             @userAccount.update(personalWords: @words)
         else
+            # Add function
+            # +10 to add new table after old table
             @newWords.each_with_index do |word, i|
-                if word != "" and word != nil
-                    @words.insert(@tableNum * 10 + i, word)
-                end
+                @words.insert(@tableNum * 10 + 10 + i, word)
             end
             @userAccount.update(personalWords: @words)
         end
