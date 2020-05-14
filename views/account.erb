@@ -41,13 +41,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/">Log Out</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#account">My Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contacts">Contacts</a>
+            <a class="nav-link js-scroll-trigger" href="#contacts">My Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/">Log Out</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#words">Personalized Words</a>
@@ -68,43 +68,140 @@
           <hr>
         </div>
 
-          <div class="col-lg-12 my-auto">
+        <% if @tut == 1%>
+          <div class="modal show" style="background: rgb(128, 128, 128, 0.5)" id="tut">
+            <div class="tutorial show" id="step-1">
+              <h4>This shows your account information.</h4>
+              <button class="btn my-btn" onclick="nextStep(1)">Next</button>
+              <div class="arrow arrow-down" style="margin-left: 40%; margin-top:5.5%">
+              </div>
+            </div>
+            <div class="tutorial noshow" id="step-2">
+              <h4>These are the available templates.</h4>
+              <button class="btn my-btn" onclick="backStep(2)">Back</button>
+              <button class="btn my-btn" onclick="nextStep(2)">Next</button>
+              <div class="arrow arrow-down" style="margin-left: 47.5%; margin-top:1.4%">
+              </div>
+            </div>
+            <div class="tutorial noshow" id="step-3">
+              <h4>The Yes/No template has two boxes, Yes and No. The Yes/No has an eye tracker fitted with them.</h4>
+              <button class="btn my-btn" onclick="backStep(3)">Back</button>
+              <button class="btn my-btn" onclick="nextStep(3)">Next</button>
+              <div class="arrow arrow-down" style="margin-left: 70%">
+              </div>
+            </div>
+            <div class="tutorial noshow" id="step-4">
+              <h4>The Picture Board has pictures and words of certain physical requests. The Picture Board has an eye tracker fitted with them.</h4>
+              <button class="btn my-btn" onclick="backStep(4)">Back</button>
+              <button class="btn my-btn" onclick="nextStep(4)">Next</button>
+              <div class="arrow arrow-down" style="margin-left: 70%">
+              </div>
+            </div>
+            <div class="tutorial noshow" id="step-5">
+              <h4>The Message Template is completely personalizable with words and pictures. The words can be used to build messages. The messages can be copied and sent via text or email.</h4>
+              <button class="btn my-btn" onclick="backStep(5)">Back</button>
+              <button class="btn my-btn" onclick="nextStep(5)">Next</button>
+              <div class="arrow arrow-down" style="margin-left: 70%">
+              </div>
+            </div>
+            <div class="tutorial noshow" id="step-6">
+              <h4>The Email Template has a structured email format with an opening statement, body, closing statement, and sign off. Each section can be customized. The final email can be copied and sent.</h4>
+              <button class="btn my-btn" onclick="backStep(6)">Back</button>
+              <button class="btn my-btn" onclick="nextStep(6)">Next</button>
+              <div class="arrow arrow-down" style="margin-left: 70%">
+              </div>
+            </div>
+            <div class="tutorial noshow" id="step-7">
+              <h4>Click on any template to explore more. To return to this page, the account page, click on My Account.</h4>
+              <button class="btn my-btn" onclick="backStep(7)">Back</button>
+              <button class="btn my-btn" onclick="closeModal('tut')">Done</button>
+              <div class="arrow arrow-down" style="margin-left: 70%">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 my-auto highlight" id="1">
+        <% else %>
+          <div class="col-lg-12 my-auto" id="1">
+        <% end %>
+
             <div class="container-fluid">
               <div class="row text-center">
                 <div class="header" style="text-align: left;width: 150%" !important>
                   <div class="feature-item">
-                    <h3>Name: <%=@name%></h3>
-                    <h3>Email: <%=@email%></h3>
-                    <h3 style="display: inline-block">Password: </h3>
-                    <h3 id="secret" style="display: inline-block"><%="*" * @password.length%></h3>
-                    <h3 id="open" class="noshow" style="display: inline-block"><%=@password%></h3>
-                    <h3 style="display: inline-block; float: right"><button onclick="viewPass()" class="btn my-btn" id="viewPass">View Password</button></h3>
-                    <h3 style="display: inline-block; float: right"><button onclick="hidePass()" class="btn my-btn noshow" id="hidePass">Hide Password</button></h3>
+                    <div>
+                      <h3 style="display: inline-block">Name: <%=@name%></h3>
+                      <h3 style="display: inline-block; float: right"><button onclick="viewPass()" class="btn btn-sm my-btn btn-light" id="viewPass" style="color: grey">View Password</button></h3>
+                      <h3 style="display: inline-block; float: right"><button onclick="hidePass()" class="btn my-btn btn-sm btn-light noshow" id="hidePass" style="color: grey">Hide Password</button></h3>
+                      <h3>Email: <%=@email%></h3>
+                      <h3 style="display: inline-block">Password: </h3>
+                      <h3 id="secret" style="display: inline-block"><%="*" * @password.length%></h3>
+                      <h3 id="open" class="noshow" style="display: inline-block"><%=@password%></h3>
+                    </div>
+                    <br>
+                    <!-- <div id="2">
+                      <br>
+                      <h3>Your Templates:</h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/yesNo/<%=@id%>">Yes/No Template</a></button></h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
+                      <h2 style="color: #eb4034"><%=@output%></h2>
+                    </div>
                     <%if @level.to_i == 1%>
-                      <h3>Your last template used was the Yes/No</h3>
-                    <%elsif @level.to_i == 2%>
-                      <h3>Your last template used was the Picture Board</h3>
-                    <%elsif @level.to_i == 3%>
-                      <h3>Your last template used was the Message Template</h3>
-                    <%elsif @level.to_i == 4%>
-                      <h3>Your last template used was the Email Template</h3>
-                    <%end%>
-                    <br>
-                    <h3 style="display: inline-block"><button class="btn my-btn"><a href="/yesNo/<%=@id%>">Yes/No</a></button></h3>
-                    <h3 style="display: inline-block"><button class="btn my-btn"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
-                    <h3 style="display: inline-block"><button class="btn my-btn"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
-                    <h3 style="display: inline-block"><button class="btn my-btn"><a href="/email/<%=@id%>">Email Template</a></button></h3>
-                    <h2><%=@output%></h2>
-                    <br>
+                        <h3>Your last template used was the Yes/No Template.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%elsif @level.to_i == 2%>
+                        <h3>Your last template used was the Picture Board.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%elsif @level.to_i == 3%>
+                        <h3>Your last template used was the Message Template.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%elsif @level.to_i == 4%>
+                        <h3>Your last template used was the Email Template.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%end%> -->
                   </div>
                   </div>
               </div>
               
-            <div class = "row text-center">
+            <!-- <div class = "row text-center">
               <div class = "col-lg-4"></div>
               <div class = col-lg-4>
               </div>
               <div class = col-lg-4></div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-lg-12 my-auto" id="2">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="header" style="text-align: left;width: 150%" !important>
+                  <div class="feature-item">
+                    <div>
+                      <br>
+                      <h3>Your Templates:</h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/yesNo/<%=@id%>">Yes/No Template</a></button></h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
+                      <h2 style="color: #eb4034"><%=@output%></h2>
+                    </div>
+                    <%if @level.to_i == 1%>
+                        <h3>Your last template used was the Yes/No Template.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%elsif @level.to_i == 2%>
+                        <h3>Your last template used was the Picture Board.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%elsif @level.to_i == 3%>
+                        <h3>Your last template used was the Message Template.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%elsif @level.to_i == 4%>
+                        <h3>Your last template used was the Email Template.</h3>
+                        <h3>Continue using it by clicking on it above.</h3>
+                      <%end%>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -124,7 +221,7 @@
                 <div class="header" style="text-align: left;width: 150%" !important>
                   <div class="feature-item" style="display: inline-grid">
                     <%if @contacts == []%>
-                      <h3>No contacts listed</h3>
+                      <h3 id="noCons">No contacts listed</h3>
                     <%else%>
                       <%@contacts.each_with_index do |contact, i|%>
                         <h3>Name: <%=@contacts[i][0]%></h3>
@@ -135,7 +232,7 @@
                     <%end%>
                     
                   </div>
-                    <button onclick="editContact()" id="delButton" style="display: inline; float: right">Delete Contacts</button>
+                    <button onclick="editContact()" class="btn my-btn btn-secondary btn-sm" id="delButton" style="display: inline; float: right">Delete Contacts</button>
                     <%# <button onclick="done()" id="done" class="noshow" style="display: inline; float: right">Done</button> %>
                     <div class = "col-lg-6 form-inline" style="display: inline">
                       
@@ -152,28 +249,31 @@
                         <br>
                         <h4></h4>
                         <input type="hidden" name="id" value="<%=@id%>">
-                        <input type="submit" class = "btn btn-default">
+                        <input type="submit" class="btn btn-light hov-special" style="width: auto">
                       </form>
                     </div>
                     <br><br>
+                    <%# Need this as a pop up so that it is impossible to actually delete contact %>
+                    <div class="modal noshow" id="prevDel" style="background: rgb(128, 128, 128, 0.5)">
+                      <div class="pop-up">
+                        <h3>Cannot Delete Contacts. No contacts listed</h3>
+                        <button class="btn my-btn btn-outline-secondary" onclick="closeModal('prevDel')">Ok</button>
+                      </div>
+                    </div>
                 <div class = "col-lg-6 form-inline" style="display: inline">
                   <form id="editContact" class="noshow" method="POST" action="/delete-contact">
                     <h2>Choose the contacts you would like to remove:</h2>
                     <h4>This cannot be undone.</h4>
-                    <%if @contacts == []%>
-                      <h3>No contacts listed</h3>
-                      <%# Need this as a pop up so that it is impossible to actually delete contact %>
-                    <%else%>
-                      <%@contacts.each_with_index do |contact, i|%>
-                        <%@contactId = i%>
-                        <input id="checkmark" type="checkbox" name="contactId<%=@contactId%>" value="<%=@contactId%>">
-                        <div style="display:inline-grid">
-                        <h3>Name: <%=@contacts[i][0]%></h3>
-                        <h3>Email: <%=@contacts[i][1]%></h3>
-                        <h3>Phone Number: <%=@contacts[i][2]%></h3>
-                        </div>
-                        <br>
-                      <%end%>
+                    <h4>Submitting without choosing any contacts to delete will keep all of your current contacts.</h4>                      
+                    <%@contacts.each_with_index do |contact, i|%>
+                      <%@contactId = i%>
+                      <input id="checkmark" type="checkbox" name="contactId<%=@contactId%>" value="<%=@contactId%>">
+                      <div style="display:inline-grid">
+                      <h3>Name: <%=@contacts[i][0]%></h3>
+                      <h3>Email: <%=@contacts[i][1]%></h3>
+                      <h3>Phone Number: <%=@contacts[i][2]%></h3>
+                      </div>
+                      <br>
                     <%end%>
                     <input type="hidden" name="id" value="<%=@id%>">
                     <input type="submit" class = "btn btn-default">
@@ -246,14 +346,22 @@
 
     <script>
       function editContact() {
-        var id = document.getElementById("editContact");
-        var id2 = document.getElementById("addContact");
-        $(id).removeClass('noshow');
-        $(id2).addClass('noshow');
-        var id3 = document.getElementById("done");
-        var id4 = document.getElementById("delButton");
-        $(id3).removeClass('noshow');
-        $(id4).addClass('noshow');
+        var contacts = document.getElementById("noCons");
+        console.log(contacts)
+        if (contacts == null) {
+          var id = document.getElementById("editContact");
+          var id2 = document.getElementById("addContact");
+          $(id).removeClass('noshow');
+          $(id2).addClass('noshow');
+          var id3 = document.getElementById("done");
+          var id4 = document.getElementById("delButton");
+          $(id3).removeClass('noshow');
+          $(id4).addClass('noshow');
+        } else {
+            var id = document.getElementById("prevDel");
+            $(id).removeClass('noshow');
+            $(id).addClass("show");
+        }
       }
 
       function viewPass() {
@@ -276,6 +384,47 @@
         var id4 = document.getElementById("viewPass");
         $(id4).removeClass('noshow');
         $(id3).addClass('noshow');
+      }
+
+      function nextStep(pastStep) {
+        var pastNum = pastStep;
+        var nextNum = pastNum + 1;
+        var pastId = "step-" + pastNum;
+        var nextId = "step-" + (nextNum);
+        var past = document.getElementById(pastId);
+        var next = document.getElementById(nextId);
+        $(past).removeClass("show");
+        $(past).addClass("noshow");
+        $(next).removeClass("noshow");
+        $(next).addClass("show");
+        var endHighlight = document.getElementById(pastNum);
+        var startHighlight = document.getElementById(nextNum);
+        $(endHighlight).removeClass("highlight");
+        $(startHighlight).addClass("highlight");
+      }
+
+      function backStep(currStep) {
+        var pastNum = currStep;
+        var nextNum = pastNum - 1
+        var pastId = "step-" + pastNum;
+        var nextId = "step-" + (nextNum);
+        var past = document.getElementById(pastId);
+        var next = document.getElementById(nextId);
+        $(past).removeClass("show");
+        $(past).addClass("noshow");
+        $(next).removeClass("noshow");
+        $(next).addClass("show");
+        var endHighlight = document.getElementById(pastNum);
+        var startHighlight = document.getElementById(nextNum);
+        $(endHighlight).removeClass("highlight");
+        $(startHighlight).addClass("highlight");
+      }
+
+      function closeModal(passId) {
+        var id = passId;
+        var div = document.getElementById(id);
+        $(div).addClass("noshow");
+        $(div).removeClass("show");
       }
 
       <%# function done() {

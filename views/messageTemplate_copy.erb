@@ -101,7 +101,7 @@
 
       <!--<div id ="shit" hidden="false">-->
         <br style="line-height:4rem">
-        <%@tableNum = @words.length / 6.0%>
+        <%@tableNum = @words.length / 12.0%>
         <%if @tableNum.to_i.to_f == @tableNum%>
           <%@tableNum = @tableNum.to_i%>
         <%else%>
@@ -112,7 +112,7 @@
         <%@pastId = "words0"%>
         <%for i in (0..@tableNum)%>
         <%@idName = "words"%>
-        <%@wordNum = i * 5%>
+        <%@wordNum = i * 10%>
         <%@nextId = @idName + (i+1).to_s%>
         <%@idName = @idName + i.to_s%>
 
@@ -137,39 +137,44 @@
               </td>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
               </td>
-              <%@wordNum += 1%>
+              <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
                 <%break%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
               </td>
-              <td onclick="noshow('', '', 'and');" style="width:5%">
-                <p>&</p>
-              </td>
-              <%@wordNum += 1%>
+              <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
                 <%break%>
               <%end%>
+              <td onclick="noshow('', '', 'and');" style="width:5%">
+                <p>&</p>
+              </td>
             </tr>
             <tr id="row">
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
               </td>
-              <%@wordNum += 1%>
+              <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
                 <%break%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
               </td>
-              <%@wordNum += 1%>
+              <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
                 <%break%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
               </td>
               <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');">
                 <p>More</p>
@@ -222,9 +227,10 @@
               <input type="submit" class = "btn btn-default" style="border:groove">
             </form>
           </div>
+          </div>
 
           <!-- Upload Photos -->
-          <img src="<%=@img_src%>">
+          <!-- <img src="<%=@img_src%>">
           <div class="uploaded"></div>
           <form method="POST" action="/add-pic" enctype="multipart/form-data">
               <h3>Select a photo to upload:</h3>
@@ -250,13 +256,14 @@
                       console.log(document.getElementById("photo").value)
                   }
               }
-          </script>
+          </script> -->
 
           <!-- Google Custom Search -->
           <!-- <div class="gcse-search" data-defaultToImageSearch="true" data-disableWebSearch="true"></div>
         </div> -->
         
         <div id="form" class="noshow email">
+          <h3 style="margin-top: 3.5rem">Click choose file in each box to upload a picture for that box</h3>
           <form method="POST" action="/editTableWords">
             <table style="table-layout: fixed; width: 100%">
               <tr>
@@ -267,21 +274,36 @@
                   <p>Delete and Back Space</p>
                 </td>
                 <td>
-                  <input type="text" name="box0">
+                  <textarea name="box0"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo0" id="photo0" onchange="updateImageDisplay(0)">
+                  <input type="hidden" name="img0" id="img0">
+                  <img id="preview0">
                 </td>
                 <td>
-                  <input type="text" name="box1">
+                  <textarea name="box1"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo1" id="photo1" onchange="updateImageDisplay(1)">
+                  <input type="hidden" name="img1" id="img1">
+                  <img id="preview1">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input type="text" name="box2">
+                  <textarea name="box2"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo2" id="photo2" onchange="updateImageDisplay(2)">
+                  <input type="hidden" name="img2" id="img2">
+                  <img id="preview2">
                 </td>
                 <td>
-                  <input type="text" name="box3">
+                  <textarea name="box3"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo3" id="photo3" onchange="updateImageDisplay(3)">
+                  <input type="hidden" name="img3" id="img3">
+                  <img id="preview3">
                 </td>
                 <td>
-                  <input type="text" name="box4">
+                  <textarea name="box4"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo4" id="photo4" onchange="updateImageDisplay(4)">
+                  <input type="hidden" name="img4" id="img4">
+                  <img id="preview4">
                 </td>
                 <td>
                   <p>More Button</p>
@@ -405,6 +427,19 @@
                 var copied = document.getElementById("copied")
                 $(copied).removeClass('noshow');
                 $(copied).addClass('show');
+              }
+
+              function updateImageDisplay(i) {
+                  const input = document.querySelector("#photo" + i)
+                  console.log(input)
+                  const preview = document.querySelector('#preview' + i);
+                  const curFiles = input.files;
+                  for(const file of curFiles) {
+                      preview.src = URL.createObjectURL(file);
+                      var real_src = preview.src
+                      document.getElementById("img" + i).value = real_src
+                      // console.log(document.getElementById("photo").value)
+                  }
               }
           </script>
 <!--</div>-->

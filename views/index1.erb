@@ -15,6 +15,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Listen to the ones that need to be heard.">
+    <meta property='og:image' content="../img/logo.png">
     <meta name="author" content="">
 
     <title>Vitam</title>
@@ -57,6 +58,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#signup">Sign Up</a>
             </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" onclick="tutorial()" href="#">Tutorial</a>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
             </li>
@@ -73,16 +77,31 @@
           <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="">
         <%# </div> %>
         
-        <div class="form-inline home-login img-fluid" style="display: inline">
+        <!-- Tutorial Pop-up -->
+        <div class="noshow modal" id="tutorial" style="background: rgb(128, 128, 128, 0.5)">
+          <div class="tutorial">
+            <h4>Start here by logging into our test account.</h4>
+          </div>
+          <div class="arrow arrow-down" style="margin-left: 70%">
+          </div>
+        </div>
+
+        <div class="form-inline home-login img-fluid" style="display: inline; z-index: 1051">
+          <h2>Login</h2>
           <h2><%=@output%></h2>
           <form method="POST" action="/login">
             <h4>Email:</h4>
-            <input style="width:auto" type="text" name="email" required>
+            <input style="width:auto" type="text" name="email" id="email" required>
             <h4>Password:</h4>
-            <input style="width:auto" type="password" name="password" required>
+            <input style="width:auto" type="password" name="password" id="password" required>
             <h4></h4>
-            <input class="btn btn-default hov-special" type="submit">
+            <input type="hidden" name="tutorial" id="tutInput" value="0">
+            <input class="btn btn-light hov-special" type="submit">
           </form>
+          <div style="text-align: center">
+            <h5>Don't have an account?</h5>
+            <a href = "#signup" class = "btn btn-light">Sign up</a>
+          </div>
         </div>
       </div>
     </header>
@@ -173,10 +192,10 @@
                   <input type="password" name="password" required>
                   <br>
                   <h4></h4>
-                  <input type="submit" class = "btn btn-default">
+                  <input type="submit" class = "btn btn-light hov-special" style="width: auto">
                 </form>
                 <h5>Already have an account?</h5>
-                <a href = "#" class = "btn btn-outline" style = "color:black !important">Login</a>
+                <a href = "#" class = "btn btn-light" style = "color:black !important">Login</a>
               </div>
               <div class = "col-lg-6">
                 <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="padding-top:20%">
@@ -234,6 +253,21 @@
         Copyright &copy; VITAM 2019
       </div>
     </footer>
+
+    <script>
+      function tutorial() {
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var tut = document.getElementById("tutInput")
+        email.value = "vitam.connect@gmail.com"
+        password.value = "vitam"
+        tut.value = "1"
+
+        var pop = document.getElementById("tutorial");
+        $(pop).removeClass("noshow");
+        $(pop).addClass("show");
+      }
+    </script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

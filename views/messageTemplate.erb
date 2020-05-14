@@ -75,8 +75,10 @@
   <body style="font-family: 'Tinos'" onload="openWords()">
     <!--lang="en-US" link="#0000ff" dir="LTR" data-gr-c-s-loaded="true" class =""-->
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background: #FF9603">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background: #8EE0FF; font-family: Nunito">
       <div class="container">
+      <!-- <a class="navbar-brand" href="/account/<%=@id%>">Vitam</a> -->
+      <img src="../img/logo.png" style="width:11%">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -84,17 +86,17 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
+            <a class="nav-link" href="/account/<%=@id%>" style="padding: 0rem 1.5rem !important; font-size:2.5rem">My Account</a>
+          </li>
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/" style="padding: 0rem 1.5rem !important">Log Out</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/account/<%=@id%>" style="padding: 0rem 1.5rem !important">My Account</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
 
-        <!-- tableNum is how many tables are needed, so how many times this is looped. 12 is 5 words on a page, it's a 2x4 table -->
-        <%@tableNum = @words.length / 12.0%>
+        <!-- tableNum is how many tables are needed, so how many times this is looped. 16 is 8 words on a page, it's a 2x4 table -->
+        <%@tableNum = @words.length / 16.0%>
         <%if @tableNum.to_i.to_f == @tableNum%>
           <%@tableNum = @tableNum.to_i%>
         <%else%>
@@ -105,25 +107,22 @@
         <%@pastId = "words0"%>
         <%for i in (0..@tableNum)%>
         <%@idName = "words"%>
-        <%@wordNum = i * 10%>
+        <%@wordNum = i * 16%>
         <%@nextId = @idName + (i+1).to_s%>
         <%@idName = @idName + i.to_s%>
 
         <table id="<%=@idName%>" class="noshow email">
             <tr id="row">
-              <td onclick="edit('<%=@idName%>', '<%=i%>')">
-                <p>Edit</p>
-              </td>
-              <td class="back">
+              <td style="width:5%">
                 <table class="double-row">
                   <tr>
-                    <td class="top" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
-                      <p>Back</p>
+                    <td class="top" onclick="noshow('', '', 'or');">
+                      <p>or</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="bottom" onclick="del()">
-                      <p>Delete</p>
+                    <td class="bottom" onclick="noshow('', '', '!');">
+                      <p>!</p>
                     </td>
                   </tr>
                 </table>
@@ -141,19 +140,6 @@
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
-              <td onclick="noshow('', '', 'and');" style="width:5%">
-                <p>&</p>
-              </td>
-              <%@wordNum += 2%>
-              <%if @wordNum == @words.length%>
-                <%break%>
-              <%end%>
-            </tr>
-            <tr id="row">
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
-                <p><%=@words[@wordNum]%></p>
-                <img src="<%=@words[@wordNum+1]%>">
-              </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
                 <%break%>
@@ -170,22 +156,90 @@
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
-              <td  onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');">
-                <p>More</p>
-              </td>
+              <%@wordNum += 2%>
+              <%if @wordNum == @words.length%>
+                <%break%>
+              <%end%>
               <td style="width:5%">
                 <table class="double-row">
                   <tr>
-                    <td class="top" onclick="noshow('', '', ',');">
-                      <p>,</p>
+                    <td class="top" onclick="noshow('', '', 'and');">
+                      <p>&</p>
                     </td>
                   </tr>
                   <tr>
-                    <td class="bottom" onclick="noshow('', '', '.');">
-                      <p>.</p>
+                    <td class="bottom" onclick="noshow('', '', ',');">
+                      <p>,</p>
                     </td>
                   </tr>
                 </table>
+              </td>
+            </tr>
+            <tr id="row">
+              <td style="width:5%">
+                <table class="double-row">
+                  <tr>
+                    <td class="top" onclick="noshow('', '', '?');"">
+                      <p>?</p>
+                    </td>
+                  </tr>
+                  <tr style="background: #75FB78">
+                    <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
+                      <img src="../img/arrowLeft.png"/>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+                <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
+              </td>
+              <%@wordNum += 2%>
+              <%if @wordNum == @words.length%>
+                <%break%>
+              <%end%>
+              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+                <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
+              </td>
+              <%@wordNum += 2%>
+              <%if @wordNum == @words.length%>
+                <%break%>
+              <%end%>
+              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+                <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
+              </td>
+              <%@wordNum += 2%>
+              <%if @wordNum == @words.length%>
+                <%break%>
+              <%end%>
+              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+                <p><%=@words[@wordNum]%></p>
+                <img src="<%=@words[@wordNum+1]%>">
+              </td>
+              <%@wordNum += 2%>
+              <%if @wordNum == @words.length%>
+                <%break%>
+              <%end%>
+              <td style="width:5%">
+                <table class="double-row">
+                  <tr>
+                    <td class="top" onclick="noshow('', '', '.');">
+                      <p>.</p>
+                    </td>
+                  </tr>
+                  <tr style="background: #75FB78">
+                    <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');">
+                      <img src="../img/arrowRight.png"/>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="6" style="height:0" onclick="edit('<%=@idName%>', '<%=i%>')">
+                <p style="margin:0">Edit Page</p>
               </td>
             </tr>
             
@@ -197,16 +251,25 @@
       </div>
       
         
-        <div style="margin: 1rem" id="message">
+        <div id="message">
           <!-- display message -->
-          <h4 id="message2" style="font-size:3rem"></h4>
+          
+          <table class="email" style="margin:0">
+            <tr>
+              <td style="text-align: left; height:0">
+                <button class="btn my-btn btn-outline-secondary" onclick="speakMess()">Say</button>
+                <button class="btn my-btn btn-outline-secondary" onclick="copyMess()">Copy</button>
+                <button class="btn my-btn btn-outline-secondary" onclick="del()">Delete word</button>
+                <p id="copied" class="noshow">Copied to Clipboard</p>
+                <h4>Message:</h4>
+                <h4 id="message2" style="font-size:3rem"></h4>
+              </td>
+            </tr>
+          </table>
 
           <!-- send message -->
           <div id ="sendForm">
             <br>
-            <button onclick="speakMess()">Say Message</button>
-            <button onclick="copyMess()">Copy Message</button>
-            <p id="copied" class="noshow">Copied to Clipboard</p>
             <input type="text" id="messageCopy" style="opacity: 0">
             <form method="POST" action="/send" class="noshow">
               <h3>Choose which contact you want to send the message to:</h3>
@@ -435,8 +498,8 @@
       </div>
     </div>
     <!-- Footer -->
-        <footer class="bg-black small text-center text-white-50">
-          <div class="container" style="color:white">
+        <footer class="bg-white small text-center text-black-50">
+          <div class="container">
             Copyright &copy; VITAM 2019
           </div>
           </footer>

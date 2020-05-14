@@ -115,7 +115,7 @@ class MyApp < Sinatra::Base
             @emailWords = @userAccount.emailWords
             @message = ""
             @contacts = @userAccount.contacts
-        erb :messageTemplate
+        erb :messageTemplate_copy
     end
     
     get '/email/:id' do
@@ -124,7 +124,7 @@ class MyApp < Sinatra::Base
         @name = @userAccount.name
         @contacts = @userAccount.contacts
         if @contacts == []
-            @output = "Please add at least one contact before using the email template."
+            @output = "*Please add at least one contact before using the email template. Your contacts will be used to select who to address the email to .*"
             @name = @userAccount.name
             @password = @userAccount.password
             @email = @userAccount.email
@@ -207,6 +207,7 @@ class MyApp < Sinatra::Base
         @box2 = params[:box2]
         @box3 = params[:box3]
         @box4 = params[:box4]
+        # images can only be viewed on the device that uploaded them due to blobs being stored in RAM
         @img0 = params[:img0]
         @img1 = params[:img1]
         @img2 = params[:img2]
@@ -248,7 +249,7 @@ class MyApp < Sinatra::Base
         @emailWords = @userAccount.emailWords
         @message = params[:message]
         @words = @userAccount.personalWords
-        erb :messageTemplate
+        erb :messageTemplate_copy
     end
 
     post '/add-pic' do
@@ -273,6 +274,7 @@ class MyApp < Sinatra::Base
     post '/login' do #executes at /login
         @email = params[:email]
         @password = params[:password]
+        @tut = params[:tutorial].to_i
         count = 0
         @accounts = Account.all
         @accounts.each do |account| #checks all accounts for match
