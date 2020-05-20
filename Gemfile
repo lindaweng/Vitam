@@ -15,4 +15,6 @@ gem 'shotgun'
 gem 'rest-client'
 # gem 'firebase'
 # gem 'twilio-ruby'
-gem 'mailgun_rails'
+# gem 'mailgun_rails'
+
+gem 'azure-storage-blob'

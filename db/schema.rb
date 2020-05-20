@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_201254) do
+ActiveRecord::Schema.define(version: 2020_05_18_210149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,6 @@ ActiveRecord::Schema.define(version: 2019_02_03_201254) do
     t.string "level"
     t.string "emailWords", default: [], array: true
     t.string "contacts", default: [], array: true
-    t.string "personalWords", default: [], array: true
-    t.string "creditCard", default: [], array: true
-    t.string "address", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,6 +31,14 @@ ActiveRecord::Schema.define(version: 2019_02_03_201254) do
     t.string "name"
     t.string "email"
     t.string "feedback"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "personal_words", force: :cascade do |t|
+    t.integer "user"
+    t.string "word"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

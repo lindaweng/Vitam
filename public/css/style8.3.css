@@ -335,7 +335,7 @@ table, td {
 table.email {
   table-layout: fixed;
   width: 100%;
-  margin-top: 3.5rem;
+  margin-top: 4rem;
 }
 
 .email td {
@@ -489,6 +489,11 @@ footer {
   border-top-color: rgb(255, 255, 255, 0.7) !important;
 }
 
+.arrow-up {
+  border-width: 0 1rem 1rem;
+  border-bottom-color: rgb(255, 255, 255, 0.7) !important;
+}
+
 .tutorial {
   position: relative;
   width: 20%;
@@ -503,9 +508,9 @@ footer {
   margin-left: 65%;
 }
 
-#step-2 {
+.templates {
   width: 80%;
-  margin-top: 30%;
+  margin-top: 40%;
   margin-left: 10%;
 }
 

@@ -45,7 +45,7 @@ function Restart(){
     PopUpInstruction();
 }
 
-function fuck() {
-    document.getElementById("shit").hidden = false;
-    console.log("HI LYDIA2");
-}
+// function fuck() {
+//     document.getElementById("shit").hidden = false;
+//     console.log("HI LYDIA2");
+// }

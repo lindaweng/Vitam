@@ -78,7 +78,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background: #8EE0FF; font-family: Nunito">
       <div class="container">
       <!-- <a class="navbar-brand" href="/account/<%=@id%>">Vitam</a> -->
-      <img src="../img/logo.png" style="width:11%">
+      <img src="../img/logo.png" style="width:9.5%">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -292,49 +292,58 @@
         <!-- edit table -->
         <div id="form" class="noshow email">
           <h3 style="margin-top: 3.5rem">Click choose file in each box to upload a picture for that box</h3>
-          <form method="POST" action="/editTableWords">
+          <form method="POST" action="/editTableWords2" enctype="multipart/form-data">
             <table>
               <tr>
                 <td>
-                  <p>Edit Table Button</p>
-                </td>
-                <td>
-                  <p>Delete and Back Space Buttons</p>
-                </td>
-                <td>
                   <textarea name="box0"></textarea>
-                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo0" id="photo0" onchange="updateImageDisplay(0)">
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo0" id="photo0" onchange="updateImageDisplay(0)">
                   <input type="hidden" name="img0" id="img0">
                   <img id="preview0">
                 </td>
                 <td>
                   <textarea name="box1"></textarea>
-                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo1" id="photo1" onchange="updateImageDisplay(1)">
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo1" id="photo1" onchange="updateImageDisplay(1)">
                   <input type="hidden" name="img1" id="img1">
                   <img id="preview1">
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <textarea name="box2"></textarea>
-                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo2" id="photo2" onchange="updateImageDisplay(2)">
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo2" id="photo2" onchange="updateImageDisplay(2)">
                   <input type="hidden" name="img2" id="img2">
                   <img id="preview2">
                 </td>
                 <td>
                   <textarea name="box3"></textarea>
-                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo3" id="photo3" onchange="updateImageDisplay(3)">
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo3" id="photo3" onchange="updateImageDisplay(3)">
                   <input type="hidden" name="img3" id="img3">
                   <img id="preview3">
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <textarea name="box4"></textarea>
-                  <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo4" id="photo4" onchange="updateImageDisplay(4)">
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo4" id="photo4" onchange="updateImageDisplay(4)">
                   <input type="hidden" name="img4" id="img4">
                   <img id="preview4">
                 </td>
                 <td>
-                  <p>More Button</p>
+                  <textarea name="box5"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo5" id="photo5" onchange="updateImageDisplay(5)">
+                  <input type="hidden" name="img5" id="img5">
+                  <img id="preview5">
+                </td>
+                <td>
+                  <textarea name="box6"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo6" id="photo6" onchange="updateImageDisplay(6)">
+                  <input type="hidden" name="img6" id="img6">
+                  <img id="preview6">
+                </td>
+                <td>
+                  <textarea name="box7"></textarea>
+                  <input type="file" accept=".png, .jpg, .jpeg" name="photo7" id="photo7" onchange="updateImageDisplay(7)">
+                  <input type="hidden" name="img7" id="img7">
+                  <img id="preview7">
                 </td>
               </tr>
             </table>
@@ -342,8 +351,8 @@
             <input type="hidden" name="id" value="<%=@id%>">
             <input type="hidden" id="messageEdit" name="message1">
             <input type="hidden" name="tableNum" id="table">
-            <input type="submit" class = "btn btn-default" style="border:groove" name="replace" value="Replace">
-            <input type="submit" id="add" class = "btn btn-default" style="border:groove" name="add" value="Add">
+            <input type="submit" class="btn btn-default" style="border:groove; width:auto" name="replace" value="Replace">
+            <input type="submit" class="btn btn-default" style="border:groove; width:auto" name="add" value="Add">
           </form>
         </div>
         

@@ -43,9 +43,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#account">My Account</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contacts">My Contacts</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/">Log Out</a>
           </li>
@@ -76,47 +76,47 @@
               <div class="arrow arrow-down" style="margin-left: 40%; margin-top:5.5%">
               </div>
             </div>
-            <div class="tutorial noshow" id="step-2">
+            <div class="tutorial noshow templates" id="step-2">
+              <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+              </div>
               <h4>These are the available templates.</h4>
               <button class="btn my-btn" onclick="backStep(2)">Back</button>
               <button class="btn my-btn" onclick="nextStep(2)">Next</button>
-              <div class="arrow arrow-down" style="margin-left: 47.5%; margin-top:1.4%">
-              </div>
             </div>
-            <div class="tutorial noshow" id="step-3">
+            <div class="tutorial noshow templates" id="step-3">
+              <div class="arrow arrow-up" style="margin-left: 9%; margin-top:-2.8%">
+              </div>
               <h4>The Yes/No template has two boxes, Yes and No. The Yes/No has an eye tracker fitted with them.</h4>
               <button class="btn my-btn" onclick="backStep(3)">Back</button>
               <button class="btn my-btn" onclick="nextStep(3)">Next</button>
-              <div class="arrow arrow-down" style="margin-left: 70%">
-              </div>
             </div>
-            <div class="tutorial noshow" id="step-4">
+            <div class="tutorial noshow templates" id="step-4">
+              <div class="arrow arrow-up" style="margin-left: 27%; margin-top:-2.8%">
+              </div>
               <h4>The Picture Board has pictures and words of certain physical requests. The Picture Board has an eye tracker fitted with them.</h4>
               <button class="btn my-btn" onclick="backStep(4)">Back</button>
               <button class="btn my-btn" onclick="nextStep(4)">Next</button>
-              <div class="arrow arrow-down" style="margin-left: 70%">
-              </div>
             </div>
-            <div class="tutorial noshow" id="step-5">
+            <div class="tutorial noshow templates" id="step-5">
+              <div class="arrow arrow-up" style="margin-left: 45%; margin-top:-2.8%">
+              </div>
               <h4>The Message Template is completely personalizable with words and pictures. The words can be used to build messages. The messages can be copied and sent via text or email.</h4>
               <button class="btn my-btn" onclick="backStep(5)">Back</button>
               <button class="btn my-btn" onclick="nextStep(5)">Next</button>
-              <div class="arrow arrow-down" style="margin-left: 70%">
-              </div>
             </div>
-            <div class="tutorial noshow" id="step-6">
+            <!-- <div class="tutorial noshow templates" id="step-6" style="width:82%">
+              <div class="arrow arrow-up" style="margin-left: 64%; margin-top:-2.7%">
+              </div>
               <h4>The Email Template has a structured email format with an opening statement, body, closing statement, and sign off. Each section can be customized. The final email can be copied and sent.</h4>
               <button class="btn my-btn" onclick="backStep(6)">Back</button>
               <button class="btn my-btn" onclick="nextStep(6)">Next</button>
-              <div class="arrow arrow-down" style="margin-left: 70%">
+            </div> -->
+            <div class="tutorial noshow templates" id="step-6">
+              <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
               </div>
-            </div>
-            <div class="tutorial noshow" id="step-7">
-              <h4>Click on any template to explore more. To return to this page, the account page, click on My Account.</h4>
-              <button class="btn my-btn" onclick="backStep(7)">Back</button>
+              <h4>Click on any template to explore more. To return to this page, the account page, click on My Account at the top of the page.</h4>
+              <button class="btn my-btn" onclick="backStep(6)">Back</button>
               <button class="btn my-btn" onclick="closeModal('tut')">Done</button>
-              <div class="arrow arrow-down" style="margin-left: 70%">
-              </div>
             </div>
           </div>
           <div class="col-lg-12 my-auto highlight" id="1">
@@ -173,7 +173,7 @@
           </div>
         </div>
 
-        <div class="col-lg-12 my-auto" id="2">
+        <div class="col-lg-12 my-auto" id="2" style="padding-bottom:2rem">
             <div class="container-fluid">
               <div class="row text-center">
                 <div class="header" style="text-align: left;width: 150%" !important>
@@ -184,8 +184,8 @@
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/yesNo/<%=@id%>">Yes/No Template</a></button></h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
-                      <h2 style="color: #eb4034"><%=@output%></h2>
+                      <!-- <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
+                      <h2 style="color: #eb4034"><%=@output%></h2> -->
                     </div>
                     <%if @level.to_i == 1%>
                         <h3>Your last template used was the Yes/No Template.</h3>
@@ -208,6 +208,7 @@
       </div>
     </section>
     
+    <!--
     <section id="contacts" style="background-image: white">
       <div class="container">
         <div class="section-heading text-center" style="padding-top: 10rem">
@@ -292,6 +293,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!--
     <section id="words" style="background-image: linear-gradient(#88D6F2, #72F274)">
@@ -397,10 +399,12 @@
         $(past).addClass("noshow");
         $(next).removeClass("noshow");
         $(next).addClass("show");
-        var endHighlight = document.getElementById(pastNum);
-        var startHighlight = document.getElementById(nextNum);
-        $(endHighlight).removeClass("highlight");
-        $(startHighlight).addClass("highlight");
+        if (pastStep == 1) {
+          var endHighlight = document.getElementById(pastNum);
+          var startHighlight = document.getElementById(nextNum);
+          $(endHighlight).removeClass("highlight");
+          $(startHighlight).addClass("highlight");
+        }
       }
 
       function backStep(currStep) {
@@ -414,10 +418,12 @@
         $(past).addClass("noshow");
         $(next).removeClass("noshow");
         $(next).addClass("show");
-        var endHighlight = document.getElementById(pastNum);
-        var startHighlight = document.getElementById(nextNum);
-        $(endHighlight).removeClass("highlight");
-        $(startHighlight).addClass("highlight");
+        if (currStep == 2) {
+          var endHighlight = document.getElementById(pastNum);
+          var startHighlight = document.getElementById(nextNum);
+          $(endHighlight).removeClass("highlight");
+          $(startHighlight).addClass("highlight");
+        }
       }
 
       function closeModal(passId) {
@@ -425,6 +431,10 @@
         var div = document.getElementById(id);
         $(div).addClass("noshow");
         $(div).removeClass("show");
+        if (passId == "tut") {
+          var endHighlight = document.getElementById('2');
+          $(endHighlight).removeClass("highlight");
+        }
       }
 
       <%# function done() {
