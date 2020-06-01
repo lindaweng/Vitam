@@ -105,7 +105,7 @@
         <%@idName = "words"%>
         <%@wordNum = 0%>
         <%@pastId = "words0"%>
-        <%for i in (0..@tableNum)%>
+        <%for i in (0..@tableNum-1)%>
         <%@idName = "words"%>
         <%@wordNum = i * 16%>
         <%@nextId = @idName + (i+1).to_s%>
@@ -134,7 +134,9 @@
               <!-- +2 is to account for the picture string that follows the word in the array -->
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <!-- instead of breaking out of the for loop and cutting the table off, this just creates blank boxes and allows all of the table functions to appear -->
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
@@ -142,7 +144,8 @@
               </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
@@ -150,7 +153,8 @@
               </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
@@ -158,7 +162,8 @@
               </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td style="width:5%">
                 <table class="double-row">
@@ -196,7 +201,8 @@
               </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
@@ -204,7 +210,8 @@
               </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
@@ -212,7 +219,8 @@
               </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
                 <p><%=@words[@wordNum]%></p>
@@ -220,7 +228,8 @@
               </td>
               <%@wordNum += 2%>
               <%if @wordNum == @words.length%>
-                <%break%>
+                <%@words[@wordNum] = ""%>
+                <%@words[@wordNum+1] = ""%>
               <%end%>
               <td style="width:5%">
                 <table class="double-row">
@@ -353,6 +362,7 @@
             <input type="hidden" name="tableNum" id="table">
             <input type="submit" class="btn btn-default" style="border:groove; width:auto" name="replace" value="Replace">
             <input type="submit" class="btn btn-default" style="border:groove; width:auto" name="add" value="Add">
+            <button class="btn btn-default" style="border:groove; width:auto" href="/personalWords/<%=@id%>">Back to Template</button>
           </form>
         </div>
         

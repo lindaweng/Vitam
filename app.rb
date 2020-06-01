@@ -116,18 +116,18 @@ class MyApp < Sinatra::Base
         @id = params[:id]
         @userAccount = Account.find(@id)
         @userAccount.update(level: "3")
-        @words = @userAccount.personalWords
         @message = ""
         @contacts = @userAccount.contacts
-    erb :messageTemplate_copy
-        # # @words = [word, img, word, img]
-        # @rows = PersonalWords.where(user: @id)
-        # @words = []
-        # @rows.each do |word|
-        #     @words.push(word.word)
-        #     @words.push(word.image)
-        # end
-        # erb :messageTemplate
+    #     @words = @userAccount.personalWords
+    # erb :messageTemplate_copy
+        # @words = [word, img, word, img]
+        @rows = PersonalWords.where(user: @id)
+        @words = []
+        @rows.each do |word|
+            @words.push(word.word)
+            @words.push(word.image)
+        end
+        erb :messageTemplate
     end
     
     get '/email/:id' do
@@ -160,7 +160,14 @@ class MyApp < Sinatra::Base
         @email = @userAccount.email
         @level = @userAccount.level
         @contacts = @userAccount.contacts
-        @words = @userAccount.personalWords
+        # @words = @userAccount.personalWords
+        @rows = PersonalWords.where(user: @id)
+        @words = []
+        @imgs = []
+        @rows.each do |word|
+            @words.push(word.word)
+            @imgs.push(word.image)
+        end
         erb :account
     end
     
@@ -224,6 +231,7 @@ class MyApp < Sinatra::Base
         @box5 = params[:box5]
         @box6 = params[:box6]
         @box7 = params[:box7]
+        @newWords = [@box0, @box1, @box2, @box3, @box4, @box5, @box6, @box7]
 
         @photo0 = params[:photo0]
         @photo1 = params[:photo1]
@@ -247,64 +255,49 @@ class MyApp < Sinatra::Base
         end
         puts params[:replace]
         puts params[:add]
-        @newWords = [@box0, @box1, @box2, @box3, @box4, @box5, @box6, @box7]
         @userAccount = Account.find(@id)
-        @words = []
+        @ids = []
         @imgs = []
-        @rows = PersonalWords.all(:conditions => { :user => @id })
-        @allWords = PersonalWords.all
-        @allWords.each do |word|
-            if word.user == @id
-                @words.push(word.word)
-                @imgs.push(word.image)
-            end
+        @rows = PersonalWords.where(user: @id)
+        @rows.each do |word|
+            @ids.push(word.id)
+            @imgs.push(word.image)
         end
-        @badWords = @words[@tableNum * 8, 8]
+        @badIds = @ids[@tableNum * 8, 8]
         @badImgs = @imgs[@tableNum * 8, 8]
         if params[:add] == nil
             # Replace function
-            # replaces as many boxes that are filled
-            # one box filled => one box replaced
-            @newWords = @newWords.reject { |w| w.empty? }
-            @urls = @urls.reject { |l| l.empty? }
-            # @rows.each do |word|
-            #     if word.word == 
-            @newWords.each_with_index do |box, i|
-                if box != "" and box != nil
-                    @badWords[i] = box
-                end
-            end
-            # @words.slice!(@tableNum * 8, 8)
-            # @badWords.each_with_index do |word, i|
-            #     @words.insert(@tableNum * 8 + i, word)
-            # end
-            @urls.each_with_index do |box, i|
-                if box != "" and box != nil
-                    @badImgs[i] = box
-                end
-            end
-            # @imgs.slice!(@tableNum * 8, 8)
-            # @badImgs.each_with_index do |img, i|
-            #     @imgs.insert(@tableNum * 8 + i, img)
-            # end
-            
-
-            # @userAccount.update(personalWords: @words)
-        else
-            # Add function
-            # +10 to add new table after old table
+            # Soooo, right now it gets rid of the current contents in the box!!
+            # But... it adds the new content to the end of the table
+            # Because the "update" function pushes the entry to the last row of the table, no matter what id it originally was
+            # table orders rows in inversey  last modifided
+            ## replaces as many boxes that are filled
+            ## one box filled => one box replaced
             @newWords.each_with_index do |word, i|
-                # @words.insert(@tableNum * 16 + 16 + i, word)
-                PersonalWords.create(user: @id, word: word, image: @urls[i])
+                if word != "" and @urls[i] != ""
+                    @replaceId = @badIds[i]
+                    @replace = PersonalWords.find(@replaceId)
+                    @replace.update(word: word, image:@urls[i])
+                    # delete replaced image from HDrive
+                    @badUrl = @badImgs[i]
+                    delete(@badUrl)
+                end
             end
-            # @userAccount.update(personalWords: @words)
+        else
+            # Done!! And works!!
+            # Add function
+            # will add to the end of the current words
+            @newWords.each_with_index do |word, i|
+                if word != "" or @urls[i] != ""
+                    PersonalWords.create(user: @id, word: word, image: @urls[i])
+                end                
+            end
         end
 
         @name = @userAccount.name
-        # @contacts = @userAccount.contacts
-        # @emailWords = @userAccount.emailWords
+        @contacts = @userAccount.contacts
         @message = params[:message]
-        # @words = @userAccount.personalWords
+        @rows = PersonalWords.where(user: @id)
         @words = []
         @rows.each do |word|
             @words.push(word.word)
@@ -411,12 +404,14 @@ class MyApp < Sinatra::Base
             @password = @userAccount.password
             @id = @userAccount.id
             @contacts = @userAccount.contacts
-            @words = @userAccount.personalWords
-            # @rows = PersonalWords.where(user: @id)
-            # @words = []
-            # @rows.each do |word|
-            #     @words.push(word.word)
-            # end
+            # @words = @userAccount.personalWords
+            @rows = PersonalWords.where(user: @id)
+            @words = []
+            @imgs = []
+            @rows.each do |word|
+                @words.push(word.word)
+                @imgs.push(word.image)
+            end
             erb :account
         end
     end
@@ -450,6 +445,7 @@ class MyApp < Sinatra::Base
             @password = params[:password]
             @level = @userAccount.level
             @words = []
+            @contacts = []
             erb :account
         end
     end 
@@ -501,14 +497,29 @@ class MyApp < Sinatra::Base
     
     post '/add-word' do
         @id = params[:id]
-        @newWord = params[:word].capitalize
+        @newWord = params[:word]
+        if @newWord != nil
+            @newWord = @newWord.capitalize
+        else
+            @newWord = ""
+        end
+        @newImg = params[:img]
+        if @newImg != nil
+            @file = @newImg["tempfile"]
+            @file = @file.path()
+            @url = upload(@file)
+        else
+            @url = ""
+        end
         @userAccount = Account.find(@id)
-        PersonalWords.create(user: @id, word: @newWord)
+        PersonalWords.create(user: @id, word: @newWord, image: @url)
         @rows = PersonalWords.where(user: @id)
         # puts @rows
         @words = []
+        @imgs = []
         @rows.each do |word|
             @words.push(word.word)
+            @imgs.push(word.image)
         end
         @name = @userAccount.name
         @email = @userAccount.email

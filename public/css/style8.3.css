@@ -276,6 +276,13 @@ a:focus, a:hover {
   text-decoration: none;
   color: #846508;
 }
+.link-btn {
+  padding: 0;
+}
+.link-btn a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+}
 .bg-black {
   background-color: #161616 !important;
 }
