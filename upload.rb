@@ -1,7 +1,7 @@
 # Require the azure storage blob rubygem
 require 'azure/storage/blob'
 require 'mini_magick'
-
+require 'dotenv/load'
 
 # Setup a specific instance of an Azure::Storage::Blob::BlobService
 # client = Azure::Storage::Blob::BlobService.create(storage_account_name: "hdrive92206144153", storage_access_key: "zc/zM7OoV1X1bd2/RPQ2Za4rUuQdq7OXL7qR9H+4u2CIeHaLA7ddvZtH3UNZGwc1LqWu5NFXCekxluhB3JSolg==")

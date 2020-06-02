@@ -15,3 +15,5 @@ gem 'rest-client'
 
 gem 'azure-storage-blob'
 gem "mini_magick"
+
+gem 'dotenv'
