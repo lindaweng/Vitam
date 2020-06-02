@@ -118,9 +118,31 @@ class MyApp < Sinatra::Base
         @userAccount.update(level: "3")
         @message = ""
         @contacts = @userAccount.contacts
-    #     @words = @userAccount.personalWords
-    # erb :messageTemplate_copy
-        # @words = [word, img, word, img]
+        @rows = PersonalWords.where(user: @id)
+        @words = []
+        @rows.each do |word|
+            @words.push(word.word)
+            @words.push(word.image)
+        end
+        if @words == []
+            @output = "*Please add at least one word or image before using the message template.*"
+            @name = @userAccount.name
+            @password = @userAccount.password
+            @email = @userAccount.email
+            @level = @userAccount.level
+            @contacts = @userAccount.contacts
+            erb :account
+        else
+            erb :messageTemplate
+        end
+    end
+
+    get '/videolWords/:id' do
+        @id = params[:id]
+        @userAccount = Account.find(@id)
+        @userAccount.update(level: "3")
+        @message = ""
+        @contacts = @userAccount.contacts
         @rows = PersonalWords.where(user: @id)
         @words = []
         @rows.each do |word|
@@ -160,7 +182,6 @@ class MyApp < Sinatra::Base
         @email = @userAccount.email
         @level = @userAccount.level
         @contacts = @userAccount.contacts
-        # @words = @userAccount.personalWords
         @rows = PersonalWords.where(user: @id)
         @words = []
         @imgs = []
@@ -220,7 +241,7 @@ class MyApp < Sinatra::Base
     end
 
     # for message template
-    post '/editTableWords2' do
+    post '/editTableWords' do
         @id = params[:id]
         @tableNum = params[:tableNum].to_i
         @box0 = params[:box0]
@@ -305,78 +326,6 @@ class MyApp < Sinatra::Base
         end
         erb :messageTemplate
     end
-
-    post '/editTableWords' do
-        @id = params[:id]
-        @tableNum = params[:tableNum].to_i
-        @box0 = params[:box0]
-        @box1 = params[:box1]
-        @box2 = params[:box2]
-        @box3 = params[:box3]
-        @box4 = params[:box4]
-        # images can only be viewed on the device that uploaded them due to blobs being stored in RAM
-        @img0 = params[:img0]
-        @img1 = params[:img1]
-        @img2 = params[:img2]
-        @img3 = params[:img3]
-        @img4 = params[:img4]
-        puts params[:replace]
-        puts params[:add]
-        @newWords = [@box0, @img0, @box1, @img1, @box2, @img2, @box3, @img3, @box4, @img4]
-        @userAccount = Account.find(@id)
-        # @words = @userAccount.personalWords
-        @badWords = @words[@tableNum * 10, 10]
-        puts @badWords
-        if params[:add] == nil
-            # Replace function
-            # replaces as many boxes that are filled
-            # one box filled => one box replaced
-            @newWords.each_with_index do |box, i|
-                if box != "" and box != nil
-                    # if box.include?
-                        @badWords[i] = box
-                    # end
-                end
-            end
-            @words.slice!(@tableNum * 10, 10)
-            @badWords.each_with_index do |word, i|
-                @words.insert(@tableNum * 10 + i, word)
-            end
-            @userAccount.update(personalWords: @words)
-        else
-            # Add function
-            # +10 to add new table after old table
-            @newWords.each_with_index do |word, i|
-                @words.insert(@tableNum * 10 + 10 + i, word)
-            end
-            @userAccount.update(personalWords: @words)
-        end
-        @name = @userAccount.name
-        @contacts = @userAccount.contacts
-        @emailWords = @userAccount.emailWords
-        @message = params[:message]
-        @words = @userAccount.personalWords
-        erb :messageTemplate_copy
-    end
-
-    # post '/add-pic' do
-    #     @img_src = params[:img_src]
-    #     @id = params[:id]
-    #     @userAccount = Account.find(@id)
-    #     @pics = @userPicture.pictures
-    #     @add_img = @img_src.split(",")
-    #     @add_img.each do |img|
-    #         @pics.push(img)
-    #     end
-    #     @userPicture.update(pictures: @pics)
-    #     @image = @userPicture.pictures
-    #     @name = @userAccount.name
-    #     @contacts = @userAccount.contacts
-    #     @emailWords = @userAccount.emailWords
-    #     @message = params[:message]
-    #     @words = @userAccount.personalWords
-    #     erb :messageTemplate
-    # end
     
     post '/login' do #executes at /login
         @email = params[:email]
@@ -404,7 +353,6 @@ class MyApp < Sinatra::Base
             @password = @userAccount.password
             @id = @userAccount.id
             @contacts = @userAccount.contacts
-            # @words = @userAccount.personalWords
             @rows = PersonalWords.where(user: @id)
             @words = []
             @imgs = []
@@ -514,7 +462,6 @@ class MyApp < Sinatra::Base
         @userAccount = Account.find(@id)
         PersonalWords.create(user: @id, word: @newWord, image: @url)
         @rows = PersonalWords.where(user: @id)
-        # puts @rows
         @words = []
         @imgs = []
         @rows.each do |word|

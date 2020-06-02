@@ -138,39 +138,10 @@
                       <h3 id="secret" style="display: inline-block"><%="*" * @password.length%></h3>
                       <h3 id="open" class="noshow" style="display: inline-block"><%=@password%></h3>
                     </div>
-                    <br>
-                    <!-- <div id="2">
-                      <br>
-                      <h3>Your Templates:</h3>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/yesNo/<%=@id%>">Yes/No Template</a></button></h3>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
-                      <h2 style="color: #eb4034"><%=@output%></h2>
-                    </div>
-                    <%if @level.to_i == 1%>
-                        <h3>Your last template used was the Yes/No Template.</h3>
-                        <h3>Continue using it by clicking on it above.</h3>
-                      <%elsif @level.to_i == 2%>
-                        <h3>Your last template used was the Picture Board.</h3>
-                        <h3>Continue using it by clicking on it above.</h3>
-                      <%elsif @level.to_i == 3%>
-                        <h3>Your last template used was the Message Template.</h3>
-                        <h3>Continue using it by clicking on it above.</h3>
-                      <%elsif @level.to_i == 4%>
-                        <h3>Your last template used was the Email Template.</h3>
-                        <h3>Continue using it by clicking on it above.</h3>
-                      <%end%> -->
+                    <%# <br> %>
                   </div>
                   </div>
               </div>
-              
-            <!-- <div class = "row text-center">
-              <div class = "col-lg-4"></div>
-              <div class = col-lg-4>
-              </div>
-              <div class = col-lg-4></div>
-            </div> -->
           </div>
         </div>
 
@@ -185,8 +156,10 @@
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/yesNo/<%=@id%>">Yes/No Template</a></button></h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/videoWords/<%=@id%>">Message Template with Video</a></button></h3>
                       <!-- <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
-                      <h2 style="color: #eb4034"><%=@output%></h2> -->
+                      -->
+                      <h2 style="color: #eb4034"><%=@output%></h2>
                     </div>
                     <%if @level.to_i == 1%>
                         <h3>Your last template used was the Yes/No Template.</h3>
