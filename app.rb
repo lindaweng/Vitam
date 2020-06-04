@@ -137,6 +137,21 @@ class MyApp < Sinatra::Base
         end
     end
 
+    get '/personalWords/tutorial' do
+        @userAccount = Account.where(email: "vitam.connect@gmail.com")
+        @id = @userAccount.id
+        @userAccount.update(level: "3")
+        @message = ""
+        @contacts = @userAccount.contacts
+        @rows = PersonalWords.where(user: @id)
+        @words = []
+        @rows.each do |word|
+            @words.push(word.word)
+            @words.push(word.image)
+        end
+        erb :messageTemplate
+    end
+
     get '/videolWords/:id' do
         @id = params[:id]
         @userAccount = Account.find(@id)

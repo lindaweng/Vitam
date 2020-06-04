@@ -155,8 +155,12 @@
                       <h3>Your Templates:</h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/yesNo/<%=@id%>">Yes/No Template</a></button></h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/videoWords/<%=@id%>">Message Template with Video</a></button></h3>
+                      <!-- <% if @tut == 1 %>
+                        <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/personalWords/tutorial">Message Template</a></button></h3>
+                      <%else %> -->
+                        <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
+                      <!-- <%end%>
+                      <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/videoWords/<%=@id%>">Message Template with Video</a></button></h3> -->
                       <!-- <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
                       -->
                       <h2 style="color: #eb4034"><%=@output%></h2>
