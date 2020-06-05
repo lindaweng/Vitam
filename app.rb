@@ -114,7 +114,13 @@ class MyApp < Sinatra::Base
     
     get '/personalWords/:id' do
         @id = params[:id]
-        @userAccount = Account.find(@id)
+        if @id == "tutorial"
+            @userAccount = Account.where(email: "vitam.connect@gmail.com").take
+            @id = @userAccount.id
+            @tut = 1
+        else
+            @userAccount = Account.find(@id)
+        end
         @userAccount.update(level: "3")
         @message = ""
         @contacts = @userAccount.contacts
@@ -135,21 +141,6 @@ class MyApp < Sinatra::Base
         else
             erb :messageTemplate
         end
-    end
-
-    get '/personalWords/tutorial' do
-        @userAccount = Account.where(email: "vitam.connect@gmail.com")
-        @id = @userAccount.id
-        @userAccount.update(level: "3")
-        @message = ""
-        @contacts = @userAccount.contacts
-        @rows = PersonalWords.where(user: @id)
-        @words = []
-        @rows.each do |word|
-            @words.push(word.word)
-            @words.push(word.image)
-        end
-        erb :messageTemplate
     end
 
     get '/videolWords/:id' do
@@ -310,17 +301,18 @@ class MyApp < Sinatra::Base
             ## replaces as many boxes that are filled
             ## one box filled => one box replaced
             @newWords.each_with_index do |word, i|
-                if word != "" and @urls[i] != ""
+                if word != "" or @urls[i] != ""
                     @replaceId = @badIds[i]
                     @replace = PersonalWords.find(@replaceId)
                     @replace.update(word: word, image:@urls[i])
                     # delete replaced image from HDrive
-                    @badUrl = @badImgs[i]
-                    delete(@badUrl)
+                    if @badImgs[i] != ""
+                        @badUrl = @badImgs[i]
+                        delete(@badUrl)
+                    end
                 end
             end
         else
-            # Done!! And works!!
             # Add function
             # will add to the end of the current words
             @newWords.each_with_index do |word, i|
@@ -475,7 +467,9 @@ class MyApp < Sinatra::Base
             @url = ""
         end
         @userAccount = Account.find(@id)
-        PersonalWords.create(user: @id, word: @newWord, image: @url)
+        if @url != "" or @newWord != ""
+            PersonalWords.create(user: @id, word: @newWord, image: @url)
+        end
         @rows = PersonalWords.where(user: @id)
         @words = []
         @imgs = []

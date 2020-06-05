@@ -265,7 +265,7 @@
           
           <table class="email" style="margin:0">
             <tr>
-              <td style="text-align: left; height:0">
+              <td style="text-align: left; height:0" class="noSpeak">
                 <button class="btn my-btn btn-outline-secondary" onclick="speakMess()">Say</button>
                 <button class="btn my-btn btn-outline-secondary" onclick="copyMess()">Copy</button>
                 <button class="btn my-btn btn-outline-secondary" onclick="del()">Delete word</button>
@@ -551,7 +551,7 @@
             msg.lang = 'en-US'
             // 48 for Computer,  15-18 for IPad
             msg.text = text;
-            
+            console.log(msg)
       
             speechSynthesis.speak(msg);
         } else {
@@ -561,12 +561,13 @@
 
       function speakMess() {
         var message = document.getElementById("message2").innerHTML;
+        console.log(message)
         speak(message);
       }
 
       $("td").click(function() { 
           console.log($(this).attr("class") != "top")
-          if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back") {
+          if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back" && $(this).attr("class") != "noSpeak") {
             speak(jQuery(this).text());
           }
       });

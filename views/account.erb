@@ -155,12 +155,12 @@
                       <h3>Your Templates:</h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/yesNo/<%=@id%>">Yes/No Template</a></button></h3>
                       <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/picBoard/<%=@id%>">Picture Board</a></button></h3>
-                      <!-- <% if @tut == 1 %>
+                      <% if @tut == 1 %>
                         <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/personalWords/tutorial">Message Template</a></button></h3>
-                      <%else %> -->
+                      <%else %>
                         <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/personalWords/<%=@id%>">Message Template</a></button></h3>
-                      <!-- <%end%>
-                      <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/videoWords/<%=@id%>">Message Template with Video</a></button></h3> -->
+                      <%end%>
+                      <!-- <h3 style="display: inline-block"><button class="btn my-btn btn-light link-btn"><a href="/videoWords/<%=@id%>">Message Template with Video</a></button></h3> -->
                       <!-- <h3 style="display: inline-block"><button class="btn my-btn btn-light"><a href="/email/<%=@id%>">Email Template</a></button></h3>
                       -->
                       <h2 style="color: #eb4034"><%=@output%></h2>
@@ -346,7 +346,7 @@
                     <div class = "col-lg-6 form-inline" style="display: inline">
                       <form method="POST" action="/add-word" enctype="multipart/form-data">
                         <h4>New Word:</h4>
-                        <input type="text" name="word" required>
+                        <input type="text" name="word">
                         <br>
                         <h4>New Image:</h4>
                         <input type="file" accept=".png, .jpg, .jpeg" name="img" id="photo0" onchange="updateImageDisplay(0)" style="padding:0; box-shadow: 0 0 0 0 !important">
