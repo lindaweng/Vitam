@@ -105,6 +105,7 @@
         <%@idName = "words"%>
         <%@wordNum = 0%>
         <%@pastId = "words0"%>
+        <%@lastId = @idName + (@tableNum-1).to_s%>
         <%for i in (0..@tableNum-1)%>
         <%@idName = "words"%>
         <%@wordNum = i * 16%>
@@ -189,9 +190,16 @@
                     </td>
                   </tr>
                   <tr style="background: #75FB78">
+                    <%if @idName == "words0"%>
+                      <!-- It's the first table, left arrow needs to loop to the last table-->
+                    <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@lastId%>', '');">
+                      <img src="../img/arrowLeft.png"/>
+                    </td>
+                    <%else%>
                     <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
                       <img src="../img/arrowLeft.png"/>
                     </td>
+                    <%end%>
                   </tr>
                 </table>
               </td>
@@ -227,10 +235,6 @@
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
               <%@wordNum += 2%>
-              <%if @wordNum == @words.length%>
-                <%@words[@wordNum] = ""%>
-                <%@words[@wordNum+1] = ""%>
-              <%end%>
               <td style="width:5%">
                 <table class="double-row">
                   <tr>
@@ -239,9 +243,16 @@
                     </td>
                   </tr>
                   <tr style="background: #75FB78">
+                    <%if @wordNum == @words.length%>
+                      <!-- It's the last table, need to loop back to beginning -->
+                    <td class="bottom" onclick="noshow('<%=@idName%>', 'words0', '');">
+                      <img src="../img/arrowRight.png"/>
+                    </td>
+                    <%else%>
                     <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');">
                       <img src="../img/arrowRight.png"/>
                     </td>
+                    <%end%>
                   </tr>
                 </table>
               </td>
