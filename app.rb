@@ -125,12 +125,11 @@ class MyApp < Sinatra::Base
         @message = ""
         @contacts = @userAccount.contacts
         @rows = PersonalWords.where(user: @id)
-        @words = []
+        @ids = []
         @rows.each do |word|
-            @words.push(word.word)
-            @words.push(word.image)
+            @ids.push(word.id)
         end
-        if @words == []
+        if @ids == []
             @output = "*Please add at least one word or image before using the message template.*"
             @name = @userAccount.name
             @password = @userAccount.password
@@ -139,6 +138,13 @@ class MyApp < Sinatra::Base
             @contacts = @userAccount.contacts
             erb :account
         else
+            @ids.sort!
+            @words = []
+            @ids.each do |id|
+                @row = PersonalWords.find(id)
+                @words.push(@row.word)
+                @words.push(@row.image)
+            end
             erb :messageTemplate
         end
     end
@@ -189,11 +195,17 @@ class MyApp < Sinatra::Base
         @level = @userAccount.level
         @contacts = @userAccount.contacts
         @rows = PersonalWords.where(user: @id)
+        @ids = []
+        @rows.each do |word|
+            @ids.push(word.id)
+        end
+        @ids.sort!
         @words = []
         @imgs = []
-        @rows.each do |word|
-            @words.push(word.word)
-            @imgs.push(word.image)
+        @ids.each do |id|
+            @row = PersonalWords.find(id)
+            @words.push(@row.word)
+            @imgs.push(@row.image)
         end
         erb :account
     end
@@ -290,6 +302,7 @@ class MyApp < Sinatra::Base
             @ids.push(word.id)
             @imgs.push(word.image)
         end
+        @ids.sort!
         @badIds = @ids[@tableNum * 8, 8]
         @badImgs = @imgs[@tableNum * 8, 8]
         if params[:add] == nil
@@ -314,7 +327,7 @@ class MyApp < Sinatra::Base
             end
         else
             # Add function
-            # will add to the end of the current words
+            # will add to the end of all the current words
             @newWords.each_with_index do |word, i|
                 if word != "" or @urls[i] != ""
                     PersonalWords.create(user: @id, word: word, image: @urls[i])
@@ -326,10 +339,16 @@ class MyApp < Sinatra::Base
         @contacts = @userAccount.contacts
         @message = params[:message]
         @rows = PersonalWords.where(user: @id)
-        @words = []
+        @ids = []
         @rows.each do |word|
-            @words.push(word.word)
-            @words.push(word.image)
+            @ids.push(word.id)
+        end
+        @ids.sort!
+        @words = []
+        @ids.each do |id|
+            @row = PersonalWords.find(id)
+            @words.push(@row.word)
+            @words.push(@row.image)
         end
         erb :messageTemplate
     end
@@ -361,11 +380,17 @@ class MyApp < Sinatra::Base
             @id = @userAccount.id
             @contacts = @userAccount.contacts
             @rows = PersonalWords.where(user: @id)
+            @ids = []
+            @rows.each do |word|
+                @ids.push(word.id)
+            end
+            @ids.sort!
             @words = []
             @imgs = []
-            @rows.each do |word|
-                @words.push(word.word)
-                @imgs.push(word.image)
+            @ids.each do |id|
+                @row = PersonalWords.find(id)
+                @words.push(@row.word)
+                @imgs.push(@row.image)
             end
             erb :account
         end
@@ -471,11 +496,17 @@ class MyApp < Sinatra::Base
             PersonalWords.create(user: @id, word: @newWord, image: @url)
         end
         @rows = PersonalWords.where(user: @id)
+        @ids = []
+        @rows.each do |word|
+            @ids.push(word.id)
+        end
+        @ids.sort!
         @words = []
         @imgs = []
-        @rows.each do |word|
-            @words.push(word.word)
-            @imgs.push(word.image)
+        @ids.each do |id|
+            @row = PersonalWords.find(id)
+            @words.push(@row.word)
+            @imgs.push(@row.image)
         end
         @name = @userAccount.name
         @email = @userAccount.email
