@@ -42,24 +42,26 @@ def upload(tempfile)
     container = client.get_container_acl('images')
     image = MiniMagick::Image.open(tempfile)
     # puts image.path #=> "tempfile"
-    # max width: 180px
+    # max width: 320px
     # max height: 196px
-    if image.width >=3600
+    if image.width >=6400
         image.thumbnail '5%'
-    elsif image.width >= 1800
+    elsif image.width >= 4570
+        image.thumbnail '7%'
+    elsif image.width >= 3200
         image.thumbnail '10%'
-    elsif image.width >= 1200
+    elsif image.width >= 2140
         image.thumbnail '15%'
-    elsif image.width >= 900
+    elsif image.width >= 1600
         image.thumbnail '20%'
-    elsif image.width >= 720
+    elsif image.width >= 1280
         image.thumbnail '25%'
-    elsif image.width >= 515
+    elsif image.width >= 915
         image.thumbnail '35%'
-    elsif image.width >= 300
-        image.thumbnail '60%'
-    elsif image.width >= 200
-        image.thumbnail '90%'
+    elsif image.width >= 640
+        image.thumbnail '50%'
+    elsif image.width >= 400
+        image.thumbnail '80%'
     end
     image.write "public/img/output.png"
     # image.resize "100x100"
@@ -78,6 +80,7 @@ def delete(url)
     name = url.split("/")
     name = name[-1]
     puts name
+    # Need to add something to check if the blob exists
     client.delete_blob("images", name)
 end
 

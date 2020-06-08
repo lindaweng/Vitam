@@ -95,6 +95,26 @@
       </div>
     </nav>
 
+    <!-- Tutorial 
+    <%if @tut == 1%>
+      <div class="modal show" style="background: rgb(128, 128, 128, 0.5)" id="tut">
+        <div class="tutorial show" id="step-1">
+          <h4>This shows your account information.</h4>
+          <button class="btn my-btn" onclick="nextStep(1)">Next</button>
+          <div class="arrow arrow-down" style="margin-left: 40%; margin-top:5.5%">
+          </div>
+        </div>
+        <div class="tutorial noshow templates" id="step-2">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>These are the available templates.</h4>
+          <button class="btn my-btn" onclick="backStep(2)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(2)">Next</button>
+        </div>
+      </div>
+    <%end%> -->
+
+
         <!-- tableNum is how many tables are needed, so how many times this is looped. 16 is 8 words on a page, it's a 2x4 table -->
         <%@tableNum = @words.length / 16.0%>
         <%if @tableNum.to_i.to_f == @tableNum%>

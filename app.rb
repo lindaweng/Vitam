@@ -295,33 +295,27 @@ class MyApp < Sinatra::Base
         puts params[:replace]
         puts params[:add]
         @userAccount = Account.find(@id)
-        @ids = []
-        @imgs = []
-        @rows = PersonalWords.where(user: @id)
-        @rows.each do |word|
-            @ids.push(word.id)
-            @imgs.push(word.image)
-        end
-        @ids.sort!
-        @badIds = @ids[@tableNum * 8, 8]
-        @badImgs = @imgs[@tableNum * 8, 8]
         if params[:add] == nil
             # Replace function
-            # Soooo, right now it gets rid of the current contents in the box!!
-            # But... it adds the new content to the end of the table
-            # Because the "update" function pushes the entry to the last row of the table, no matter what id it originally was
-            # table orders rows in inversey  last modifided
+            # With id sort, all of the boxes stay in the same order
             ## replaces as many boxes that are filled
             ## one box filled => one box replaced
+            @ids = []
+            @rows = PersonalWords.where(user: @id)
+            @rows.each do |word|
+                @ids.push(word.id)
+            end
+            @ids.sort!
+            @badIds = @ids[@tableNum * 8, 8]
             @newWords.each_with_index do |word, i|
                 if word != "" or @urls[i] != ""
                     @replaceId = @badIds[i]
                     @replace = PersonalWords.find(@replaceId)
+                    @badImg = @replace.image
                     @replace.update(word: word, image:@urls[i])
                     # delete replaced image from HDrive
-                    if @badImgs[i] != ""
-                        @badUrl = @badImgs[i]
-                        delete(@badUrl)
+                    if @badImg != ""
+                        delete(@badImg)
                     end
                 end
             end
