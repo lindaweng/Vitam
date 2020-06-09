@@ -99,7 +99,7 @@
     <%if @tut == 1%>
       <div class="modal show" style="background: rgb(128, 128, 128, 0.5)" id="tut">
         <div class="tutorial show" id="step-1">
-          <h4>This shows your account information.</h4>
+          <h4>The square vocabulary buttons (the squares with a word or phrase and an  corresponding picture or just a word or a picture) can be selected to compose a custom message. The word or phrase on each square vocabulary button is pronounced when it is selected.</h4>
           <button class="btn my-btn" onclick="nextStep(1)">Next</button>
           <div class="arrow arrow-down" style="margin-left: 40%; margin-top:5.5%">
           </div>
@@ -107,9 +107,72 @@
         <div class="tutorial noshow templates" id="step-2">
           <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
           </div>
-          <h4>These are the available templates.</h4>
+          <h4>The buttons on the right and left can be selected to add punctuation to the message.</h4>
           <button class="btn my-btn" onclick="backStep(2)">Back</button>
           <button class="btn my-btn" onclick="nextStep(2)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-3">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The arrows on both sides moves to the next page of vocabulary squares. They loop back to the beginning and the end.</h4>
+          <button class="btn my-btn" onclick="backStep(3)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(3)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-4">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Delete” button deletes one word at a time from the message.</h4>
+          <button class="btn my-btn" onclick="backStep(4)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(4)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-5">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Say Message” button above the message pronounces the entire message.</h4>
+          <button class="btn my-btn" onclick="backStep(5)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(5)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-6">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Copy Message” button below the message copies the message to the clipboard so that it can easily be “pasted” in an email, text message, etc.</h4>
+          <button class="btn my-btn" onclick="backStep(6)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(6)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-7">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Edit” button allows the square vocabulary buttons to be edited. Click on it to see what the edit screen looks like.</h4>
+          <button class="btn my-btn" onclick="backStep(7)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(7)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-8">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>There is a text box and a choose file button in each of the previous square vocabulary buttons. You can input a new phrase in each text box and select an picture from the device with each “Choose File” button. </h4>
+          <button class="btn my-btn" onclick="backStep(8)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(8))">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-9">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Replace” button on the bottom replaces the square vocabulary buttons previously on the page with the inputted phrases and their corresponding pictures. If a text box is left blank and if no picture is selected, the corresponding square vocabulary button previously on the page is left alone and not replaced.</h4>
+          <button class="btn my-btn" onclick="backStep(9)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(9)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-10">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Add” button on the bottom adds the inputted words and pictures to the end of all of the current words and pictures.</h4>
+          <button class="btn my-btn" onclick="backStep(10)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(10)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-11">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Back to Template” button on the bottom returns you to your current vocabulary squares.</h4>
+          <button class="btn my-btn" onclick="backStep(11)">Back</button>
+          <button class="btn my-btn" onclick="closeModal('tut')">Done</button>
         </div>
       </div>
     <%end%> -->

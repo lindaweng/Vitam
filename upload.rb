@@ -4,13 +4,10 @@ require 'mini_magick'
 require 'dotenv/load'
 
 # Setup a specific instance of an Azure::Storage::Blob::BlobService
-# client = Azure::Storage::Blob::BlobService.create(storage_account_name: "hdrive92206144153", storage_access_key: "zc/zM7OoV1X1bd2/RPQ2Za4rUuQdq7OXL7qR9H+4u2CIeHaLA7ddvZtH3UNZGwc1LqWu5NFXCekxluhB3JSolg==")
 
 # Create a container
 # name = "images"
 # container = client.get_container_acl('images')
-
-# BlobServiceClient blobServiceClient = new BlobServiceClient("DefaultEndpointsProtocol=https;AccountName=hdrive92206144153;AccountKey=zc/zM7OoV1X1bd2/RPQ2Za4rUuQdq7OXL7qR9H+4u2CIeHaLA7ddvZtH3UNZGwc1LqWu5NFXCekxluhB3JSolg==");
 
 # # //get a BlobContainerClient
 # container = blobServiceClient.GetBlobContainerClient("images");
@@ -75,13 +72,23 @@ end
 
 
 def delete(url)
-    client = Azure::Storage::Blob::BlobService.create(storage_account_name: "hdrive92206144153", storage_access_key: "zc/zM7OoV1X1bd2/RPQ2Za4rUuQdq7OXL7qR9H+4u2CIeHaLA7ddvZtH3UNZGwc1LqWu5NFXCekxluhB3JSolg==")
+    client = Azure::Storage::Blob::BlobService.create(storage_account_name: "hdrive92206144153", storage_access_key: ENV['HDRIVE_AZURE_PRIMARY_KEY'])
     container = client.get_container_acl('images')
     name = url.split("/")
     name = name[-1]
     puts name
-    # Need to add something to check if the blob exists
-    client.delete_blob("images", name)
+    # check if the blob exists
+    blobs = client.list_blobs('images')
+    exists = false
+    for i in blobs
+        if i.name == name
+            exists = true
+        end
+    end
+    puts exists
+    if exists
+        client.delete_blob("images", name)
+    end
 end
 
-# upload('public/img/linda.jpg')
+# delete('https://hdrive92206144153.blob.core.windows.net/images/linda.jpg')
