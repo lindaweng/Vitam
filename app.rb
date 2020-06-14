@@ -149,19 +149,25 @@ class MyApp < Sinatra::Base
         end
     end
 
-    get '/videolWords/:id' do
+    get '/videoWords/:id' do
         @id = params[:id]
         @userAccount = Account.find(@id)
         @userAccount.update(level: "3")
         @message = ""
         @contacts = @userAccount.contacts
         @rows = PersonalWords.where(user: @id)
-        @words = []
+        @ids = []
         @rows.each do |word|
-            @words.push(word.word)
-            @words.push(word.image)
+            @ids.push(word.id)
         end
-        erb :messageTemplate
+        @ids.sort!
+        @words = []
+        @ids.each do |id|
+            @row = PersonalWords.find(id)
+            @words.push(@row.word)
+            @words.push(@row.image)
+        end
+        erb :messageTemplate_copy
     end
     
     get '/email/:id' do

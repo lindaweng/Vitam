@@ -88,14 +88,21 @@
           <li class="nav-item">
             <a class="nav-link" href="/account/<%=@id%>" style="padding: 0rem 1.5rem !important; font-size:2.5rem">My Account</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="openVideo()" id="useVid" style="padding: 0rem 1.5rem !important; font-size:2.5rem">Show Webcam</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link noshow" onclick="stopVideo()" id="stopVid" style="padding: 0rem 1.5rem !important; font-size:2.5rem">Stop Webcam</a>
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="/" style="padding: 0rem 1.5rem !important">Log Out</a>
           </li> -->
         </ul>
       </div>
+      </div>
     </nav>
 
-    <!-- Tutorial 
+<!-- Tutorial
     <%if @tut == 1%>
       <div class="modal show" style="background: rgb(128, 128, 128, 0.5)" id="tut">
         <div class="tutorial show" id="step-1">
@@ -175,9 +182,11 @@
           <button class="btn my-btn" onclick="closeModal('tut')">Done</button>
         </div>
       </div>
-    <%end%> -->
+    <%end%>
+    -->
 
-
+        <div class="video">
+        <div id="tables">
         <!-- tableNum is how many tables are needed, so how many times this is looped. 16 is 8 words on a page, it's a 2x4 table -->
         <%@tableNum = @words.length / 16.0%>
         <%if @tableNum.to_i.to_f == @tableNum%>
@@ -194,7 +203,7 @@
         <%@wordNum = i * 16%>
         <%@nextId = @idName + (i+1).to_s%>
         <%@idName = @idName + i.to_s%>
-
+      
         <table id="<%=@idName%>" class="noshow email">
             <tr id="row">
               <td style="width:5%">
@@ -353,6 +362,12 @@
         </table>
       </div>
       
+      <div class="noshow" id="videoContainer">
+        <video autoplay="true" id="videoElement">
+    
+        </video>
+      </div>
+      </div>
         
         <div id="message">
           <!-- display message -->
@@ -460,35 +475,9 @@
           </form>
         </div>
         
-        <!-- Upload Photos -->
-          <!-- <img src="<%=@img_src%>">
-          <div class="uploaded"></div>
-          <form method="POST" action="/add-pic" enctype="multipart/form-data">
-              <h3>Select photos to upload:</h3>
-              <p>They will be put into the boxes in the order you see them, from left to right then top to bottom.</p>
-              <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo" id="photo">
-              <input type="text" name="img_src" id="img_src">
-              <input type="hidden" name="id" value="<%=@id%>">
-              <input type="hidden" id="messageSend" name="message">
-              <input type="submit">
-          </form>
-          <div class="preview"> -->
 
+          <!-- Image Preview -->
           <script>
-              // for (var i = 0; i < 5; i++) {
-              // var name = "photo" + i
-              // const input = document.querySelector("input[name=" + name + "]");
-              // const inputs = document.querySelectorAll(".photo1");
-              // console.log(inputs)
-              // for (const input of inputs) {
-              //   console.log(input)
-              //   input.addEventListener('change', updateImageDisplay());
-              // }
-
-              // const preview = document.querySelector('#preview' + i);
-
-              // console.log("What")
-              // }
               function updateImageDisplay(i) {
                   const input = document.querySelector("#photo" + i)
                   console.log(input)
@@ -563,6 +552,60 @@
                 var id = document.getElementById('words0');
                 $(id).addClass('show');
                 $(id).removeClass('noshow');
+
+                // openVideo()
+              }
+
+              //  Video Stream
+              function openVideo() {
+                var id = document.getElementById('tables');
+                var already = $(id).hasClass('videoTable')
+                if (!already) {
+                  $(id).addClass('videoTable');
+                  var videoCon = document.querySelector('#videoContainer');
+                  $(videoCon).removeClass('noshow');
+                  var use = document.getElementById('useVid')
+                  var stop = document.getElementById('stopVid')
+                  $(use).addClass('noshow')
+                  $(stop).removeClass('noshow')
+
+                  var video = document.querySelector("#videoElement");
+                  var dims = document.getElementById('words0').getBoundingClientRect();
+                  var vidHeight = dims.height - 20; // 20 is for the border (10 on each side)
+                  var vidWidth = dims.width - 20;
+
+                  if (navigator.mediaDevices.getUserMedia) {
+                  navigator.mediaDevices.getUserMedia({ video: {width: vidWidth, height: vidHeight} })
+                      .then(function (stream) {
+                      video.srcObject = stream;
+                      })
+                      .catch(function (err) {
+                      console.log("Something went wrong!");
+                      });
+                  }
+                }
+              }
+
+              function stopVideo() {
+                var id = document.getElementById('tables');
+                $(id).removeClass('videoTable');
+                var videoCon = document.querySelector('#videoContainer');
+                $(videoCon).addClass('noshow');
+                var use = document.getElementById('useVid')
+                var stop = document.getElementById('stopVid')
+                $(use).removeClass('noshow')
+                $(stop).addClass('noshow')
+
+                var video = document.querySelector("#videoElement");
+                var stream = video.srcObject;
+                if (stream != null) {
+                  var tracks = stream.getTracks();
+                  for (var i = 0; i < tracks.length; i++) {
+                    var track = tracks[i];
+                    track.stop();
+                  }
+                  video.srcObject = null;
+                }
               }
 
               function copyMess() {

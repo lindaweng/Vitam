@@ -95,6 +95,89 @@
       </div>
     </nav>
 
+    <!-- Tutorial -->
+    <%if @tut == 1%>
+      <div class="modal show" style="background: rgb(128, 128, 128, 0.5)" id="tut">
+        <div class="tutorial show" id="step-1">
+          <h4>The square vocabulary buttons (the squares with a word or phrase and an  corresponding picture or just a word or a picture) can be selected to compose a custom message. The word or phrase on each square vocabulary button is pronounced when it is selected.</h4>
+          <button class="btn my-btn" onclick="nextStep(1)">Next</button>
+          <div class="arrow arrow-down" style="margin-left: 40%; margin-top:5.5%">
+          </div>
+        </div>
+        <div class="tutorial noshow templates" id="step-2">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The buttons on the right and left can be selected to add punctuation to the message.</h4>
+          <button class="btn my-btn" onclick="backStep(2)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(2)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-3">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The arrows on both sides moves to the next page of vocabulary squares. They loop back to the beginning and the end.</h4>
+          <button class="btn my-btn" onclick="backStep(3)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(3)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-4">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Delete” button deletes one word at a time from the message.</h4>
+          <button class="btn my-btn" onclick="backStep(4)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(4)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-5">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Say Message” button above the message pronounces the entire message.</h4>
+          <button class="btn my-btn" onclick="backStep(5)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(5)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-6">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Copy Message” button below the message copies the message to the clipboard so that it can easily be “pasted” in an email, text message, etc.</h4>
+          <button class="btn my-btn" onclick="backStep(6)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(6)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-7">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Edit” button allows the square vocabulary buttons to be edited. Click on it to see what the edit screen looks like.</h4>
+          <button class="btn my-btn" onclick="backStep(7)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(7)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-8">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>There is a text box and a choose file button in each of the previous square vocabulary buttons. You can input a new phrase in each text box and select an picture from the device with each “Choose File” button. </h4>
+          <button class="btn my-btn" onclick="backStep(8)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(8))">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-9">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Replace” button on the bottom replaces the square vocabulary buttons previously on the page with the inputted phrases and their corresponding pictures. If a text box is left blank and if no picture is selected, the corresponding square vocabulary button previously on the page is left alone and not replaced.</h4>
+          <button class="btn my-btn" onclick="backStep(9)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(9)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-10">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Add” button on the bottom adds the inputted words and pictures to the end of all of the current words and pictures.</h4>
+          <button class="btn my-btn" onclick="backStep(10)">Back</button>
+          <button class="btn my-btn" onclick="nextStep(10)">Next</button>
+        </div>
+        <div class="tutorial noshow templates" id="step-11">
+          <div class="arrow arrow-up" style="margin-left: 47.5%; margin-top:-2.8%">
+          </div>
+          <h4>The “Back to Template” button on the bottom returns you to your current vocabulary squares.</h4>
+          <button class="btn my-btn" onclick="backStep(11)">Back</button>
+          <button class="btn my-btn" onclick="closeModal('tut')">Done</button>
+        </div>
+      </div>
+    <%end%>
+
+
         <!-- tableNum is how many tables are needed, so how many times this is looped. 16 is 8 words on a page, it's a 2x4 table -->
         <%@tableNum = @words.length / 16.0%>
         <%if @tableNum.to_i.to_f == @tableNum%>
@@ -105,6 +188,7 @@
         <%@idName = "words"%>
         <%@wordNum = 0%>
         <%@pastId = "words0"%>
+        <%@lastId = @idName + (@tableNum-1).to_s%>
         <%for i in (0..@tableNum-1)%>
         <%@idName = "words"%>
         <%@wordNum = i * 16%>
@@ -189,9 +273,16 @@
                     </td>
                   </tr>
                   <tr style="background: #75FB78">
+                    <%if @idName == "words0"%>
+                      <!-- It's the first table, left arrow needs to loop to the last table-->
+                    <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@lastId%>', '');">
+                      <img src="../img/arrowLeft.png"/>
+                    </td>
+                    <%else%>
                     <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@pastId%>', '');">
                       <img src="../img/arrowLeft.png"/>
                     </td>
+                    <%end%>
                   </tr>
                 </table>
               </td>
@@ -227,10 +318,6 @@
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
               <%@wordNum += 2%>
-              <%if @wordNum == @words.length%>
-                <%@words[@wordNum] = ""%>
-                <%@words[@wordNum+1] = ""%>
-              <%end%>
               <td style="width:5%">
                 <table class="double-row">
                   <tr>
@@ -239,9 +326,16 @@
                     </td>
                   </tr>
                   <tr style="background: #75FB78">
+                    <%if @wordNum == @words.length%>
+                      <!-- It's the last table, need to loop back to beginning -->
+                    <td class="bottom" onclick="noshow('<%=@idName%>', 'words0', '');">
+                      <img src="../img/arrowRight.png"/>
+                    </td>
+                    <%else%>
                     <td class="bottom" onclick="noshow('<%=@idName%>', '<%=@nextId%>', '');">
                       <img src="../img/arrowRight.png"/>
                     </td>
+                    <%end%>
                   </tr>
                 </table>
               </td>
@@ -265,7 +359,7 @@
           
           <table class="email" style="margin:0">
             <tr>
-              <td style="text-align: left; height:0">
+              <td style="text-align: left; height:0" class="noSpeak">
                 <button class="btn my-btn btn-outline-secondary" onclick="speakMess()">Say</button>
                 <button class="btn my-btn btn-outline-secondary" onclick="copyMess()">Copy</button>
                 <button class="btn my-btn btn-outline-secondary" onclick="del()">Delete word</button>
@@ -366,35 +460,8 @@
           </form>
         </div>
         
-        <!-- Upload Photos -->
-          <!-- <img src="<%=@img_src%>">
-          <div class="uploaded"></div>
-          <form method="POST" action="/add-pic" enctype="multipart/form-data">
-              <h3>Select photos to upload:</h3>
-              <p>They will be put into the boxes in the order you see them, from left to right then top to bottom.</p>
-              <input type="file" accept=".png, .jpg, .jpeg" multiple name="photo" id="photo">
-              <input type="text" name="img_src" id="img_src">
-              <input type="hidden" name="id" value="<%=@id%>">
-              <input type="hidden" id="messageSend" name="message">
-              <input type="submit">
-          </form>
-          <div class="preview"> -->
-
+        <!-- Image Preview -->
           <script>
-              // for (var i = 0; i < 5; i++) {
-              // var name = "photo" + i
-              // const input = document.querySelector("input[name=" + name + "]");
-              // const inputs = document.querySelectorAll(".photo1");
-              // console.log(inputs)
-              // for (const input of inputs) {
-              //   console.log(input)
-              //   input.addEventListener('change', updateImageDisplay());
-              // }
-
-              // const preview = document.querySelector('#preview' + i);
-
-              // console.log("What")
-              // }
               function updateImageDisplay(i) {
                   const input = document.querySelector("#photo" + i)
                   console.log(input)
@@ -469,6 +536,26 @@
                 var id = document.getElementById('words0');
                 $(id).addClass('show');
                 $(id).removeClass('noshow');
+              }
+
+              //  Video Stream
+              function openVideo() {
+                var video = document.querySelector("#videoElement");
+                var dims = document.getElementById('words0').getBoundingClientRect()
+                var vidHeight = dims.height - 20 // 20 is for the border (10 on each side)
+                var vidWidth = dims.width - 20
+                console.log(dims.height)
+                // console.log()
+
+                if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: {width: vidWidth, height: vidHeight} })
+                    .then(function (stream) {
+                    video.srcObject = stream;
+                    })
+                    .catch(function (err) {
+                    console.log("Something went wrong!");
+                    });
+                }
               }
 
               function copyMess() {
@@ -551,7 +638,7 @@
             msg.lang = 'en-US'
             // 48 for Computer,  15-18 for IPad
             msg.text = text;
-            
+            console.log(msg)
       
             speechSynthesis.speak(msg);
         } else {
@@ -561,12 +648,13 @@
 
       function speakMess() {
         var message = document.getElementById("message2").innerHTML;
+        console.log(message)
         speak(message);
       }
 
       $("td").click(function() { 
           console.log($(this).attr("class") != "top")
-          if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back") {
+          if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back" && $(this).attr("class") != "noSpeak") {
             speak(jQuery(this).text());
           }
       });
