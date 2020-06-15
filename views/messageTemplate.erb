@@ -206,7 +206,7 @@
       
         <table id="<%=@idName%>" class="noshow email">
             <tr id="row">
-              <td style="width:5%">
+              <td style="width:5%" class="noSpeak">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('', '', 'or');">
@@ -258,7 +258,7 @@
                 <%@words[@wordNum] = ""%>
                 <%@words[@wordNum+1] = ""%>
               <%end%>
-              <td style="width:5%">
+              <td style="width:5%" class="noSpeak">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('', '', 'and');">
@@ -703,7 +703,6 @@
       }
 
       $("td").click(function() { 
-          console.log($(this).attr("class") != "top")
           if ($(this).attr("class") != "top" && $(this).attr("class") != "bottom" && $(this).attr("class") != "back" && $(this).attr("class") != "noSpeak") {
             speak(jQuery(this).text());
           }
