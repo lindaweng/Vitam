@@ -148,27 +148,6 @@ class MyApp < Sinatra::Base
             erb :messageTemplate
         end
     end
-
-    get '/videoWords/:id' do
-        @id = params[:id]
-        @userAccount = Account.find(@id)
-        @userAccount.update(level: "3")
-        @message = ""
-        @contacts = @userAccount.contacts
-        @rows = PersonalWords.where(user: @id)
-        @ids = []
-        @rows.each do |word|
-            @ids.push(word.id)
-        end
-        @ids.sort!
-        @words = []
-        @ids.each do |id|
-            @row = PersonalWords.find(id)
-            @words.push(@row.word)
-            @words.push(@row.image)
-        end
-        erb :messageTemplate_copy
-    end
     
     get '/email/:id' do
         @id = params[:id]
@@ -315,13 +294,17 @@ class MyApp < Sinatra::Base
             @badIds = @ids[@tableNum * 8, 8]
             @newWords.each_with_index do |word, i|
                 if word != "" or @urls[i] != ""
-                    @replaceId = @badIds[i]
-                    @replace = PersonalWords.find(@replaceId)
-                    @badImg = @replace.image
-                    @replace.update(word: word, image:@urls[i])
-                    # delete replaced image from HDrive
-                    if @badImg != ""
-                        delete(@badImg)
+                    if @badIds[i] != nil
+                        @replaceId = @badIds[i]
+                        @replace = PersonalWords.find(@replaceId)
+                        @badImg = @replace.image
+                        @replace.update(word: word, image:@urls[i])
+                        # delete replaced image from HDrive
+                        if @badImg != ""
+                            delete(@badImg)
+                        end
+                    else
+                        PersonalWords.create(user: @id, word: word, image: @urls[i])
                     end
                 end
             end
