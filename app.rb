@@ -375,6 +375,10 @@ class MyApp < Sinatra::Base
                 @words.push(@row.word)
                 @imgs.push(@row.image)
             end
+            if @tut == 1
+                @userAccount.update(level: "")
+                @level = @userAccount.level
+            end
             erb :account
         end
     end

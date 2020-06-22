@@ -502,6 +502,11 @@ footer {
   margin-top: -10%;
 }
 
+.modal {
+  position: absolute;
+  overflow: auto;
+}
+
 .arrow {
   width: 0;
   display: block;
@@ -520,8 +525,18 @@ footer {
   border-bottom-color: rgb(255, 255, 255, 0.7) !important;
 }
 
+.template-arrow-up {
+  border-width: 0 1rem 1rem;
+  border-bottom-color: rgba(201, 201, 201, 1) !important;
+}
+
+.template-arrow-down {
+  border-width: 1rem 1rem 0;
+  border-top-color: rgba(201, 201, 201, 1) !important;
+}
+
 .tutorial {
-  position: relative;
+  position: absolute;
   width: 20%;
   background: rgba(255, 255, 255, 0.7);
   padding: 1rem;
@@ -530,13 +545,17 @@ footer {
   text-align: center;
 }
 
+.template {
+  background: rgba(201, 201, 201, 1);
+}
+
 #step-1 {
   margin-left: 65%;
 }
 
 .templates {
   width: 80%;
-  margin-top: 40%;
+  margin-top: 39%;
   margin-left: 10%;
 }
 
