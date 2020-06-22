@@ -246,94 +246,114 @@ class MyApp < Sinatra::Base
     # for message template
     post '/editTableWords' do
         @id = params[:id]
-        @tableNum = params[:tableNum].to_i
-        @box0 = params[:box0]
-        @box1 = params[:box1]
-        @box2 = params[:box2]
-        @box3 = params[:box3]
-        @box4 = params[:box4]
-        @box5 = params[:box5]
-        @box6 = params[:box6]
-        @box7 = params[:box7]
-        @newWords = [@box0, @box1, @box2, @box3, @box4, @box5, @box6, @box7]
-
-        @photo0 = params[:photo0]
-        @photo1 = params[:photo1]
-        @photo2 = params[:photo2]
-        @photo3 = params[:photo3]
-        @photo4 = params[:photo4]
-        @photo5 = params[:photo5]
-        @photo6 = params[:photo6]
-        @photo7 = params[:photo7]
-        @files = [@photo0, @photo1, @photo2, @photo3, @photo4, @photo5, @photo6, @photo7]
-        @urls = []
-        @files.each do |file|
-            if file != nil
-                @file2 = file["tempfile"]
-                @file2 = @file2.path()
-                @url = upload(@file2)
-                @urls.push(@url)
-            else
-                @urls.push("")
-            end
-        end
-        puts params[:replace]
-        puts params[:add]
-        @userAccount = Account.find(@id)
-        if params[:add] == nil
-            # Replace function
-            # With id sort, all of the boxes stay in the same order
-            ## replaces as many boxes that are filled
-            ## one box filled => one box replaced
-            @ids = []
+        if params[:back] != nil
+            @userAccount = Account.find(@id)
+            @name = @userAccount.name
+            @contacts = @userAccount.contacts
+            @message = params[:message]
             @rows = PersonalWords.where(user: @id)
+            @ids = []
             @rows.each do |word|
                 @ids.push(word.id)
             end
             @ids.sort!
-            @badIds = @ids[@tableNum * 8, 8]
-            @newWords.each_with_index do |word, i|
-                if word != "" or @urls[i] != ""
-                    if @badIds[i] != nil
-                        @replaceId = @badIds[i]
-                        @replace = PersonalWords.find(@replaceId)
-                        @badImg = @replace.image
-                        @replace.update(word: word, image:@urls[i])
-                        # delete replaced image from HDrive
-                        if @badImg != ""
-                            delete(@badImg)
-                        end
-                    else
-                        PersonalWords.create(user: @id, word: word, image: @urls[i])
-                    end
+            @words = []
+            @ids.each do |id|
+                @row = PersonalWords.find(id)
+                @words.push(@row.word)
+                @words.push(@row.image)
+            end
+            erb :messageTemplate
+        else
+            @tableNum = params[:tableNum].to_i
+            @box0 = params[:box0]
+            @box1 = params[:box1]
+            @box2 = params[:box2]
+            @box3 = params[:box3]
+            @box4 = params[:box4]
+            @box5 = params[:box5]
+            @box6 = params[:box6]
+            @box7 = params[:box7]
+            @newWords = [@box0, @box1, @box2, @box3, @box4, @box5, @box6, @box7]
+
+            @photo0 = params[:photo0]
+            @photo1 = params[:photo1]
+            @photo2 = params[:photo2]
+            @photo3 = params[:photo3]
+            @photo4 = params[:photo4]
+            @photo5 = params[:photo5]
+            @photo6 = params[:photo6]
+            @photo7 = params[:photo7]
+            @files = [@photo0, @photo1, @photo2, @photo3, @photo4, @photo5, @photo6, @photo7]
+            @urls = []
+            @files.each do |file|
+                if file != nil
+                    @file2 = file["tempfile"]
+                    @file2 = @file2.path()
+                    @url = upload(@file2)
+                    @urls.push(@url)
+                else
+                    @urls.push("")
                 end
             end
-        else
-            # Add function
-            # will add to the end of all the current words
-            @newWords.each_with_index do |word, i|
-                if word != "" or @urls[i] != ""
-                    PersonalWords.create(user: @id, word: word, image: @urls[i])
-                end                
+            puts params[:replace]
+            puts params[:add]
+            @userAccount = Account.find(@id)
+            if params[:add] == nil
+                # Replace function
+                # With id sort, all of the boxes stay in the same order
+                ## replaces as many boxes that are filled
+                ## one box filled => one box replaced
+                @ids = []
+                @rows = PersonalWords.where(user: @id)
+                @rows.each do |word|
+                    @ids.push(word.id)
+                end
+                @ids.sort!
+                @badIds = @ids[@tableNum * 8, 8]
+                @newWords.each_with_index do |word, i|
+                    if word != "" or @urls[i] != ""
+                        if @badIds[i] != nil
+                            @replaceId = @badIds[i]
+                            @replace = PersonalWords.find(@replaceId)
+                            @badImg = @replace.image
+                            @replace.update(word: word, image:@urls[i])
+                            # delete replaced image from HDrive
+                            if @badImg != ""
+                                delete(@badImg)
+                            end
+                        else
+                            PersonalWords.create(user: @id, word: word, image: @urls[i])
+                        end
+                    end
+                end
+            else
+                # Add function
+                # will add to the end of all the current words
+                @newWords.each_with_index do |word, i|
+                    if word != "" or @urls[i] != ""
+                        PersonalWords.create(user: @id, word: word, image: @urls[i])
+                    end                
+                end
             end
-        end
 
-        @name = @userAccount.name
-        @contacts = @userAccount.contacts
-        @message = params[:message]
-        @rows = PersonalWords.where(user: @id)
-        @ids = []
-        @rows.each do |word|
-            @ids.push(word.id)
+            @name = @userAccount.name
+            @contacts = @userAccount.contacts
+            @message = params[:message]
+            @rows = PersonalWords.where(user: @id)
+            @ids = []
+            @rows.each do |word|
+                @ids.push(word.id)
+            end
+            @ids.sort!
+            @words = []
+            @ids.each do |id|
+                @row = PersonalWords.find(id)
+                @words.push(@row.word)
+                @words.push(@row.image)
+            end
+            erb :messageTemplate
         end
-        @ids.sort!
-        @words = []
-        @ids.each do |id|
-            @row = PersonalWords.find(id)
-            @words.push(@row.word)
-            @words.push(@row.image)
-        end
-        erb :messageTemplate
     end
     
     post '/login' do #executes at /login
