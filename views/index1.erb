@@ -64,9 +64,12 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Get Involved</a>
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/community-art">Community Art</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -75,10 +78,10 @@
     <!-- Header -->
     <header style="background-image: linear-gradient(#88D6F2, #72F274)">
       <div class="container d-flex h-100 align-items-center" style="padding:0; flex-wrap:wrap; padding-bottom:12%; padding-top:12%; justify-content:space-around">
-        <%# <div class="mx-auto text-center masthead" style="display: inline-block; padding-top: 3rem"> %>
-          <%# <h1 class="mx-auto my-0 text-uppercase">VITAM</h1> %>
+        <!-- <div class="mx-auto text-center masthead" style="display: inline-block; padding-top: 3rem"> -->
+          <!-- <h1 class="mx-auto my-0 text-uppercase">VITAM</h1> -->
           <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="">
-        <%# </div> %>
+        <!-- </div> -->
         
         <!-- Tutorial Pop-up -->
         <div class="noshow modal" id="tutorial" style="background: rgb(128, 128, 128, 0.5)">
@@ -89,7 +92,7 @@
           </div>
         </div>
 
-        <div class="form-inline home-login img-fluid" style="display: inline; z-index: 1051">
+        <div id="login" class="form-inline home-login img-fluid" style="display: inline">
           <h2>Login</h2>
           <h2><%=@output%></h2>
           <form method="POST" action="/login">
@@ -103,7 +106,7 @@
           </form>
           <div style="text-align: center">
             <h5>Don't have an account?</h5>
-            <a href = "#signup" class = "btn btn-light">Sign up</a>
+            <a href = "#signup" class="btn btn-light">Sign up</a>
           </div>
         </div>
       </div>
@@ -111,20 +114,7 @@
     
     <!-- About -->
     <section id="about" class="projects-section bg-light">
-      <div class="container">
-        <h2 class="mx-auto text-center" style="color: black; padding-bottom:5%; font-size: 2.3em">Listen to the Ones that Need to be Heard</h2>
-        <!-- Featured Project Row -->
-        <!--<div class="row align-items-center no-gutters mb-4 mb-lg-5">-->
-          <!--<div class="col-xl-8 col-lg-7">-->
-          <!--  <img class="img-fluid mb-3 mb-lg-0" src="img/bg-masthead.jpg" alt="">-->
-          <!--</div>-->
-        <!--  <div class="col-xl-4 col-lg-5">-->
-        <!--    <div class="featured-text text-center text-lg-left">-->
-        <!--      <h4>Shoreline</h4>-->
-        <!--      <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>-->
-        <!--    </div>-->
-        <!--  </div>-->
-        <!--</div>-->
+      <!-- <div class="container">         -->
 
         <!-- Project One Row -->
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
@@ -135,8 +125,8 @@
             <div class="text-center h-100 project" style="background: #FF9603">
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                  <h4 class="text-white">Building Understanding and Trust</h4>
-                  <p class="mb-0 text-white-50">Give the patient a voice in his or her own care. Vitam empowers patients who have a hard time speaking to communicate with their caregivers.</p>
+                  <h4 class="text-white">Our Product</h4>
+                  <p class="mb-0 text-white">The Vitam Messaging Template is an online, customizable communication aid developed with speech-language pathologists at the University of Michigan Aphasia Program. It empowers people with communication disorders to compose messages and emails and practice their speech-language pathology exercises. Click the video to the left to see the Vitam Messaging Template in action!</p>
                   <hr class="d-none d-lg-block mb-0 ml-0">
                 </div>
               </div>
@@ -151,21 +141,32 @@
             <div class="text-center h-100 project" style="background: #FF9603">
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                  <h4 class="text-white">High Quality Communication = High Quality Care</h4>
-                  <p class="mb-0 text-white-50">As a caregiver, you now that quality care is not just the right medications at the right time. We here at Vitam believe that quality care is also social, emotional, and spiritual healing as well.</p>
+                  <h4 class="text-white">Our Story</h4>
+                  <p class="mb-0 text-white">Vitam is a student group at the University of Michigan dedicated to helping people with communication disorders who have lost their ability to express language reconnect with their loved ones. Linda and Maxwell Weng, inspired by their grandmother's long struggle with aphasia, co-founded Vitam in 2020. </p>
                   <hr class="d-none d-lg-block mb-0 mr-0">
                 </div>
               </div>
             </div>
           </div>
           <div class="col-lg-6">
-            <img class="img-fluid" src="img/business-care-clinic-1282308.jpg" alt="">
+            <img class="img-fluid" src="img/map.png" alt="">
           </div>
         </div>
 
+      <!-- </div> -->
+    </section>
+
+    <!-- Art Project -->
+    <section id="about" class="projects-section bg-light">
+      <div class="container">
+        <h1 class="mx-auto text-center">Aphasia Community Art Project</h1>
+        <hr>
+        <p class="text-center">Through this digital quilt, we want to highlight all that people with aphasia, caregivers, and clinicians have accomplished in transitioning to virtual meetings and therapy in the face of the Covid-19 pandemic. If you support this mission, please share this project!</p>
+        <img class="img-fluid img-center" src="img/artFlyer.png" alt="Art Project Flyer">
       </div>
     </section>
-    
+
+    <!-- Signup -->
     <section class="features signup-section" id="signup">
       <div class="container">
         <div class="section-heading text-center">
@@ -268,6 +269,8 @@
         var pop = document.getElementById("tutorial");
         $(pop).removeClass("noshow");
         $(pop).addClass("show");
+
+        document.getElementById("login").style.zIndex = "1051";
       }
     </script>
 

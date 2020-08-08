@@ -179,7 +179,7 @@
   margin-bottom: 5rem;
 }
 .projects-section {
-  padding: 10rem 0;
+  padding: 3rem 0;
 }
 .projects-section .featured-text {
   padding: 2rem;
@@ -467,6 +467,54 @@ footer {
 
 }
 
+/* @media (min-width: 1200px) {
+  .img-center {
+  }
+} */
+
+@media (max-width: 993px) {
+  .img-center {
+  max-width: 67% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .img-center {
+  max-width: 84% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .img-center {
+  max-width: 100% !important;
+  }
+}
+
+.img-center {
+  max-width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* About Page */
+.column {
+  display: inline-block;
+  max-width: 45%;
+  vertical-align: top;
+}
+#inspiration img {
+  max-width: 100%;
+  transform: rotate(-10deg);
+}
+#prototype img {
+  max-width: 100%;
+  padding-left: 1rem;
+}
+#organization img {
+  max-width: 100%;
+  padding-right: 1rem;
+}
 .story {
   background: #f8f9fa!important;
   padding: 5rem 0;
