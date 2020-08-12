@@ -40,7 +40,7 @@
 </head>
 
 
-  <body id = "page-top">
+  <body id = "page-top" onload="sizeVideo()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -62,13 +62,16 @@
               <a class="nav-link js-scroll-trigger" onclick="tutorial()" href="#">Tutorial</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#art">Aphasia Art</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/">Mask Fundraiser</a>
+            </li> -->
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
             </li>
             <!-- <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Get Involved</a>
-            </li> -->
-            <!-- <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/community-art">Community Art</a>
+              <a class="nav-link js-scroll-trigger" href="/support">Get Involved</a>
             </li> -->
           </ul>
         </div>
@@ -80,7 +83,7 @@
       <div class="container d-flex h-100 align-items-center" style="padding:0; flex-wrap:wrap; padding-bottom:12%; padding-top:12%; justify-content:space-around">
         <!-- <div class="mx-auto text-center masthead" style="display: inline-block; padding-top: 3rem"> -->
           <!-- <h1 class="mx-auto my-0 text-uppercase">VITAM</h1> -->
-          <img src="img/logo.png" class="img-fluid" alt="Vitam Logo" style="">
+          <img src="img/logo.png" class="img-fluid" alt="Vitam Logo">
         <!-- </div> -->
         
         <!-- Tutorial Pop-up -->
@@ -119,14 +122,17 @@
         <!-- Project One Row -->
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
           <div class="col-lg-6">
-            <img class="img-fluid" src="img/action-adult-affection-339620.jpg" alt="">
+            <!-- <video class="img-fluid" src="img/action-adult-affection-339620.jpg" alt=""> -->
+            <video controls id="videoElement">
+              <source src="audio/vitamDemo.mp4" type="video/mp4">
+            </video>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6" id="sizebox">
             <div class="text-center h-100 project" style="background: #FF9603">
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-left">
                   <h4 class="text-white">Our Product</h4>
-                  <p class="mb-0 text-white">The Vitam Messaging Template is an online, customizable communication aid developed with speech-language pathologists at the University of Michigan Aphasia Program. It empowers people with communication disorders to compose messages and emails and practice their speech-language pathology exercises. Click the video to the left to see the Vitam Messaging Template in action!</p>
+                  <p class="mb-0 text-white">Vitam is an online, personalized communication aid that empowers clinicians, family, and student volunteers to help people with communication disorders recover. Vitam has been developed with speech-language pathologists at the University of Michigan Aphasia Program. There are 3 separate products within Vitam: the Yes-No Board, the Picture Board, and the Messaging Template. Each has been designed for people with communication disorders of a certain severity. Click the video to the left to see Vitam in action (turn on the sound)!</p>
                   <hr class="d-none d-lg-block mb-0 ml-0">
                 </div>
               </div>
@@ -142,7 +148,7 @@
               <div class="d-flex h-100">
                 <div class="project-text w-100 my-auto text-center text-lg-right">
                   <h4 class="text-white">Our Story</h4>
-                  <p class="mb-0 text-white">Vitam is a student group at the University of Michigan dedicated to helping people with communication disorders who have lost their ability to express language reconnect with their loved ones. Linda and Maxwell Weng, inspired by their grandmother's long struggle with aphasia, co-founded Vitam in 2020. </p>
+                  <p class="mb-0 text-white">Vitam is developed by a student group at the University of Michigan dedicated to helping people with communication disorders who have lost their ability to express language reconnect with their loved ones. Linda and Maxwell Weng, inspired by their grandmother's long struggle with Broca’s aphasia (the loss of ability to express language), co-founded Vitam in 2019.</p>
                   <hr class="d-none d-lg-block mb-0 mr-0">
                 </div>
               </div>
@@ -157,7 +163,7 @@
     </section>
 
     <!-- Art Project -->
-    <section id="about" class="projects-section bg-light">
+    <section id="art" class="projects-section bg-light">
       <div class="container">
         <h1 class="mx-auto text-center">Aphasia Community Art Project</h1>
         <hr>
@@ -271,6 +277,15 @@
         $(pop).addClass("show");
 
         document.getElementById("login").style.zIndex = "1051";
+      }
+
+      function sizeVideo() {
+        var video = document.getElementById("videoElement");
+        var dims = document.getElementById('sizebox').getBoundingClientRect();
+        var vidHeight = dims.height;
+        var vidWidth = dims.width;
+        video.height = vidHeight;
+        video.width = vidWidth;
       }
     </script>
 

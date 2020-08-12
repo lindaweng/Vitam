@@ -17,3 +17,7 @@ gem 'azure-storage-blob'
 gem "mini_magick"
 
 gem 'dotenv'
+
+gem 'pony'
+gem 'mail'
+gem 'sendgrid-ruby'

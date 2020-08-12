@@ -53,6 +53,8 @@ require 'rubygems'
 require 'bundler'
 Bundler.require
 require "sinatra"
+require 'pony'
+require 'mail'
 require "./models.rb"
 require "./modelsFeedback.rb"
 require "./modelsPersonalWords.rb"
@@ -82,8 +84,35 @@ class MyApp < Sinatra::Base
         erb :about
     end
 
-    get '/community-art' do
-        erb :art
+    get '/support' do
+        erb :support
+    end
+
+    post '/mail/contact.php' do
+        name = params[:name]
+        email = params[:email]
+        phone = params[:phone]
+        message = params[:message]
+        if name == nil or email == nil or phone == nil or message == nil
+            puts "Missing Parameters"
+        else
+            to = 'vitam.connect@gmail.com'
+            email_subject = "Website Contact Form:  #{name}"
+            email_body = "You have received a new message from your website contact form.\n\nHere are the details:\n\nName: #{name}\n\nEmail: #{email}\n\nPhone: #{phone}\n\nMessage:\n#{message}"
+            from = "noreply@yourdomain.com"
+            reply_to = email;
+            Pony.mail(:to => to, :from => from, :subject => email_subject, :body => email_body, :reply_to => reply_to, :via => :sendmail)
+            mail = Mail.new do
+                to 'vitam.connect@gmail.com'
+                from 'noreply@yourdomain.com'
+                subject '#{email_subject}'
+                body '#{email_body}'
+            end
+            mail.delivery_method :sendmail
+            mail.deliver
+            puts "Sent"
+        end
+        # system('php public/mail/contact.php name email');
     end
 
     get '/landing' do
