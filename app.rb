@@ -62,20 +62,7 @@ require "./upload.rb"
 # require "./send.rb"
 # require "./production.rb"
 
-class MyApp < Sinatra::Base
-    
-    # API_URL = "https://api:b1020b1b345ae9d55b96e313b57f9960-1b65790d-b3629572@api.mailgun.net/v2/sandbox8fce2e7f6a154651b419cb7375733423.mailgun.org"
-    
-    # def send(from, to, body)
-    #   RestClient.post "https://api:key-d0ce530eb372221e03d9b36af7575f92@api.mailgun.net/v2/sandbox8fce2e7f6a154651b419cb7375733423.mailgun.org/messages",
-    #       :sender => "Excited User <mailgun@sandbox8fce2e7f6a154651b419cb7375733423.mailgun.org>",
-    #       :from => from,
-    #       :to => to,
-    #       :subject => "Message From Vitam",
-    #       :text => body
-    #       # :html => "<b>HTML</b> version of the body!"
-    # end
-    
+class MyApp < Sinatra::Base    
     get '/' do
         erb :index1
     end
@@ -86,6 +73,10 @@ class MyApp < Sinatra::Base
 
     get '/support' do
         erb :support
+    end
+
+    get '/mask' do
+        erb :mask
     end
 
     post '/mail/contact.php' do
@@ -564,21 +555,6 @@ class MyApp < Sinatra::Base
         erb :sent
     end
     
-    get '/help' do
-        @message = "Message: help"
-        erb :sent
-    end
-    # post '/twil' do
-    #   number = params['From']
-    #   body = params['Body']
-    
-    #   content_type 'text/xml'
-    #   "<Response>
-    #      <Message>
-    #       Hello #{number}. You said: #{body}
-    #      </Message>
-    #   </Response>"
-    # end
 
 
 
