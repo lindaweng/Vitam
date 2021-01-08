@@ -225,7 +225,7 @@
                   </tr>
                 </table>
               </td>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
@@ -236,7 +236,7 @@
                 <%@words[@wordNum] = ""%>
                 <%@words[@wordNum+1] = ""%>
               <%end%>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
@@ -245,7 +245,7 @@
                 <%@words[@wordNum] = ""%>
                 <%@words[@wordNum+1] = ""%>
               <%end%>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
@@ -254,7 +254,7 @@
                 <%@words[@wordNum] = ""%>
                 <%@words[@wordNum+1] = ""%>
               <%end%>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
@@ -279,7 +279,7 @@
               </td>
             </tr>
             <tr id="row">
-              <td style="width:5%">
+              <td style="width:5%" class="noSpeak">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('', '', '?');"">
@@ -300,7 +300,7 @@
                   </tr>
                 </table>
               </td>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
@@ -309,7 +309,7 @@
                 <%@words[@wordNum] = ""%>
                 <%@words[@wordNum+1] = ""%>
               <%end%>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
@@ -318,7 +318,7 @@
                 <%@words[@wordNum] = ""%>
                 <%@words[@wordNum+1] = ""%>
               <%end%>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
@@ -327,12 +327,12 @@
                 <%@words[@wordNum] = ""%>
                 <%@words[@wordNum+1] = ""%>
               <%end%>
-              <td onclick="noshow('', '', '<%=@words[@wordNum]%>');">
+              <td onclick="noshow('', '', '<%=jsEncode(@words[@wordNum])%>');">
                 <p><%=@words[@wordNum]%></p>
                 <img src="<%=@words[@wordNum+1]%>">
               </td>
               <%@wordNum += 2%>
-              <td style="width:5%">
+              <td style="width:5%" class="noSpeak">
                 <table class="double-row">
                   <tr>
                     <td class="top" onclick="noshow('', '', '.');">
@@ -504,11 +504,38 @@
                 document.getElementById("messageSend").value=message;
                 document.getElementById("messageEdit").value=message;
 
+              function JSEncode(word) {
+                var single = word.indexOf('\'');
+                var double = word.indexOf('\"');
+                while (single != -1) {
+                  word = word.slice(0, single) + "\x27" + word(single+1);
+                  single = word.indexOf('\'', single+1);
+                }
+                while (double != -1) {
+                  word = word.slice(0, double) + "\x22" + word(double+1);
+                  double = word.indexOf('\'', double+1);
+                }
+                return word;
+              }
+
               function noshow(table1, table2, word) {
                   var addMessage = word;
                   console.log(table2);
                   var id1 = document.getElementById(table1);
                   var id2 = document.getElementById(table2);
+                  // var single = addMessage.indexOf('\'');
+                  // var double = addMessage.indexOf('\"');
+                  console.log(addMessage);
+                  // while (single != -1) {
+                  //   addMessage = addMessage.slice(0, single) + "\\" + addMessage(single);
+                  //   console.log(addMessage);
+                  //   single = addMessage.indexOf('\'', single+1);
+                  // }
+                  // while (double != -1) {
+                  //   addMessage = addMessage.slice(0, double) + "\\" + addMessage(double);
+                  //   double = addMessage.indexOf('\'', double+1);
+                  // }
+                  // console.log(addMessage);
                   if (addMessage != '') {
                       message = message + " " + addMessage;
                   }
@@ -575,7 +602,8 @@
                   $(stop).removeClass('noshow')
 
                   var video = document.querySelector("#videoElement");
-                  var dims = document.getElementById('words0').getBoundingClientRect();
+                  var wordTables = document.getElementsByClassName("show email")
+                  var dims = wordTables[0].getBoundingClientRect();
                   var vidHeight = dims.height - 20; // 20 is for the border (10 on each side)
                   var vidWidth = dims.width - 20;
 
