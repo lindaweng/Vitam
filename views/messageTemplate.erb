@@ -80,8 +80,7 @@
       <!-- <a class="navbar-brand" href="/account/<%=@id%>">Vitam</a> -->
       <img src="../img/logo.png" style="width:9.5%">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
@@ -523,19 +522,6 @@
                   console.log(table2);
                   var id1 = document.getElementById(table1);
                   var id2 = document.getElementById(table2);
-                  // var single = addMessage.indexOf('\'');
-                  // var double = addMessage.indexOf('\"');
-                  console.log(addMessage);
-                  // while (single != -1) {
-                  //   addMessage = addMessage.slice(0, single) + "\\" + addMessage(single);
-                  //   console.log(addMessage);
-                  //   single = addMessage.indexOf('\'', single+1);
-                  // }
-                  // while (double != -1) {
-                  //   addMessage = addMessage.slice(0, double) + "\\" + addMessage(double);
-                  //   double = addMessage.indexOf('\'', double+1);
-                  // }
-                  // console.log(addMessage);
                   if (addMessage != '') {
                       message = message + " " + addMessage;
                   }
@@ -740,7 +726,7 @@
     <!-- Footer -->
         <footer class="bg-white small text-center text-black-50">
           <div class="container">
-            Copyright &copy; VITAM 2019
+            Copyright &copy; VITAM 2020
           </div>
           </footer>
 
@@ -749,6 +735,8 @@
     <!-- Bootstrap core JavaScript -->
     <!--<script src="vendor/jquery/jquery.min.js"></script>-->
     <script type="text/script" src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>

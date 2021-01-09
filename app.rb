@@ -296,20 +296,7 @@ class MyApp < Sinatra::Base
             @box6 = params[:box6]
             @box7 = params[:box7]
             @newWords = [@box0, @box1, @box2, @box3, @box4, @box5, @box6, @box7]
-            # for word in @newWords
-            #     if word != nil
-            #         single = word.index('\'')
-            #         double = word.index('\"')
-            #         while single != nil
-            #             word = word[0...single] + "\\" + word[single..-1]
-            #             single = word.index('\'', single+2)
-            #         end
-            #         while double != nil
-            #             word = word[0...double] + "\\" + word[double..-1]
-            #             double = word.index('\'', double+2)
-            #         end
-            #     end
-            # end
+
             @photo0 = params[:photo0]
             @photo1 = params[:photo1]
             @photo2 = params[:photo2]
